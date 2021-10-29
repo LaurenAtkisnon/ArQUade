@@ -2,7 +2,7 @@ class MenuScene extends Phaser.Scene {
   constructor() {
     super("bootGame");
   }
-
+//lauren is showing you something
 // pre load images for scenes
   preload() {
     this.load.image("background", "pictures/image1.png");
