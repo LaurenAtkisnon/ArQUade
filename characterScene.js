@@ -15,6 +15,8 @@ class characterScene extends Phaser.Scene {
     this.background = this.add.image(400,300,"background");
     this.background.scale = .8;
 
+    this.options_button = this.add.image(175,32, "options_button");
+
     this.person1 = this.add.image(500,250,"person1");
     this.person1.scale = .3;
 
@@ -35,5 +37,6 @@ class characterScene extends Phaser.Scene {
        fill: "black"
      });
   }
+
 
 }
