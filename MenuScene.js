@@ -24,12 +24,16 @@ boomer.scale = 1.4;
 const play_button = this.add.image(400,300, "play_button");
 
 // option button
-const options_button = this.add.image(70,20, "options_button");
+const options_button = this.add.image(175,32, "options_button");
 
 // welcome to arquade font on screen
-    this.add.text(250, 100, "WELCOME TO ARQUADE", {
-      font: "25px Arial",
-      fill: "black"
+    this.add.text(200, 100, "WELCOME TO ARQUADE", {
+    //  fontFamily: "25px Arial",
+    //  fill: "black"
+    fontFamily: 'Bahiana',
+    fontSize: '40px',
+    color: '#000000',
+    fontStyle: 'normal'
     });
 
 // text of boomer talking to the user=
