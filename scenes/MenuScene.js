@@ -11,46 +11,63 @@ class MenuScene extends Phaser.Scene {
     this.load.audio("title_music", "audio/shuinvy-childhood.mp3");
     this.load.image("options_button", "pictures/options_button.png");
     this.load.image("back_button", "pictures/back_button.png");
+    this.load.image("welcome", "pictures/welcome.png")
   }
 
 // method that creates objects for the scene
   create() {
+//background
 const background = this.add.image(400,300,"background");
 background.scale = .8;
 
+//boomer
 const boomer = this.add.image(750,480,"boomer");
 boomer.scale = 1.4;
 
-// play button
-//const play_button = this.add.image(400,300, "play_button");
+// game name
+const welcome = this.add.image(400,100,"welcome");
+welcome.scale = .6;
 
 //back button
-const back_button = this.add.image(95,575, "back_button");
+const back_button = this.add.image(60,580, "back_button");
+back_button.scale = .6;
+back_button.setInteractive()
+back_button.on('pointerdown', () => button.setScale( 1.1 ))
+back_button.on('pointerup', () => button.setScale( 1 ));
+
 
 
 // option button
-const options_button = this.add.image(175,32, "options_button");
+const options_button = this.add.image(140,30, "options_button");
+options_button.scale = .8;
+
+//play button
+//const play_button = this.add.image(400,300, "play_button");
 
 // welcome to arquade font on screen
-    this.add.text(200, 100, "WELCOME TO ARQUADE", {
+//    this.add.text(200, 100, "WELCOME TO ARQUADE", {
     //  fontFamily: "25px Arial",
     //  fill: "black"
-    fontFamily: 'Bahiana',
-    fontSize: '40px',
-    color: '#000000',
-    fontStyle: 'normal'
-    });
+//    fontFamily: 'Bahiana',
+//    fontSize: '40px',
+//    color: '#000000',
+//    fontStyle: 'normal'
+//    });
+
+    //this.add.image(200,100, "welcome")
+
 
 // text of boomer talking to the user=
-    this.add.text(520, 400,
+    this.add.text(575, 500,
       "Hi! I'm Boomer,\n I will be here\n to assist you.", {
-      font: "25px Arial",
+      font: "15px Quicksand",
       fill: "black"
     });
 
     // play button
     const play_button = this.add.image(400,300, "play_button");
     this.input.on('pointerdown', () => this.scene.start('characterScene'));
+    play_button.scale = .8;
 
 // adds music to the menu screen
 /*

@@ -25,7 +25,8 @@ boomer.scale = 1.4;
 //const play_button = this.add.image(400,300, "play_button");
 
 //back button
-const back_button = this.add.image(95,575, "back_button");
+const back_button = this.add.image(60,580, "back_button");
+back_button.scale = .6;
 
 
 // option button
