@@ -21,7 +21,7 @@ const boomer = this.add.image(750,480,"boomer");
 boomer.scale = 1.4;
 
 // play button
-const play_button = this.add.image(400,300, "play_button");
+//const play_button = this.add.image(400,300, "play_button");
 
 // option button
 const options_button = this.add.image(175,32, "options_button");
