@@ -43,6 +43,9 @@ const options_button = this.add.image(175,32, "options_button");
       fill: "black"
     });
 
+    // play button
+    const play_button = this.add.image(400,300, "play_button");
+    this.input.on('pointerdown', () => this.scene.start('characterScene'));
 
 // adds music to the menu screen
 /*
