@@ -9,6 +9,7 @@ class characterScene extends Phaser.Scene {
     this.load.image("person2", "pictures/person2.png");
     this.load.image("person3", "pictures/person3.png");
     this.load.image("person4", "pictures/person4.png");
+    this.load.image("options_button", "pictures/options_button.png");
   }
 
   create() {
