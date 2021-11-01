@@ -10,6 +10,7 @@ class MenuScene extends Phaser.Scene {
     this.load.image("play_button", "pictures/play_button.png");
     this.load.audio("title_music", "audio/shuinvy-childhood.mp3");
     this.load.image("options_button", "pictures/options_button.png");
+    this.load.image("back_button", "pictures/back_button.png");
   }
 
 // method that creates objects for the scene
@@ -22,6 +23,10 @@ boomer.scale = 1.4;
 
 // play button
 //const play_button = this.add.image(400,300, "play_button");
+
+//back button
+const back_button = this.add.image(95,575, "back_button");
+
 
 // option button
 const options_button = this.add.image(175,32, "options_button");
