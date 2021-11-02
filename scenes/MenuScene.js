@@ -16,6 +16,10 @@ class MenuScene extends Phaser.Scene {
 
 // method that creates objects for the scene
   create() {
+
+//play button
+//const play_button = this.add.image(400,300, "play_button");
+
 //background
 const background = this.add.image(400,300,"background");
 background.scale = .8;
@@ -28,6 +32,10 @@ boomer.scale = 1.4;
 const welcome = this.add.image(400,100,"welcome");
 welcome.scale = .6;
 
+// option button
+const options_button = this.add.image(140,30, "options_button");
+options_button.scale = .8;
+
 //back button
 const back_button = this.add.image(60,580, "back_button");
 back_button.scale = .6;
@@ -37,12 +45,10 @@ back_button.on('pointerup', () => button.setScale( 1 ));
 
 
 
-// option button
-const options_button = this.add.image(140,30, "options_button");
-options_button.scale = .8;
 
-//play button
-//const play_button = this.add.image(400,300, "play_button");
+
+
+
 
 // welcome to arquade font on screen
 //    this.add.text(200, 100, "WELCOME TO ARQUADE", {
@@ -66,7 +72,7 @@ options_button.scale = .8;
 
     // play button
     const play_button = this.add.image(400,300, "play_button");
-    this.input.on('pointerdown', () => this.scene.start('characterScene'));
+    this.input.on('pointerdown', () => this.scene.start('instructions'));
     play_button.scale = .8;
 
 // adds music to the menu screen

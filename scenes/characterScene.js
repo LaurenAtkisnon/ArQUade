@@ -10,6 +10,8 @@ class characterScene extends Phaser.Scene {
     this.load.image("person3", "pictures/person3.png");
     this.load.image("person4", "pictures/person4.png");
     this.load.image("options_button", "pictures/options_button.png");
+    this.load.image("back_button", "pictures/back_button.png");
+
   }
 
   create() {
@@ -31,8 +33,8 @@ class characterScene extends Phaser.Scene {
     this.person4 = this.add.image(500,400,"person4");
     this.person4.scale = .1;
 
-    this.back_button = this.add.image(60,580, "back_button");
-    this.back_button.scale = .6;
+//    this.back_button = this.add.image(60,580, "back_button");
+//    this.back_button.scale = .6;
 
     const boomer = this.add.image(750,480,"boomer");
     boomer.scale = 1.4;
@@ -40,9 +42,11 @@ class characterScene extends Phaser.Scene {
      this.add.text(200, 100, "Pick A Character & Tell Me Your Name", {
        font: "25px Arial",
        fill: "black"
-
-
      });
+
+     const back_button = this.add.image(60,580, "back_button");
+     this.input.on('pointerdown', () => this.scene.start('instructions'));
+     back_button.scale = .6;
   }
 
 
