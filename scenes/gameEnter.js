@@ -22,6 +22,8 @@ class gameEnter extends Phaser.Scene {
 
     const settings_button = this.add.image(75,20, "settings_button");
     settings_button.scale = .8;
+    this.input.on('pointerdown', () => this.scene.start('settings'));
+
 
     //next button
     const next_button = this.add.image(740,580,"next_button");

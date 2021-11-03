@@ -27,6 +27,7 @@ class characterScene extends Phaser.Scene {
 
     const settings_button = this.add.image(75,20, "settings_button");
     settings_button.scale = .8;
+    this.input.on('pointerdown', () => this.scene.start('settings'));
 
     this.person1 = this.add.image(500,250,"person1");
     this.person1.scale = .3;

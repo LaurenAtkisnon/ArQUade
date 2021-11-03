@@ -36,6 +36,8 @@ welcome.scale = .6;
 // settings button
 const settings_button = this.add.image(75,20, "settings_button");
 settings_button.scale = .8;
+this.input.on('pointerdown', () => this.scene.start('settings'));
+
 
 //back button
 //const back_button = this.add.image(60,580, "back_button");
