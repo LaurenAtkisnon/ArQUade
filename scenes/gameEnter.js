@@ -35,4 +35,4 @@ class gameEnter extends Phaser.Scene {
     const back_button = this.add.image(60,580, "back_button");
     this.input.on('pointerdown', () => this.scene.start('characterScene'));
     back_button.scale = .6;
-  }
+  }}
