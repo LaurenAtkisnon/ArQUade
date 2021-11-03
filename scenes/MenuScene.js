@@ -11,7 +11,8 @@ class MenuScene extends Phaser.Scene {
     this.load.audio("title_music", "audio/shuinvy-childhood.mp3");
     this.load.image("options_button", "pictures/options_button.png");
     this.load.image("back_button", "pictures/back_button.png");
-    this.load.image("welcome", "pictures/welcome.png")
+    this.load.image("welcome", "pictures/welcome.png");
+    this.load.image("settings_button", "pictures/settings_button.png");
   }
 
 // method that creates objects for the scene
@@ -32,16 +33,16 @@ boomer.scale = 1.4;
 const welcome = this.add.image(400,100,"welcome");
 welcome.scale = .6;
 
-// option button
-const options_button = this.add.image(140,30, "options_button");
-options_button.scale = .8;
+// settings button
+const settings_button = this.add.image(75,20, "settings_button");
+settings_button.scale = .8;
 
 //back button
-const back_button = this.add.image(60,580, "back_button");
-back_button.scale = .6;
-back_button.setInteractive()
-back_button.on('pointerdown', () => button.setScale( 1.1 ))
-back_button.on('pointerup', () => button.setScale( 1 ));
+//const back_button = this.add.image(60,580, "back_button");
+//back_button.scale = .6;
+//back_button.setInteractive()
+//back_button.on('pointerdown', () => button.setScale( 1.1 ))
+//back_button.on('pointerup', () => button.setScale( 1 ));
 
 
 

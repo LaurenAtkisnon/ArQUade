@@ -11,6 +11,10 @@ class characterScene extends Phaser.Scene {
     this.load.image("person4", "pictures/person4.png");
     this.load.image("options_button", "pictures/options_button.png");
     this.load.image("back_button", "pictures/back_button.png");
+    this.load.image("next_button", "pictures/next_button.png");
+    this.load.image("boomerwave", "pictures/boomerwave.png");
+    this.load.image("settings_button", "pictures/settings_button.png");
+
 
   }
 
@@ -18,8 +22,11 @@ class characterScene extends Phaser.Scene {
     this.background = this.add.image(400,300,"background");
     this.background.scale = .8;
 
-    this.options_button = this.add.image(140,30, "options_button");
-    this.options_button.scale =.8;
+//    this.options_button = this.add.image(140,30, "options_button");
+//    this.options_button.scale =.8;
+
+    const settings_button = this.add.image(75,20, "settings_button");
+    settings_button.scale = .8;
 
     this.person1 = this.add.image(500,250,"person1");
     this.person1.scale = .3;
@@ -36,14 +43,19 @@ class characterScene extends Phaser.Scene {
 //    this.back_button = this.add.image(60,580, "back_button");
 //    this.back_button.scale = .6;
 
-    const boomer = this.add.image(750,480,"boomer");
-    boomer.scale = 1.4;
+    const boomerwave = this.add.image(530,300,"boomerwave");
+    boomerwave.scale = 1.2;
 
      this.add.text(200, 100, "Pick A Character & Tell Me Your Name", {
        font: "25px Arial",
        fill: "black"
      });
 
+     //next button
+     const next_button = this.add.image(740,580,"next_button");
+     next_button.scale = .6;
+
+     //back button
      const back_button = this.add.image(60,580, "back_button");
      this.input.on('pointerdown', () => this.scene.start('instructions'));
      back_button.scale = .6;
