@@ -4,7 +4,7 @@ class scene3 extends Phaser.Scene {
   }
 
   preload() {
-
+    
   }
 
   create() {
@@ -22,6 +22,8 @@ class scene3 extends Phaser.Scene {
    this.createSpeechBubble(590, 50, 200, 120, 'Hey Professor Duncan! Welcome to ARQUADE!');
    this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! i'm excited");
    this.createSpeechBubble(375, 200, 220, 220, "QUICK REMINDER: \n This a task-based game. You will be given a set of tasks you will need to complete in order to complete your first day as student! Good Luck!");
+
+
    this.input.on('pointerdown', () => this.scene.start('campusScene'));
 }
 
