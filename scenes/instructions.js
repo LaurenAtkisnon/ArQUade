@@ -17,6 +17,7 @@ class instructions extends Phaser.Scene {
   }
 
   create() {
+
     this.background = this.add.image(400,300,"background");
     this.background.scale = .8;
 
@@ -27,7 +28,7 @@ class instructions extends Phaser.Scene {
     //settings button
     const settings_button = this.add.image(75,20, "settings_button");
     settings_button.scale = .8;
-    this.input.on('pointerdown', () => this.scene.start('settings'));
+  //  this.input.on('pointerdown', () => this.scene.start('settings'));
 
 //    const next_button = this.add.image(740,580, "next_button");
 //    this.input.on('pointerdown', () => this.scene.start('gameEnter'));
@@ -58,22 +59,53 @@ this.add.text(30, 150, content, {
   color: '#000080' });
 
 
+//THIS WORKS
+this.add.image(60,580, "home_button")
+.setInteractive ({useHandCursor: true})
+.on('pointerdown', () => this.scene.start('bootGame'))
+.setScale (.6);
+
+this.add.image(740, 580, "next_button")
+.setInteractive ({useHandCursor: true})
+.on('pointerdown', () => this.scene.start('characterScene'));
+
+
 //back button
 //const back_button = this.add.image(60,580, "back_button");
 //back_button.scale = .6;
 
 //next button
-const next_button = this.add.image(740,580, "next_button");
-this.input.on('pointerdown', () => this.scene.start('characterScene'));
-next_button.scale = .6;
+//this.next_button = this.add.image(740,580, "next_button");
+//this.input.on('pointerdown', () => this.scene.start('characterScene'));
+//this.next_button.scale = .6;
+
+//this.add.sprite(740, 580, "next_button");
+//this.input.once('pointerdown', function(){
+//  console.log('From instructions to characterScene');
+//  this.scene.start('characterScene');
+//}, this);
 
 //const back_button = this.add.image(60,580, "back_button");
 //this.input.on('pointerdown', () => this.scene.start('MenuScene'));
 //back_button.scale = .6;
 
-const home_button = this.add.image(60,580, "home_button");
-this.input.on('pointerdown', () => this.scene.start('MenuScene'));
-home_button.scale = .6;
+/* const self = this;
+this.input.on('gameobjectdown', function () {
+   self.scene.start('MenuScene');
+}); */
+
+/* this.home_button = this.add.image(60,580, "home_button");
+this.home_button.on('pointerdown', () => this.scene.start('MenuScene'));
+this.home_button.scale = .6; */
+
+
+//this.add.sprite(60, 580, "home_button");
+//this.home_button.scale = .6;
+//this.input.once('pointerdown', function() {
+//  console.log('From instructions to MenuScene');
+//  this.scene.start('bootGame');
+//}, this);
+
 }
 
   }

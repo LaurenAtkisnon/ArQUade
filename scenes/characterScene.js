@@ -25,9 +25,19 @@ class characterScene extends Phaser.Scene {
 //    this.options_button = this.add.image(140,30, "options_button");
 //    this.options_button.scale =.8;
 
-    const settings_button = this.add.image(75,20, "settings_button");
-    settings_button.scale = .8;
+    //back button
+    this.back_button = this.add.image(60,580, "back_button");
+    this.input.on('pointerdown', () => this.scene.start('instructions'));
+    this.back_button.scale = .6;
+
+    this.settings_button = this.add.image(75,20, "settings_button");
+    this.settings_button.scale = .8;
     this.input.on('pointerdown', () => this.scene.start('settings'));
+
+    //next button
+    this.next_button = this.add.image(740,580,"next_button");
+    this.next_button.scale = .6;
+//    this.input.on('pointerdown', () => this.scene.start('gameEnter'));
 
     this.person1 = this.add.image(500,250,"person1");
     this.person1.scale = .3;
@@ -44,22 +54,14 @@ class characterScene extends Phaser.Scene {
 //    this.back_button = this.add.image(60,580, "back_button");
 //    this.back_button.scale = .6;
 
-    const boomerwave = this.add.image(530,300,"boomerwave");
-    boomerwave.scale = 1.2;
+    this.boomerwave = this.add.image(530,300,"boomerwave");
+    this.boomerwave.scale = 1.2;
 
      this.add.text(200, 100, "Pick A Character & Tell Me Your Name", {
        font: "25px Arial",
        fill: "black"
      });
 
-     //next button
-     const next_button = this.add.image(740,580,"next_button");
-     next_button.scale = .6;
-
-     //back button
-     const back_button = this.add.image(60,580, "back_button");
-     this.input.on('pointerdown', () => this.scene.start('instructions'));
-     back_button.scale = .6;
   }
 
 

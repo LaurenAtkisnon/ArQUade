@@ -20,19 +20,19 @@ class gameEnter extends Phaser.Scene {
 //    this.options_button = this.add.image(140,30, "options_button");
 //    this.options_button.scale =.8;
 
-    const settings_button = this.add.image(75,20, "settings_button");
-    settings_button.scale = .8;
-    this.input.on('pointerdown', () => this.scene.start('settings'));
+    this.settings_button = this.add.image(75,20, "settings_button");
+    this.settings_button.scale = .8;
+  //  this.input.on('pointerdown', () => this.scene.start('settings'));
 
 
     //next button
-    const next_button = this.add.image(740,580,"next_button");
-    next_button.scale = .6;
-    this.input.on('pointerdown', () => this.scene.start('instructions'));
-    back_button.scale = .6;
+    this.next_button = this.add.image(740,580,"next_button");
+    this.next_button.scale = .6;
+//    this.input.on('pointerdown', () => this.scene.start('gameEnter'));
+  //  next_button.scale = .6;
 
     //back button
-    const back_button = this.add.image(60,580, "back_button");
-    this.input.on('pointerdown', () => this.scene.start('characterScene'));
-    back_button.scale = .6;
+    this. back_button = this.add.image(60,580, "back_button");
+//    this.input.on('pointerdown', () => this.scene.start('characterScene'));
+    this.back_button.scale = .6;
   }}
