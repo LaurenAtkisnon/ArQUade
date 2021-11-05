@@ -5,6 +5,7 @@ class gameEnter extends Phaser.Scene {
 
   preload() {
     this.load.image("newentrance", "pictures/newentrance.png");
+    this.load.image("back_button", "pictures/back_button");
   }
 
   create() {
@@ -15,7 +16,7 @@ class gameEnter extends Phaser.Scene {
     newroad.scale = .7;
 
     const person4 = this.add.image(100,460,"person4");
-    person4.scale = .2;
+    person4.scale = .1;
 
     this.settings_button = this.add.image(75,20, "settings_button");
     this.settings_button.scale = .8;
@@ -23,8 +24,13 @@ class gameEnter extends Phaser.Scene {
     const boomer = this.add.image(700,400,"boomer");
     boomer.scale = 2;
 
+    //back back_button
+    this.back_button = this.add.image(60,580,"back_button");
+    this.back_button.scale = .6;
+    this.input.on('pointerdown', () => this.scene.start('characterScene'));
+
    this.createSpeechBubble(590, 50, 200, 120, 'Hey Professor Duncan! Welcome to ARQUADE!');
-   this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! i'm excited");
+   this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
    this.createSpeechBubble(375, 200, 220, 220, "QUICK REMINDER: \n This a task-based game. You will be given a set of tasks you will need to complete in order to complete your first day as student! Good Luck!");
 
 

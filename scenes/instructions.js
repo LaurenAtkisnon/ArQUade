@@ -96,7 +96,7 @@ this.add.image(60,580, "home_button")
 
 this.next_button = this.add.image(740,580,"next_button");
 this.next_button.scale = .6;
-this.input.on('pointerdown', () => this.scene.start('characterScene'));
+this.input.on('pointerdown', () => this.scene.start('settings'));
 
 
 //back button

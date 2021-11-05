@@ -29,7 +29,7 @@ class characterScene extends Phaser.Scene {
     //back button
     this.back_button = this.add.image(60,580, "back_button");
   //  this.input.on('pointerdown', () => this.scene.start('instructions'));
-//    this.back_button.scale = .6;
+    this.back_button.scale = .6;
 
     this.settings_button = this.add.image(75,20, "settings_button");
     this.settings_button.scale = .8;
