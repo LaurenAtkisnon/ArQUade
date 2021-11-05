@@ -56,7 +56,7 @@ next_button.scale = .6;
 //back_button.scale = .6;
 
 const home_button = this.add.image(60,580, "home_button");
-this.input.on('pointerdown', () => this.scene.start('MenuScene'));
+// this.input.on('pointerdown', () => this.scene.start('MenuScene'));
 home_button.scale = .6;
 }
 

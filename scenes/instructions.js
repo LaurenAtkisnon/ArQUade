@@ -58,16 +58,45 @@ this.add.text(30, 150, content, {
   align: 'center',
   color: '#000080' });
 
+/*
+  this.add.text(740, 580, 'Next Button', {
+      fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+      fontSize: '20px',
+      align: 'center',
+      color: '#000080'
+  });
+  .setInteractive ({useHandCursor: true})
+  .on('pointerdown', () => this.scene.start('bootGame'))
+  .setScale (.6);
+  */
+
+/*
+  const test = this.add.text(200, 280, 'hello');
+  test.setInteractive({ useHandCursor: true })
+  test.on('pointerdown', this.scene.start('characterScene'));
+*/
+
+
+//const startButton = scene.add.text(740, 580, 'Next Button');
+
+//text = this.add.text(740, 580, 'Next Button');
+
 
 //THIS WORKS
 this.add.image(60,580, "home_button")
-.setInteractive ({useHandCursor: true})
+//.setInteractive ({useHandCursor: true})
 .on('pointerdown', () => this.scene.start('bootGame'))
 .setScale (.6);
 
-this.add.image(740, 580, "next_button")
-.setInteractive ({useHandCursor: true})
-.on('pointerdown', () => this.scene.start('characterScene'));
+
+//this.add.image(740, 580, "next_button")
+//.setInteractive ({useHandCursor: true})
+//.on('pointerdown', () => this.scene.start('characterScene'));
+//.setScale (.6);
+
+this.next_button = this.add.image(740,580,"next_button");
+this.next_button.scale = .6;
+this.input.on('pointerdown', () => this.scene.start('characterScene'));
 
 
 //back button
