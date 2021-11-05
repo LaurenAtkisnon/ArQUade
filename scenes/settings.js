@@ -13,7 +13,7 @@ class settings extends Phaser.Scene {
     this.load.image("home_button", "pictures/home_button.png");
     this.load.image("settingstitle_button", "pictures/settingstitle_button.png");
 
-    this.load.image("togglebutton", "pictures/toggle button.png")
+    this.load.image("togglebutton", "pictures/buttontoggle.png")
 
   }
 
@@ -21,8 +21,10 @@ class settings extends Phaser.Scene {
     this.background = this.add.image(400,300,"background");
     this.background.scale = .8;
 
-    const togglebutton1 = this.add.image(500,230, "togglebutton");
-    const togglebutton2 = this.add.image(400,300, "togglebutton");
+    const togglebutton1 = this.add.image(500,240, "togglebutton");
+    togglebutton1.scale= .8;
+    const togglebutton2 = this.add.image(500,330, "togglebutton");
+    togglebutton2.scale = .8;
 
     //settings button
     const settings_button = this.add.image(75,20, "settings_button");
@@ -53,8 +55,8 @@ this.add.text(200, 220, content, {
 
 
 //back button
-const back_button = this.add.image(60,580, "back_button");
-back_button.scale = .6;
+this.back_button = this.add.image(60,580,"back_button");
+this.back_button.scale = .6;
 
 //next button
 //const next_button = this.add.image(740,580, "next_button");
