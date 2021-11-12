@@ -13,6 +13,8 @@ class MenuScene extends Phaser.Scene {
     this.load.image("back_button", "pictures/back_button.png");
     this.load.image("welcome", "pictures/welcome.png");
     this.load.image("settings_button", "pictures/settings_button.png");
+
+  //  this.load.spritesheet('')
   }
 
 // method that creates objects for the scene
@@ -73,10 +75,29 @@ settings_button.scale = .8;
       fill: "black"
     });
 
+this.startButton = this.add.image(400,300,'play_button').setInteractive();
+this.startButton.setScale(.6); 
+this.startButton.once('pointerup', () => this.scene.start('instructions'), this);
+
+// works with text
+/*
+this.startButton = this.add.image(400, 300, 'play_button')
+.setOrigin(0.5)
+   .setInteractive({ useHandCursor: true })
+   .on('pointerdown', () => this.scene.start('instructions'));
+*/
+
+/*
+this.startButton = this.add.text(400, 300, 'Enter')
+.setOrigin(0.5)
+   .setInteractive({ useHandCursor: true })
+   .on('pointerdown', () => this.scene.start('instructions'));
+*/
+
     // play button
-    const play_button = this.add.image(400,300, "play_button");
-    this.input.on('pointerdown', () => this.scene.start('instructions'));
-    play_button.scale = .8;
+//    const play_button = this.add.image(400,300, "play_button");
+  //  this.input.on('pointerdown', () => this.scene.start('instructions'));
+//    play_button.scale = .8;
 
 // adds music to the menu screen
 /*
