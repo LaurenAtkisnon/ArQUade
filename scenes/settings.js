@@ -35,9 +35,9 @@ class settings extends Phaser.Scene {
     settingstitle_button.scale = .6;
 
     //next_button
-    this.next_button = this.add.image(740,580,"next_button");
-    this.next_button.scale = .6;
-    this.input.on('pointerdown', () => this.scene.start('characterScene'));
+    this.nextButton = this.add.image(740,580,"next_button").setInteractive();
+    this.nextButton.setScale(.6);
+    this.nextButton.once('pointerdown', () => this.scene.start('characterScene'));
 
     var content = [
     "Boomer Hints \n \nMusic",
@@ -55,8 +55,10 @@ this.add.text(200, 220, content, {
 
 
 //back button
-this.back_button = this.add.image(60,580,"back_button");
-this.back_button.scale = .6;
+//back button
+this.backButton = this.add.image(60,580, "back_button").setInteractive();
+this.backButton.setScale(.6);
+this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
 
 //next button
 //const next_button = this.add.image(740,580, "next_button");

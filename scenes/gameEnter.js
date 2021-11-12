@@ -25,9 +25,9 @@ class gameEnter extends Phaser.Scene {
     boomer.scale = 2;
 
     //back back_button
-    this.back_button = this.add.image(60,580,"back_button");
-    this.back_button.scale = .6;
-    this.input.on('pointerdown', () => this.scene.start('bootGame'));
+    this.backButton = this.add.image(60,580, "back_button").setInteractive();
+    this.backButton.setScale(.6);
+    this.backButton.once('pointerdown', () => this.scene.start('characterScene'),this);
 
    this.createSpeechBubble(590, 50, 200, 120, 'Hey Professor Duncan! Welcome to ARQUADE!');
    this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");

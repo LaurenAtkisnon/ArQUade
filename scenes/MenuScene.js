@@ -76,8 +76,8 @@ settings_button.scale = .8;
     });
 
 this.startButton = this.add.image(400,300,'play_button').setInteractive();
-this.startButton.setScale(.6); 
-this.startButton.once('pointerup', () => this.scene.start('instructions'), this);
+this.startButton.setScale(.8);
+this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
 
 // works with text
 /*

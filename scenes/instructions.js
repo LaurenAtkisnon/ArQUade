@@ -79,10 +79,11 @@ this.add.text(30, 150, content, {
 
 
 //THIS WORKS
-this.add.image(60,580, "home_button")
-//.setInteractive ({useHandCursor: true})
-.on('pointerdown', () => this.scene.start('bootGame'))
-.setScale (.6);
+this.homeButton = this.add.image(60,580, "home_button").setInteractive();
+this.homeButton.setScale (.6);
+
+this.homeButton.once('pointerdown', () => this.scene.start('bootGame'))
+
 
 
 //this.add.image(740, 580, "next_button")
@@ -90,9 +91,9 @@ this.add.image(60,580, "home_button")
 //.on('pointerdown', () => this.scene.start('characterScene'));
 //.setScale (.6);
 
-this.next_button = this.add.image(740,580,"next_button");
-this.next_button.scale = .6;
-this.input.on('pointerdown', () => this.scene.start('settings'));
+this.nextButton = this.add.image(740,580,"next_button").setInteractive();
+this.nextButton.setScale(.6);
+this.nextButton.once('pointerdown', () => this.scene.start('settings'));
 
 
 //back button
