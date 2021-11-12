@@ -5,8 +5,8 @@ window.onload = function() {
     width : 800,
     height: 600,
     backgroundColor: 0x000000,
-    // all of the scenes we want in the game
-    scene: [MenuScene, instructions, characterScene,scene3,campusScene]
+    scene: [MenuScene, instructions, characterScene, gameEnter, settings]
+  //  scene: [MenuScene, instructions, characterScene, gameEnter]
   }
 
   // creates a new phaser Game
