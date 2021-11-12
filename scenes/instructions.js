@@ -4,6 +4,7 @@ class instructions extends Phaser.Scene {
   }
 
   preload() {
+    //this is how images get into the "game"
     this.load.image("background", "pictures/image1.png");
     this.load.image("next_button", "pictures/next_button.png");
     this.load.image("back_button", "pictures/back_button.png");
@@ -11,13 +12,9 @@ class instructions extends Phaser.Scene {
     this.load.image("howtoplay_button", "pictures/howtoplay_button.png");
     this.load.image("settings_button", "pictures/settings_button.png");
     this.load.image("home_button", "pictures/home_button.png");
-
-
-
   }
 
   create() {
-
     this.background = this.add.image(400,300,"background");
     this.background.scale = .8;
 
@@ -42,7 +39,6 @@ class instructions extends Phaser.Scene {
     "outling on the right-hand side navigation bar. You can use your arrow keys or",
     "you can click the buttons located on the screen to complete your tasks",
     "",
-
     "Boomer the Bobcat will be with you every step of the way and can give you hints",
     "(Boomer Hints can be toggled off in Settings)",
     "Give it your best bet! Have a blast!",
