@@ -19,7 +19,7 @@ class instructions extends Phaser.Scene {
     this.background.scale = .8;
 
     //"how to play"
-    const howtoplay_button = this.add.image(400,100,"howtoplay_button");
+    const howtoplay_button = this.add.image(400,90,"howtoplay_button");
     howtoplay_button.scale = .6;
 
 
@@ -39,11 +39,12 @@ class instructions extends Phaser.Scene {
 //    next_button.scale = .6;
 
     var content = [
-    "Welcome to ArQUade and Welcome to Quinnipiac! Are you ready to play? ",
+    "Welcome to ArQUade && Welcome to Quinnipiac! Are you ready to play? ",
     "",
     "Let's get down to business, here is how you play the game (it's fairly simple) ",
-    "Your goal is to make it through the first day of classes. Complete the tasks",
-    "outling on the right-hand side navigation bar. You can use your arrow keys or",
+    "Your goal is to make it through the first day of classes in the School of Engineering",
+    "and Computing. Complete the tasks, figure your way through the SOEC,",
+    "outlined on the right-hand side navigation bar. You can use your arrow keys or",
     "you can click the buttons located on the screen to complete your tasks",
     "",
     "Boomer the Bobcat will be with you every step of the way and can give you hints",
@@ -59,7 +60,7 @@ this.add.text(30, 150, content, {
   fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
   fontSize: '20px',
   align: 'center',
-  color: '#000080' });
+  color: '#000080'});
 
 /*
   this.add.text(740, 580, 'Next Button', {
