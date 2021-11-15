@@ -58,7 +58,9 @@ this.add.text(200, 220, content, {
 //back button
 this.backButton = this.add.image(60,580, "back_button").setInteractive();
 this.backButton.setScale(.6);
-this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
+this.backButton.once('pointerdown', () => this.scene.start(this.getPrev()),this);
+
+
 
 //next button
 //const next_button = this.add.image(740,580, "next_button");
@@ -73,5 +75,13 @@ this.backButton.once('pointerdown', () => this.scene.start('instructions'),this)
 // this.input.on('pointerdown', () => this.scene.start('MenuScene'));
 //home_button.scale = .6;
 }
+getPrev() {
+  console.log(this.test);
+  return this.test;
 
+}
+setPrev(name) {
+  this.test = name;
+  console.log(this.test);
+}
   }

@@ -22,9 +22,16 @@ class instructions extends Phaser.Scene {
     const howtoplay_button = this.add.image(400,100,"howtoplay_button");
     howtoplay_button.scale = .6;
 
+
+
+
     //settings button
-    const settings_button = this.add.image(75,20, "settings_button");
-    settings_button.scale = .8;
+     this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
+    this.settings_button.scale = .8;
+  //  this.settings_button.once('pointerdown', () => {instructions.setTest("instructions"); this.scene.start('settings')});
+    this.settings_button.once('pointerdown', () => this.scene.start('settings',"instructions").setPrev("instructions"));
+
+
   //  this.input.on('pointerdown', () => this.scene.start('settings'));
 
 //    const next_button = this.add.image(740,580, "next_button");
@@ -96,6 +103,8 @@ this.nextButton.setScale(.6);
 this.nextButton.once('pointerdown', () => this.scene.start('settings'));
 
 
+
+
 //back button
 //const back_button = this.add.image(60,580, "back_button");
 //back_button.scale = .6;
@@ -132,6 +141,15 @@ this.home_button.scale = .6; */
 //  this.scene.start('bootGame');
 //}, this);
 
+}
+
+getTest(name) {
+  return test;
+  console.log(test);
+}
+setTest(name) {
+  var test = name;
+  console.log(test);
 }
 
   }
