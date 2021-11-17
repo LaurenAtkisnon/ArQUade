@@ -22,21 +22,11 @@ class instructions extends Phaser.Scene {
     const howtoplay_button = this.add.image(400,90,"howtoplay_button");
     howtoplay_button.scale = .6;
 
-
-
-
     //settings button
      this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
-    this.settings_button.scale = .8;
-  //  this.settings_button.once('pointerdown', () => {instructions.setTest("instructions"); this.scene.start('settings')});
+     this.settings_button.scale = .8;
+  // this.settings_button.once('pointerdown', () => {instructions.setTest("instructions"); this.scene.start('settings')});
     this.settings_button.once('pointerdown', () => this.scene.start('settings',"instructions").setPrev("instructions"));
-
-
-  //  this.input.on('pointerdown', () => this.scene.start('settings'));
-
-//    const next_button = this.add.image(740,580, "next_button");
-//    this.input.on('pointerdown', () => this.scene.start('gameEnter'));
-//    next_button.scale = .6;
 
     var content = [
     "Welcome to ArQUade && Welcome to Quinnipiac! Are you ready to play? ",
@@ -62,29 +52,6 @@ this.add.text(30, 150, content, {
   align: 'center',
   color: '#000080'});
 
-/*
-  this.add.text(740, 580, 'Next Button', {
-      fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-      fontSize: '20px',
-      align: 'center',
-      color: '#000080'
-  });
-  .setInteractive ({useHandCursor: true})
-  .on('pointerdown', () => this.scene.start('bootGame'))
-  .setScale (.6);
-  */
-
-/*
-  const test = this.add.text(200, 280, 'hello');
-  test.setInteractive({ useHandCursor: true })
-  test.on('pointerdown', this.scene.start('characterScene'));
-*/
-
-
-//const startButton = scene.add.text(740, 580, 'Next Button');
-
-//text = this.add.text(740, 580, 'Next Button');
-
 
 //THIS WORKS
 this.homeButton = this.add.image(60,580, "home_button").setInteractive();
@@ -93,19 +60,59 @@ this.homeButton.setScale (.6);
 this.homeButton.once('pointerdown', () => this.scene.start('bootGame'))
 
 
-
-//this.add.image(740, 580, "next_button")
-//.setInteractive ({useHandCursor: true})
-//.on('pointerdown', () => this.scene.start('characterScene'));
-//.setScale (.6);
-
 this.nextButton = this.add.image(740,580,"next_button").setInteractive();
 this.nextButton.setScale(.6);
 this.nextButton.once('pointerdown', () => this.scene.start('settings'));
 
+}
+
+getTest(name) {
+  return test;
+  console.log(test);
+}
+setTest(name) {
+  var test = name;
+  console.log(test);
+}
+
+  }
 
 
 
+
+
+/*
+    this.add.text(740, 580, 'Next Button', {
+        fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+        fontSize: '20px',
+        align: 'center',
+        color: '#000080'
+    });
+    .setInteractive ({useHandCursor: true})
+    .on('pointerdown', () => this.scene.start('bootGame'))
+    .setScale (.6);
+    */
+
+  /*
+    const test = this.add.text(200, 280, 'hello');
+    test.setInteractive({ useHandCursor: true })
+    test.on('pointerdown', this.scene.start('characterScene'));
+  */
+
+
+  //const startButton = scene.add.text(740, 580, 'Next Button');
+
+  //text = this.add.text(740, 580, 'Next Button');
+    //this.add.image(740, 580, "next_button")
+  //.setInteractive ({useHandCursor: true})
+  //.on('pointerdown', () => this.scene.start('characterScene'));
+  //.setScale (.6);
+
+//  this.input.on('pointerdown', () => this.scene.start('settings'));
+
+//    const next_button = this.add.image(740,580, "next_button");
+//    this.input.on('pointerdown', () => this.scene.start('gameEnter'));
+//    next_button.scale = .6;
 //back button
 //const back_button = this.add.image(60,580, "back_button");
 //back_button.scale = .6;
@@ -141,16 +148,3 @@ this.home_button.scale = .6; */
 //  console.log('From instructions to MenuScene');
 //  this.scene.start('bootGame');
 //}, this);
-
-}
-
-getTest(name) {
-  return test;
-  console.log(test);
-}
-setTest(name) {
-  var test = name;
-  console.log(test);
-}
-
-  }
