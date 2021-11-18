@@ -7,6 +7,7 @@ class tatorHall extends Phaser.Scene {
     this.load.image("studentCenter", "pictures/studentCenter");
     this.load.image("play_button", "pictures/play_button");
     this.load.image("next_button", "pictures/next_button.png");
+    this.load.image("person4", "pictures/person4.png")
 
   }
 
@@ -14,10 +15,6 @@ class tatorHall extends Phaser.Scene {
     //background
     const background = this.add.image(400,300,"studentCenter");
     background.scale = 1;
-
-    this.startButton = this.add.image(400,550,'play_button').setInteractive();
-    this.startButton.setScale(.8);
-    this.startButton.once('pointerdown', () => this.scene.start('cafeFront'), this);
 
     //character
     const person4 = this.add.image(100,460,"person4");
@@ -28,15 +25,19 @@ class tatorHall extends Phaser.Scene {
     boomer.scale = 2;
 
 
-  //
+    this.startButton = this.add.image(400,550,'play_button').setInteractive();
+    this.startButton.setScale(.8);
+    this.startButton.once('pointerdown', () => this.scene.start('cafeFront'), this);
 
-//    this.options_button = this.add.image(175,32, "options_button");
+
+  //back button
+
+  //settings
+  this.setting();
 
 
-   this.createSpeechBubble(590, 50, 200, 120, 'Are you ready to ');
-   this.createSpeechBubble(150, 250, 150, 120, "You got it Boomer");
-   this.createSpeechBubble(375, 200, 220, 220, "QUICK REMINDER: \n This a task-based game. You will be given a set of tasks you will need to complete in order to complete your first day as student! Good Luck!");
-
+   this.createSpeechBubble(590, 50, 200, 120, 'Click enter when your ready to start your first task!');
+   this.createSpeechBubble(150, 250, 150, 120, "Yessir!");
 
    //this.input.on('pointerdown', () => this.scene.start('campusScene'));
 } // function that creates a bubble speeech box
@@ -85,5 +86,13 @@ class tatorHall extends Phaser.Scene {
     var b = content.getBounds();
 
     content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
+}
+setting() {
+  this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
+  this.settings_button.scale = .8;
+  this.settings_button.once('pointerdown', () => {
+    this.scene.get("settings").setPrev(this.scene.key);
+    this.scene.start('settings');
+  });
 }
 }
