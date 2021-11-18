@@ -1,6 +1,6 @@
 class cafeRight extends Phaser.Scene {
   constructor() {
-    super("cafeRightt");
+    super("cafeRight");
   }
 
   preload() {

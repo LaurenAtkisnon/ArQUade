@@ -41,7 +41,7 @@ class cafeFront extends Phaser.Scene {
     this.createSpeechBubble(150, 250, 150, 120, "Hmmm");
 
     this.setting();
-    this.navigationButtons();
+    this.navigationButtons("cafeLeft","cafeFront","cafeRight","tatorHall");
   }
 
   setting() {
@@ -52,7 +52,7 @@ class cafeFront extends Phaser.Scene {
       this.scene.start('settings');
     });
   }
-  navigationButtons(scene1,scene2,scene3,scene4) {
+  navigationButtons(scene1,scene2) {
     this.backButton = this.add.image(60,580, "back_button").setInteractive();
     this.backButton.setScale(.6);
     this.backButton.once('pointerdown', () => this.scene.start(name),this);
@@ -73,26 +73,26 @@ class cafeFront extends Phaser.Scene {
     this.lastLocation = lastScene;
   }
 
-  navigationButtons() {
+  navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
 
   //  this.joystick = this.add.image(350,350, "joystick");
   //  this.joystick.setScale(.4);
 
     this.backNavigation = this.add.image(350,350, "backNavigation").setInteractive();
     this.backNavigation.setScale(.3);
-    this.backNavigation.once('pointerdown', () => this.scene.start("tatorHall"),this);
+    this.backNavigation.once('pointerdown', () => this.scene.start(sceneback),this);
 
     this.forwardNavigation = this.add.image(350,250, "forwardNavigation").setInteractive();
     this.forwardNavigation.setScale(.3);
-    this.forwardNavigation.once('pointerdown', () => this.scene.start("tatorHall"),this);
+    this.forwardNavigation.once('pointerdown', () => this.scene.start(sceneforward),this);
 
     this.leftNavigation = this.add.image(300,300, "leftNavigation").setInteractive();
     this.leftNavigation.setScale(.3);
-    this.leftNavigation.once('pointerdown', () => this.scene.start("cafeLeft"),this);
+    this.leftNavigation.once('pointerdown', () => this.scene.start(sceneleft),this);
 
     this.rightNavigation = this.add.image(400,300, "rightNavigation").setInteractive();
     this.rightNavigation.setScale(.3);
-    this.rightNavigation.once('pointerdown', () => this.scene.start("cafeRight"),this);
+    this.rightNavigation.once('pointerdown', () => this.scene.start(sceneright),this);
 
   }
   //this.input.on('pointerdown', () => this.scene.start('campusScene'));
