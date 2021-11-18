@@ -12,7 +12,7 @@ class MenuScene extends Phaser.Scene {
     this.load.image("back_button", "pictures/back_button.png");
     this.load.image("welcome", "pictures/welcome.png");
     this.load.image("settings_button", "pictures/settings_button.png");
-    this.load.image("joystick", "pictures/joystick .png");
+    this.load.image("joystick", "pictures/joystick.png");
 
   //  this.load.spritesheet('')
   }
