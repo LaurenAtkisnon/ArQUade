@@ -7,7 +7,7 @@ class tatorHall extends Phaser.Scene {
     this.load.image("studentCenter", "pictures/studentCenter.png");
     this.load.image("play_button", "pictures/play_button.png");
     this.load.image("next_button", "pictures/next_button.png");
-
+    this.load.image("person4", "pictures/person4.png");
   }
 
   create() {

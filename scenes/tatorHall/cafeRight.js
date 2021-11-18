@@ -23,13 +23,16 @@ class cafeRight extends Phaser.Scene {
     const boomer = this.add.image(700,400,"boomer");
     boomer.scale = 2;
 
+    //settings
+    this.setting();
+
     //backwards button should go to cafeFront
 
-    //forwards button should go to differrent scene TBD
+    //forwards button should go to tatorHallway
 
-    //left button should go to piazzaHallway
+    //left button should go to bookStore
 
-    //right button should go to not move
+    //right button should go to tatorBathroom
 
 
 
