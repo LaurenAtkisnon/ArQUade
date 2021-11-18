@@ -12,12 +12,14 @@ class gameEnter extends Phaser.Scene {
     const background = this.add.image(400,300,"background");
     background.scale = .8;
 
-    const newroad = this.add.image(400,520, "entranceButton");
-    newroad.scale = .7;
+    //const newroad = this.add.image(400,520, "entranceButton");
+    //newroad.scale = .7;
 
     const person4 = this.add.image(100,460,"person4");
     person4.scale = .1;
 
+    const boomer = this.add.image(700,400,"boomer");
+    boomer.scale = 2;
 
     //settings button
      this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
@@ -27,13 +29,15 @@ class gameEnter extends Phaser.Scene {
       this.scene.start('settings');
     });
 
-    const boomer = this.add.image(700,400,"boomer");
-    boomer.scale = 2;
-
     //back back_button
     this.backButton = this.add.image(60,580, "back_button").setInteractive();
     this.backButton.setScale(.6);
     this.backButton.once('pointerdown', () => this.scene.start('characterScene'),this);
+
+    //entranceButton
+    this.entranceButton = this.add.image(400,520,"entranceButton").setInteractive();
+    this.entranceButton.setScale(.6);
+    this.entranceButton.once('pointerdown', () => this.scene.start('tatorHall'));
 
    this.createSpeechBubble(590, 50, 200, 120, 'Hey Professor Duncan! Welcome to ARQUADE!');
    this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
