@@ -15,6 +15,8 @@ class settings extends Phaser.Scene {
 
     this.load.image("togglebutton", "pictures/buttontoggle.png")
 
+
+
   }
 
   create() {

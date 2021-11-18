@@ -12,7 +12,7 @@ class characterScene extends Phaser.Scene {
     this.load.image("options_button", "pictures/options_button.png");
     this.load.image("back_button", "pictures/back_button.png");
     this.load.image("next_button", "pictures/next_button.png");
-    this.load.image("boomerwave", "pictures/boomerwave.png");
+//    this.load.image("boomerwave", "pictures/boomerwave.png");
     this.load.image("settings_button", "pictures/settings_button.png");
     this.load.image("textbox", "pictures/textbox.png")
   }
@@ -24,11 +24,10 @@ class characterScene extends Phaser.Scene {
     //back button
     this.backButton = this.add.image(60,580, "back_button").setInteractive();
     this.backButton.setScale(.6);
-    this.backButton.once('pointerdown', () => this.scene.start('settings'),this);
+    this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
 
-    //settings button
-    this.settings_button = this.add.image(75,20, "settings_button");
-    this.settings_button.scale = .8;
+    this.setting();
+//    this.input.on('pointerdown', () => this.scene.start('settings'));
 
     //next button
     this.nextButton = this.add.image(740,580,"next_button").setInteractive();
@@ -47,13 +46,15 @@ class characterScene extends Phaser.Scene {
     this.person3 = this.add.image(300,400,"person3");
     this.person3.scale = .1;
 
-    //character 4 - white boy
+    //character 4 - white man
     this.person4 = this.add.image(500,400,"person4");
     this.person4.scale = .1;
 
-    //boomer
-    this.boomerwave = this.add.image(530,300,"boomerwave");
-    this.boomerwave.scale = 1.2;
+//    this.back_button = this.add.image(60,580, "back_button");
+//    this.back_button.scale = .6;
+
+  //  this.boomerwave = this.add.image(530,300,"boomerwave");
+//    this.boomerwave.scale = 1.2;
 
     //pick a character
     const textbox = this.add.image(400,525,"textbox");
@@ -65,6 +66,16 @@ class characterScene extends Phaser.Scene {
      });
 
   }
+
+  setting() {
+    this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
+    this.settings_button.scale = .8;
+    this.settings_button.once('pointerdown', () => {
+      this.scene.get("settings").setPrev(this.scene.key);
+      this.scene.start('settings');
+    });
+  }
+
 
 
 }
