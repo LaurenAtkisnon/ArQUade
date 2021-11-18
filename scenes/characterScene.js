@@ -15,16 +15,11 @@ class characterScene extends Phaser.Scene {
     this.load.image("boomerwave", "pictures/boomerwave.png");
     this.load.image("settings_button", "pictures/settings_button.png");
     this.load.image("textbox", "pictures/textbox.png")
-
-
   }
 
   create() {
     this.background = this.add.image(400,300,"background");
     this.background.scale = .8;
-
-//    this.options_button = this.add.image(140,30, "options_button");
-//    this.options_button.scale =.8;
 
     //back button
     this.backButton = this.add.image(60,580, "back_button").setInteractive();
@@ -39,15 +34,19 @@ class characterScene extends Phaser.Scene {
     this.nextButton.setScale(.6);
     this.nextButton.once('pointerdown', () => this.scene.start('gameEnter'));
 
+    //character 1 - black man
     this.person1 = this.add.image(500,250,"person1");
     this.person1.scale = .3;
 
+    //character 2 - black woman
     this.person2 = this.add.image(300,250,"person2");
     this.person2.scale = .3;
 
+    //character 3 - white girl
     this.person3 = this.add.image(300,400,"person3");
     this.person3.scale = .1;
 
+    //character 4 - white man
     this.person4 = this.add.image(500,400,"person4");
     this.person4.scale = .1;
 
@@ -57,6 +56,7 @@ class characterScene extends Phaser.Scene {
   //  this.boomerwave = this.add.image(530,300,"boomerwave");
 //    this.boomerwave.scale = 1.2;
 
+    //pick a character
     const textbox = this.add.image(400,525,"textbox");
     textbox.scale = .8;
 
@@ -66,7 +66,7 @@ class characterScene extends Phaser.Scene {
      });
 
   }
-/*
+
   setting() {
     this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
     this.settings_button.scale = .8;
@@ -75,7 +75,12 @@ class characterScene extends Phaser.Scene {
       this.scene.start('settings');
     });
   }
-*/
+
 
 
 }
+//    this.back_button = this.add.image(60,580, "back_button");
+//    this.back_button.scale = .6;
+//    this.options_button = this.add.image(140,30, "options_button");
+//    this.options_button.scale =.8;
+//    this.input.on('pointerdown', () => this.scene.start('settings'));

@@ -4,7 +4,7 @@ class gameEnter extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("newentrance", "pictures/newentrance.png");
+    this.load.image("entranceButton", "pictures/entranceButton.png");
     this.load.image("back_button", "pictures/back_button");
   }
 
@@ -12,7 +12,7 @@ class gameEnter extends Phaser.Scene {
     const background = this.add.image(400,300,"background");
     background.scale = .8;
 
-    const newroad = this.add.image(400,520, "newentrance");
+    const newroad = this.add.image(400,520, "entranceButton");
     newroad.scale = .7;
 
     const person4 = this.add.image(100,460,"person4");

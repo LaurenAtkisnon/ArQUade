@@ -2,7 +2,6 @@ class MenuScene extends Phaser.Scene {
   constructor() {
     super("bootGame");
   }
-//lauren is showing you something
 // pre load images for scenes
   preload() {
     this.load.image("background", "pictures/image1.png");
@@ -40,6 +39,27 @@ const settings_button = this.add.image(75,20, "settings_button");
 settings_button.scale = .8;
 //this.input.on('pointerdown', () => this.scene.start('settings'));
 
+// text of boomer talking to the user=
+    this.add.text(575, 500,
+      "Hi! I'm Boomer,\n I will be here\n to assist you.", {
+      font: "15px Quicksand",
+      fill: "black"
+    });
+
+this.startButton = this.add.image(400,300,'play_button').setInteractive();
+this.startButton.setScale(.8);
+this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
+
+// adds music to the menu screen
+/*
+    this.sound.pauseOnBlur = false;
+    this.sound.play("title_music", {
+      loop: true
+    });
+*/
+
+  }
+}
 
 //back button
 //const back_button = this.add.image(60,580, "back_button");
@@ -47,14 +67,6 @@ settings_button.scale = .8;
 //back_button.setInteractive()
 //back_button.on('pointerdown', () => button.setScale( 1.1 ))
 //back_button.on('pointerup', () => button.setScale( 1 ));
-
-
-
-
-
-
-
-
 // welcome to arquade font on screen
 //    this.add.text(200, 100, "WELCOME TO ARQUADE", {
     //  fontFamily: "25px Arial",
@@ -66,18 +78,6 @@ settings_button.scale = .8;
 //    });
 
     //this.add.image(200,100, "welcome")
-
-
-// text of boomer talking to the user=
-    this.add.text(575, 500,
-      "Hi! I'm Boomer,\n I will be here\n to assist you.", {
-      font: "15px Quicksand",
-      fill: "black"
-    });
-
-this.startButton = this.add.image(400,300,'play_button').setInteractive();
-this.startButton.setScale(.8);
-this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
 
 // works with text
 /*
@@ -98,15 +98,3 @@ this.startButton = this.add.text(400, 300, 'Enter')
 //    const play_button = this.add.image(400,300, "play_button");
   //  this.input.on('pointerdown', () => this.scene.start('instructions'));
 //    play_button.scale = .8;
-
-// adds music to the menu screen
-/*
-    this.sound.pauseOnBlur = false;
-    this.sound.play("title_music", {
-      loop: true
-    });
-*/
-
-
-  }
-}
