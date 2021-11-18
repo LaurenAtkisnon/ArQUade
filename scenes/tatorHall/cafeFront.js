@@ -11,5 +11,5 @@ class cafeFront extends Phaser.Scene {
 
   create() {
     const background = this.add.image(400,300,"cafeFront");
-    background.scale = 1;
+    background.scale = .3;
   }}
