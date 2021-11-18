@@ -24,9 +24,11 @@ class instructions extends Phaser.Scene {
 
     //settings button
      this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
-     this.settings_button.scale = .8;
-  // this.settings_button.once('pointerdown', () => {instructions.setTest("instructions"); this.scene.start('settings')});
-    this.settings_button.once('pointerdown', () => this.scene.start('settings',"instructions").setPrev("instructions"));
+    this.settings_button.scale = .8;
+    this.settings_button.once('pointerdown', () => {
+      this.scene.get("settings").setPrev("instructions");
+      this.scene.start('settings');
+    });
 
     var content = [
     "Welcome to ArQUade && Welcome to Quinnipiac! Are you ready to play? ",
@@ -62,7 +64,7 @@ this.homeButton.once('pointerdown', () => this.scene.start('bootGame'))
 
 this.nextButton = this.add.image(740,580,"next_button").setInteractive();
 this.nextButton.setScale(.6);
-this.nextButton.once('pointerdown', () => this.scene.start('settings'));
+this.nextButton.once('pointerdown', () => this.scene.start('characterScene'));
 
 }
 
