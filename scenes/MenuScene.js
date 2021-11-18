@@ -12,6 +12,7 @@ class MenuScene extends Phaser.Scene {
     this.load.image("back_button", "pictures/back_button.png");
     this.load.image("welcome", "pictures/welcome.png");
     this.load.image("settings_button", "pictures/settings_button.png");
+    this.load.image("joystick", "pictures/joystick .png");
 
   //  this.load.spritesheet('')
   }
@@ -25,6 +26,12 @@ class MenuScene extends Phaser.Scene {
 //background
 const background = this.add.image(400,300,"background");
 background.scale = .8;
+
+//new button - to change
+
+this.joystick = this.add.image(500,400,'joystick').setInteractive();
+this.joystick.setScale(.8);
+this.joystick.once('pointerdown', () => this.scene.start('tatorHall'), this);
 
 //boomer
 const boomer = this.add.image(750,480,"boomer");
