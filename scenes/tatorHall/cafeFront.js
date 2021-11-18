@@ -67,11 +67,11 @@ class cafeFront extends Phaser.Scene {
 
     this.leftNavigation = this.add.image(300,300, "leftNavigation").setInteractive();
     this.leftNavigation.setScale(.3);
-    this.leftNavigation.once('pointerdown', () => this.scene.start("tatorHall"),this);
+    this.leftNavigation.once('pointerdown', () => this.scene.start("cafeLeft"),this);
 
     this.rightNavigation = this.add.image(400,300, "rightNavigation").setInteractive();
     this.rightNavigation.setScale(.3);
-    this.rightNavigation.once('pointerdown', () => this.scene.start("tatorHall"),this);
+    this.rightNavigation.once('pointerdown', () => this.scene.start("cafeRight"),this);
 
   }
 }
