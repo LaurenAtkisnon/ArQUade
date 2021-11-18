@@ -29,11 +29,9 @@ class characterScene extends Phaser.Scene {
     //back button
     this.backButton = this.add.image(60,580, "back_button").setInteractive();
     this.backButton.setScale(.6);
-    this.backButton.once('pointerdown', () => this.scene.start('settings'),this);
+    this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
 
-
-    this.settings_button = this.add.image(75,20, "settings_button");
-    this.settings_button.scale = .8;
+    this.setting();
 //    this.input.on('pointerdown', () => this.scene.start('settings'));
 
     //next button
@@ -56,8 +54,8 @@ class characterScene extends Phaser.Scene {
 //    this.back_button = this.add.image(60,580, "back_button");
 //    this.back_button.scale = .6;
 
-    this.boomerwave = this.add.image(530,300,"boomerwave");
-    this.boomerwave.scale = 1.2;
+  //  this.boomerwave = this.add.image(530,300,"boomerwave");
+//    this.boomerwave.scale = 1.2;
 
     const textbox = this.add.image(400,525,"textbox");
     textbox.scale = .8;
@@ -68,6 +66,16 @@ class characterScene extends Phaser.Scene {
      });
 
   }
+/*
+  setting() {
+    this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
+    this.settings_button.scale = .8;
+    this.settings_button.once('pointerdown', () => {
+      this.scene.get("settings").setPrev(this.scene.key);
+      this.scene.start('settings');
+    });
+  }
+*/
 
 
 }

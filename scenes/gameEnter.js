@@ -18,8 +18,14 @@ class gameEnter extends Phaser.Scene {
     const person4 = this.add.image(100,460,"person4");
     person4.scale = .1;
 
-    this.settings_button = this.add.image(75,20, "settings_button");
+
+    //settings button
+     this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
     this.settings_button.scale = .8;
+    this.settings_button.once('pointerdown', () => {
+      this.scene.get("settings").setPrev("gameEnter");
+      this.scene.start('settings');
+    });
 
     const boomer = this.add.image(700,400,"boomer");
     boomer.scale = 2;
@@ -85,5 +91,7 @@ class gameEnter extends Phaser.Scene {
 
     content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
 }
+
+
 
 }
