@@ -100,4 +100,11 @@ setting() {
  });
 
 }
+getLastLocation() {
+  return this.lastLocation;
+
+}
+setLastLocation(lastScene) {
+  this.lastLocation = lastScene;
+}
 }

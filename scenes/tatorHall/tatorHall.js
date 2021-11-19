@@ -92,5 +92,5 @@ setting() {
     this.scene.get("settings").setPrev(this.scene.key);
     this.scene.start('settings');
   });
-}
+} 
 }

@@ -97,5 +97,11 @@ setting() {
    this.scene.start('settings');
  });
 
-}
+}   getLastLocation() {
+    return this.lastLocation;
+
+  }
+  setLastLocation(lastScene) {
+    this.lastLocation = lastScene;
+  }
 }
