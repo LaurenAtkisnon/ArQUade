@@ -39,7 +39,7 @@ class tatorHall130 extends Phaser.Scene {
 
 
     this.createSpeechBubble(590, 50, 200, 120, "Congratulatons! You made it to TatorHall130. Click forward to see inside");
-    this.createSpeechBubble(150, 250, 150, 120, "forward!");
+    this.createSpeechBubble(150, 250, 150, 120, "WHOOOOO");
   }
   //this.input.on('pointerdown', () => this.scene.start('campusScene'));
  // function that creates a bubble speeech box

@@ -43,8 +43,8 @@ class tatorBathroom extends Phaser.Scene {
 
 
 
-    this.createSpeechBubble(590, 50, 200, 120, "Correct! Should we continue forward or make a turn?");
-    this.createSpeechBubble(150, 250, 150, 120, "forward!");
+    this.createSpeechBubble(590, 50, 200, 120, "You found the bathrooms in Tator Hall! Let's see where Tator Hall 130 is");
+    this.createSpeechBubble(150, 250, 150, 120, "At least I know where to go when I have to go");
   }
   //this.input.on('pointerdown', () => this.scene.start('campusScene'));
  // function that creates a bubble speeech box

@@ -52,8 +52,8 @@ class bookStore extends Phaser.Scene {
 
 
 
-    this.createSpeechBubble(590, 50, 200, 120, "Correct! Should we continue forward or make a turn?");
-    this.createSpeechBubble(150, 250, 150, 120, "forward!");
+    this.createSpeechBubble(590, 50, 200, 120, "We found the Bookstore! Let's try to find Tator Hall 130");
+    this.createSpeechBubble(150, 250, 150, 120, "I heard that Bookstore is expensive, lets go to Tator Hall 130 instead");
   }
   //this.input.on('pointerdown', () => this.scene.start('campusScene'));
  // function that creates a bubble speeech box

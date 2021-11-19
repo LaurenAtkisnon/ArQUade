@@ -40,8 +40,8 @@ class tatorHallway2 extends Phaser.Scene {
 
 
 
-    this.createSpeechBubble(590, 50, 200, 120, "Correct! Should we continue forward or make a turn?");
-    this.createSpeechBubble(150, 250, 150, 120, "forward!");
+    this.createSpeechBubble(590, 50, 200, 120, "We are so close! Which way now?");
+    this.createSpeechBubble(150, 250, 150, 120, "Hmmm....RIGHT!");
   }
   //this.input.on('pointerdown', () => this.scene.start('campusScene'));
  // function that creates a bubble speeech box
