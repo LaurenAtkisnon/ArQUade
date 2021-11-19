@@ -26,6 +26,11 @@ class cafeLeft extends Phaser.Scene {
     //settings
     this.setting();
 
+    this.backNavigation = this.add.image(350,350, "backNavigation").setInteractive();
+    this.backNavigation.setScale(.3);
+    this.backNavigation.once('pointerdown', () => this.scene.start("cafeFront"),this);
+
+
     //backwards button needs to go to CafeFront
 
 
@@ -91,4 +96,36 @@ setting() {
  });
 
 }
+
+navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
+
+//  this.joystick = this.add.image(350,350, "joystick");
+//  this.joystick.setScale(.4);
+
+  this.backNavigation = this.add.image(350,350, "backNavigation").setInteractive();
+  this.backNavigation.setScale(.3);
+  this.backNavigation.once('pointerdown', () => this.scene.start(sceneback),this);
+
+  this.forwardNavigation = this.add.image(350,250, "forwardNavigation").setInteractive();
+  this.forwardNavigation.setScale(.3);
+  this.forwardNavigation.once('pointerdown', () => this.scene.start(sceneforward),this);
+
+  this.leftNavigation = this.add.image(300,300, "leftNavigation").setInteractive();
+  this.leftNavigation.setScale(.3);
+  this.leftNavigation.once('pointerdown', () => this.scene.start(sceneleft),this);
+
+  this.rightNavigation = this.add.image(400,300, "rightNavigation").setInteractive();
+  this.rightNavigation.setScale(.3);
+  this.rightNavigation.once('pointerdown', () => this.scene.start(sceneright),this);
+
+}
+
+getLastLocation() {
+  return this.lastLocation;
+
+}
+setLastLocation(lastScene) {
+  this.lastLocation = lastScene;
+}
+
 }

@@ -44,14 +44,7 @@ class cafeFront extends Phaser.Scene {
     this.navigationButtons("cafeLeft","cafeFront","cafeRight","tatorHall");
   }
 
-  setting() {
-    this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
-    this.settings_button.scale = .8;
-    this.settings_button.once('pointerdown', () => {
-      this.scene.get("settings").setPrev(this.scene.key);
-      this.scene.start('settings');
-    });
-  }
+
   navigationButtons(scene1,scene2) {
     this.backButton = this.add.image(60,580, "back_button").setInteractive();
     this.backButton.setScale(.6);
@@ -75,26 +68,41 @@ class cafeFront extends Phaser.Scene {
 
   navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
 
-  //  this.joystick = this.add.image(350,350, "joystick");
-  //  this.joystick.setScale(.4);
 
     this.backNavigation = this.add.image(350,350, "backNavigation").setInteractive();
     this.backNavigation.setScale(.3);
-    this.backNavigation.once('pointerdown', () => this.scene.start(sceneback),this);
+    this.backNavigation.once('pointerdown', () => {
+      this.scene.get(sceneback).setLastLocation(this.scene.key);
+      this.scene.start(sceneback),this});
 
     this.forwardNavigation = this.add.image(350,250, "forwardNavigation").setInteractive();
     this.forwardNavigation.setScale(.3);
-    this.forwardNavigation.once('pointerdown', () => this.scene.start(sceneforward),this);
+    this.forwardNavigation.once('pointerdown', () => {
+      this.scene.get(sceneforward).setLastLocation(this.scene.key);
+      this.scene.start(sceneforward),this});
 
     this.leftNavigation = this.add.image(300,300, "leftNavigation").setInteractive();
     this.leftNavigation.setScale(.3);
-    this.leftNavigation.once('pointerdown', () => this.scene.start(sceneleft),this);
+    this.leftNavigation.once('pointerdown', () => {
+      this.scene.get(sceneleft).setLastLocation(this.scene.key);
+      this.scene.start(sceneleft),this});
 
     this.rightNavigation = this.add.image(400,300, "rightNavigation").setInteractive();
     this.rightNavigation.setScale(.3);
-    this.rightNavigation.once('pointerdown', () => this.scene.start(sceneright),this);
+    this.rightNavigation.once('pointerdown', () => {
+      this.scene.get(sceneright).setLastLocation(this.scene.key);
+      this.scene.start(sceneright),this});
 
   }
+  setting() {
+    this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
+    this.settings_button.scale = .8;
+    this.settings_button.once('pointerdown', () => {
+      this.scene.get("settings").setPrev(this.scene.key);
+      this.scene.start('settings');
+    });
+  }
+
   //this.input.on('pointerdown', () => this.scene.start('campusScene'));
  // function that creates a bubble speeech box
   createSpeechBubble (x, y, width, height, quote) {
