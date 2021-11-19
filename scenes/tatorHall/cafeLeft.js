@@ -27,7 +27,7 @@ class cafeLeft extends Phaser.Scene {
     //settings
     this.setting();
 
-    this.backNavigation = this.add.image(350,350, "backNavigation").setInteractive();
+    this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive();
     this.backNavigation.setScale(.3);
     this.backNavigation.once('pointerdown', () => this.scene.start("cafeFront"),this);
 

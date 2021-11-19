@@ -5,7 +5,7 @@ class tatorHallway2 extends Phaser.Scene {
 
   preload() {
     this.load.image("person4", "pictures/person4.png");
-    this.load.image("tatorHallway", "pictures/tatorHallway2.png");
+    this.load.image("tatorHallway2", "pictures/tatorHallway2.png");
 
     this.load.image("boomer", "pictures/image2.png");
 
@@ -28,6 +28,7 @@ class tatorHallway2 extends Phaser.Scene {
 
     //settings
     this.setting();
+    this.navigationButtons("tatorHallway2", "tatorHallway2","tatorHall130",this.getLastLocation());
 
     //backwards button should go to cafeRight
 
@@ -105,4 +106,34 @@ setting() {
   setLastLocation(lastScene) {
     this.lastLocation = lastScene;
   }
+
+  navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
+
+
+    this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive();
+    this.backNavigation.setScale(.3);
+    this.backNavigation.once('pointerdown', () => {
+      this.scene.get(sceneback).setLastLocation(this.scene.key);
+      this.scene.start(sceneback),this});
+
+    this.forwardNavigation = this.add.image(400,450, "forwardNavigation").setInteractive();
+    this.forwardNavigation.setScale(.3);
+    this.forwardNavigation.once('pointerdown', () => {
+      this.scene.get(sceneforward).setLastLocation(this.scene.key);
+      this.scene.start(sceneforward),this});
+
+    this.leftNavigation = this.add.image(350,500, "leftNavigation").setInteractive();
+    this.leftNavigation.setScale(.3);
+    this.leftNavigation.once('pointerdown', () => {
+      this.scene.get(sceneleft).setLastLocation(this.scene.key);
+      this.scene.start(sceneleft),this});
+
+    this.rightNavigation = this.add.image(450,500, "rightNavigation").setInteractive();
+    this.rightNavigation.setScale(.3);
+    this.rightNavigation.once('pointerdown', () => {
+      this.scene.get(sceneright).setLastLocation(this.scene.key);
+      this.scene.start(sceneright),this});
+
+  }
+
 }

@@ -36,7 +36,7 @@ class cafeRight extends Phaser.Scene {
 
     //right button should go to tatorBathroom
 
-//    this.navigationButtons("bookStore","tatorHallway","tatorBathroom", this.getLastLocation());
+    this.navigationButtons("bookStore","tatorHallway","tatorBathroom", this.getLastLocation());
 
 
     this.createSpeechBubble(590, 50, 200, 120, "Correct! Should we continue forward or make a turn?");
@@ -110,25 +110,25 @@ setLastLocation(lastScene) {
 navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
 
 
-  this.backNavigation = this.add.image(350,350, "backNavigation").setInteractive();
+  this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive();
   this.backNavigation.setScale(.3);
   this.backNavigation.once('pointerdown', () => {
     this.scene.get(sceneback).setLastLocation(this.scene.key);
     this.scene.start(sceneback),this});
 
-  this.forwardNavigation = this.add.image(350,250, "forwardNavigation").setInteractive();
+  this.forwardNavigation = this.add.image(400,450, "forwardNavigation").setInteractive();
   this.forwardNavigation.setScale(.3);
   this.forwardNavigation.once('pointerdown', () => {
     this.scene.get(sceneforward).setLastLocation(this.scene.key);
     this.scene.start(sceneforward),this});
 
-  this.leftNavigation = this.add.image(300,300, "leftNavigation").setInteractive();
+  this.leftNavigation = this.add.image(350,500, "leftNavigation").setInteractive();
   this.leftNavigation.setScale(.3);
   this.leftNavigation.once('pointerdown', () => {
     this.scene.get(sceneleft).setLastLocation(this.scene.key);
     this.scene.start(sceneleft),this});
 
-  this.rightNavigation = this.add.image(400,300, "rightNavigation").setInteractive();
+  this.rightNavigation = this.add.image(450,500, "rightNavigation").setInteractive();
   this.rightNavigation.setScale(.3);
   this.rightNavigation.once('pointerdown', () => {
     this.scene.get(sceneright).setLastLocation(this.scene.key);

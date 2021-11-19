@@ -29,6 +29,10 @@ class tatorBathroom extends Phaser.Scene {
     //settings
     this.setting();
 
+    this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive();
+    this.backNavigation.setScale(.3);
+    this.backNavigation.once('pointerdown', () => this.scene.start("cafeRight"),this);
+
     //backwards button should go to tatorHallway
 
     //forwards button should go to nothing
