@@ -4,10 +4,13 @@ class tatorHall extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image("boomer", "pictures/image2.png");
+
     this.load.image("studentCenter", "pictures/studentCenter.png");
     this.load.image("play_button", "pictures/play_button.png");
     this.load.image("next_button", "pictures/next_button.png");
     this.load.image("person4", "pictures/person4.png");
+
   }
 
   create() {
@@ -27,10 +30,8 @@ class tatorHall extends Phaser.Scene {
     const boomer = this.add.image(700,400,"boomer");
     boomer.scale = 2;
 
+    this.setting();
 
-  //
-
-//    this.options_button = this.add.image(175,32, "options_button");
 
 
 this.createSpeechBubble(590, 50, 200, 120, "Which way is Tator Hall 130? Click the arrow keys to navigate");
@@ -83,5 +84,13 @@ this.createSpeechBubble(150, 250, 150, 120, "Hmmm");
     var b = content.getBounds();
 
     content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
+}
+setting() {
+  this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
+  this.settings_button.scale = .8;
+  this.settings_button.once('pointerdown', () => {
+    this.scene.get("settings").setPrev(this.scene.key);
+    this.scene.start('settings');
+  });
 }
 }

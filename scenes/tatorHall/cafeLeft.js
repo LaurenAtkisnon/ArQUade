@@ -8,6 +8,7 @@ class cafeLeft extends Phaser.Scene {
     this.load.image("cafeLeft", "pictures/cafeLeft.png");
     this.load.image("cafeRight", "pictures/cafeRight.png");
     this.load.image("person4", "pictures/person4.png");
+    this.load.image("boomer", "pictures/image2.png");
 
   }
 
