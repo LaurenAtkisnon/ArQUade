@@ -5,7 +5,8 @@ window.onload = function() {
     width : 800,
     height: 600,
     backgroundColor: 0x000000,
-    scene: [MenuScene, instructions, characterScene, gameEnter, settings, tatorHall, cafeFront, cafeLeft, cafeRight]
+    scene: [MenuScene, instructions, characterScene, gameEnter, settings,
+      tatorHall, cafeFront, cafeLeft, cafeRight, bookStore, tatorBathroom, tatorHall130, tatorHallway2]
   //  scene: [MenuScene, instructions, characterScene, gameEnter]
   }
 
