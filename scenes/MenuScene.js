@@ -29,9 +29,9 @@ background.scale = .8;
 
 //new button - to change
 
-this.joystick = this.add.image(500,400,'joystick').setInteractive();
-this.joystick.setScale(.8);
-this.joystick.once('pointerdown', () => this.scene.start('cafeFront'), this);
+//this.joystick = this.add.image(500,400,'joystick').setInteractive();
+//this.joystick.setScale(.8);
+//this.joystick.once('pointerdown', () => this.scene.start('cafeFront'), this);
 
 //boomer
 const boomer = this.add.image(750,480,"boomer");
