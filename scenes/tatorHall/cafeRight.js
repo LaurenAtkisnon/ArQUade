@@ -15,6 +15,8 @@ class cafeRight extends Phaser.Scene {
     const background = this.add.image(400,300,"cafeRight");
     background.scale = .3;
 
+    console.log("hello cafeRight");
+
     //character
     const person4 = this.add.image(100,460,"person4");
     person4.scale = .2;

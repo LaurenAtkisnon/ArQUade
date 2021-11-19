@@ -33,10 +33,8 @@ class tatorHall extends Phaser.Scene {
 //    this.options_button = this.add.image(175,32, "options_button");
 
 
-   this.createSpeechBubble(590, 50, 200, 120, 'Are you ready to ');
-   this.createSpeechBubble(150, 250, 150, 120, "You got it Boomer");
-   this.createSpeechBubble(375, 200, 220, 220, "QUICK REMINDER: \n This a task-based game. You will be given a set of tasks you will need to complete in order to complete your first day as student! Good Luck!");
-
+this.createSpeechBubble(590, 50, 200, 120, "Which way is Tator Hall 130? Click the arrow keys to navigate");
+this.createSpeechBubble(150, 250, 150, 120, "Hmmm");
 
    //this.input.on('pointerdown', () => this.scene.start('campusScene'));
 } // function that creates a bubble speeech box
