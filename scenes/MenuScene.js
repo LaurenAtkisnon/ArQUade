@@ -55,7 +55,7 @@ settings_button.scale = .8;
 
 this.startButton = this.add.image(400,300,'play_button').setInteractive();
 this.startButton.setScale(.8);
-this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
+this.startButton.once('pointerdown', () => this.scene.start('wholeTator'), this);
 
 // adds music to the menu screen
 /*
