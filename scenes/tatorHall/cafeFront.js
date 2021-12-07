@@ -19,6 +19,7 @@ class cafeFront extends Phaser.Scene {
   }
 
   create() {
+  
     this.background = this.add.image(400,300,"cafeFront");
     this.background.scale = .275;
 
