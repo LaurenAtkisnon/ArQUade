@@ -21,15 +21,15 @@ class wholeTator extends Phaser.Scene {
 
   }
   create() {
-    this.personLocation = 0;
+    this.personDirection = 0;
+    this.backgroundGroup = this.add.group();
 
-
-    this.background = this.add.image(400,300,"cafeFront");
+    this.background = this.add.image(400,300,"cafeFront").setDepth(1);
     this.background.scale = .275;
-
-
+    this.backgroundGroup.add(this.background);
     this.setting();
-    this.navigationButtonsTest("wholeTator3","wholeTator","wholeTator2","wholeTator3");
+    this.navigationButtonsTest("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+
   }
 
   navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
@@ -37,25 +37,25 @@ class wholeTator extends Phaser.Scene {
 
     this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive();
     this.backNavigation.setScale(.3);
-    this.backNavigation.once('pointerdown', () => {
+    this.backNavigation.on('pointerdown', () => {
       this.scene.get(sceneback).setLastLocation(this.scene.key);
       this.scene.start(sceneback),this});
 
     this.forwardNavigation = this.add.image(400,450, "forwardNavigation").setInteractive();
     this.forwardNavigation.setScale(.3);
-    this.forwardNavigation.once('pointerdown', () => {
+    this.forwardNavigation.on('pointerdown', () => {
       this.scene.get(sceneforward).setLastLocation(this.scene.key);
       this.scene.start(sceneforward),this});
 
     this.leftNavigation = this.add.image(350,500, "leftNavigation").setInteractive();
     this.leftNavigation.setScale(.3);
-    this.leftNavigation.once('pointerdown', () => {
+    this.leftNavigation.on('pointerdown', () => {
       this.scene.get(sceneleft).setLastLocation(this.scene.key);
       this.scene.start(sceneleft),this});
 
     this.rightNavigation = this.add.image(450,500, "rightNavigation").setInteractive();
     this.rightNavigation.setScale(.3);
-    this.rightNavigation.once('pointerdown', () => {
+    this.rightNavigation.on('pointerdown', () => {
       this.scene.get(sceneright).setLastLocation(this.scene.key);
       this.scene.start(sceneright),this});
 
@@ -63,31 +63,31 @@ class wholeTator extends Phaser.Scene {
   navigationButtonsTest(sceneleft,sceneforward,sceneright,sceneback) {
 
 
-    this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive();
+    this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive().setDepth(10);
     this.backNavigation.setScale(.3);
-    this.backNavigation.once('pointerdown', () => {
+    this.backNavigation.on('pointerdown', () => {
     //  this.scene.get(sceneback).setLastLocation(this.scene.key);
   /*  this.scene.start(sceneback),this*/
   //subtract 2 from the person Location to go backwards and face the opposite direction
-  this.personLocation = (this.personLocation -2) %4
+  this.personDirection = (this.personDirection -2) %4
 // this case happens if their position is 1 looking east and wants to go backwards
-  if (this.personLocation == -1){
-    this.personLocation = 3;
+  if (this.personDirection == -1){
+    this.personDirection = 3;
     }
     // this happens when the user wants to go backward from the 0 position looking north.
-  if (this.personLocation <0) {
-    this.personLocation = -(this.personLocation);
+  if (this.personDirection <0) {
+    this.personDirection = -(this.personDirection);
   }
-  console.log(this.personLocation);
+  console.log(this.personDirection);
 });
 
-    this.forwardNavigation = this.add.image(400,450, "forwardNavigation").setInteractive();
+    this.forwardNavigation = this.add.image(400,450, "forwardNavigation").setInteractive().setDepth(10);
     this.forwardNavigation.setScale(.3);
-    this.forwardNavigation.once('pointerdown', () => {
+    this.forwardNavigation.on('pointerdown', () => {
 
     //  this.scene.get(sceneforward).setLastLocation(this.scene.key);
   /*  this.scene.start(sceneforward),this*/
-  switch(this.personLocation) {
+  switch(this.personDirection) {
     case 0 : console.log("case 0 this is where we would call the north link in the database");
     break;
     case 1 : console.log("case 1 this is where we would call the east link in the database");
@@ -99,84 +99,94 @@ class wholeTator extends Phaser.Scene {
   }
 });
 
-    this.leftNavigation = this.add.image(350,500, "leftNavigation").setInteractive();
+    this.leftNavigation = this.add.image(350,500, "leftNavigation").setInteractive().setDepth(10);
     this.leftNavigation.setScale(.3);
-    this.leftNavigation.once('pointerdown', () => {
+    this.leftNavigation.on('pointerdown', () => {
     //  this.scene.get(sceneleft).setLastLocation(this.scene.key);
-      // checks if the personLocation is 0. If its 0 set it to 3. If not subtract 1.
-      if(this.personLocation == 0) {
-        this.personLocation = 3;
-        this.scene.get("wholeTator3").setPersonLocation(this.getPersonLocation());
-        this.scene.start("wholeTator3");
-        console.log("case 3 this is where we would call the different picture in the database");
+      // checks if the personDirection is 0. If its 0 set it to 3. If not subtract 1.
 
-      } else {
-        this.personLocation = (this.personLocation - 1) % 4;
-        console.log(this.personLocation);
-        switch(this.personLocation) {
-          case 0 :
-           this.scene.get("wholeTator").setPersonLocation(this.getPersonLocation());
-          this.scene.start("wholeTator");
-         console.log("case 0 this is where we would call the different picture in the database");
-          break;
-          case 1 :
-          this.scene.get("wholeTator1").setPersonLocation(this.getPersonLocation());
-          this.scene.start("wholeTator1");
-           console.log("case 1 this is where we would call the different picture in the database");
-          break;
-          case 2 : this.scene.get("wholeTator2").setPersonLocation(this.getPersonLocation());
-          this.scene.start("wholeTator2");
-          console.log("case 2 this is where we would call the different picture in the database");
-          break;
-          case 3 :
-          this.scene.get("wholeTator3").setPersonLocation(this.getPersonLocation());
-          this.scene.start("wholeTator3");
-          console.log("case 3 this is where we would call the different picture in the database");
-          break;
-        }
-      }
-    /*  this.scene.start(sceneleft),this*/});
-
-    this.rightNavigation = this.add.image(450,500, "rightNavigation").setInteractive();
+        this.personDirection = (this.personDirection + 3) % 4;
+        console.log(this.personDirection);
+        this.updateScene();
+    /*  this.scene.start(sceneleft),this*/
+  });
+    this.rightNavigation = this.add.image(450,500, "rightNavigation").setInteractive().setDepth(10);
     this.rightNavigation.setScale(.3);
-    this.rightNavigation.once('pointerdown', () => {
-      this.personLocation = (this.personLocation + 1) % 4;
-      console.log(this.personLocation);
-    //  this.scene.get(sceneright).setLastLocation(this.scene.key);
-  /*    this.scene.start(sceneright),this;*/
-  switch(this.personLocation) {
-    case 0 :
-    this.scene.get("wholeTator").setPersonLocation(this.getPersonLocation());
-    this.scene.start("wholeTator");
-    console.log("case 0 this is where we would call the different picture in the database");
-    break;
-    case 1 :
-    this.scene.get("wholeTator1").setPersonLocation(this.getPersonLocation());
-    this.scene.start("wholeTator1");
-    console.log("case 1 this is where we would call the different picture in the database");
-    break;
-    case 2 :
-    this.scene.get("wholeTator2").setPersonLocation(this.getPersonLocation());
-    this.scene.start("wholeTator2");
-    console.log("case 2 this is where we would call the different picture in the database");
-    break;
-    case 3 :
-    this.scene.get("wholeTator3").setPersonLocation(this.getPersonLocation());
-    this.scene.start("wholeTator3");
-    console.log("case 3 this is where we would call the different picture in the database");
-    break;
-  }
-});
+    this.rightNavigation.on('pointerdown', () => {
+      this.personDirection = (this.personDirection + 1) % 4;
+      console.log(this.personDirection);
+      this.updateScene();
+  });
 
   }
 
   setting() {
-    this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
+    this.settings_button = this.add.image(75,20, "settings_button").setInteractive().setDepth(10);
     this.settings_button.scale = .8;
-    this.settings_button.once('pointerdown', () => {
+    this.settings_button.on('pointerdown', () => {
       this.scene.get("settings").setPrev(this.scene.key);
       this.scene.start('settings');
     });
+  }
+
+// will remove the background setting
+  updateScene() {
+    this.backgroundGroup.clear(true);
+    switch(this.personDirection) {
+      case 0 :
+      this.background = this.add.image(400,300,"cafeFront").setDepth(1);
+      this.background.scale = .275;
+      this.backgroundGroup.add(this.background);
+      console.log("case 0 this is where we would call the different picture in the database");
+      break;
+      case 1 :
+
+      this.background = this.add.image(400,300,"cafeFront1").setDepth(1);
+      this.background.scale = .275;
+      this.backgroundGroup.add(this.background);
+    //  this.scene.get("wholeTator1").setpersonDirection(this.getpersonDirection());
+    //  this.scene.start("wholeTator1");
+      console.log("case 1 this is where we would call the different picture in the database");
+      break;
+      case 2 :
+      this.background = this.add.image(400,300,"cafeFront2").setDepth(1);
+      this.background.scale = .275;
+      this.backgroundGroup.add(this.background);
+    //  this.scene.get("wholeTator2").setpersonDirection(this.getpersonDirection());
+    //  this.scene.start("wholeTator2");
+      console.log("case 2 this is where we would call the different picture in the database");
+      break;
+      case 3 :
+      this.background = this.add.image(400,300,"cafeFront3").setDepth(1);
+      this.background.scale = .275;
+      this.backgroundGroup.add(this.background);
+    //  this.scene.get("wholeTator3").setpersonDirection(this.getpersonDirection());
+    //  this.scene.start("wholeTator3");
+      console.log("case 3 this is where we would call the different picture in the database");
+      break;
+    }
+
+  }
+
+  setDatabaseConnection() {
+
+    const mysql = require('mysql');
+    const connection = mysql.createConnection({
+      host: 'us-cdbr-east-04.cleardb.com',
+      user: 'b3c19bde0098f7',
+      password: '811d1ee5',
+    });
+    connection.connect((err) => {
+      if (err) throw err;
+      console.log('Connected!');
+    });
+
+    connection.query('use  heroku_8b1f2a27d4def71');
+    connection.query('select * from Room' , (err, res) => {
+      console.log(res)
+    });
+
+
   }
   getLastLocation() {
     return this.lastLocation;
@@ -186,11 +196,11 @@ class wholeTator extends Phaser.Scene {
     this.lastLocation = lastScene;
   }
 
-  getPersonLocation() {
-    return this.personLocation;
+  getpersonDirection() {
+    return this.personDirection;
   }
-  setPersonLocation(personLocation) {
-    this.personLocation = personLocation;
+  setpersonDirection(personDirection) {
+    this.personDirection = personDirection;
 
   }
 }

@@ -8,3 +8,8 @@ connection.connect((err) => {
   if (err) throw err;
   console.log('Connected!');
 });
+
+connection.query('use  heroku_8b1f2a27d4def71');
+connection.query('select * from Room' , (err, res) => {
+  console.log(res)
+});
