@@ -29,6 +29,7 @@ class wholeTator extends Phaser.Scene {
     this.backgroundGroup.add(this.background);
     this.setting();
     this.navigationButtonsTest("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+  //  this.setDatabaseConnection();
 
   }
 
@@ -185,9 +186,22 @@ class wholeTator extends Phaser.Scene {
     connection.query('select * from Room' , (err, res) => {
       console.log(res)
     });
+  }
 
+  getEastRoom(id) {
 
   }
+  getNorthRoom() {
+
+  }
+  getSouthRoom() {
+
+  }
+  getWestRoom() {
+
+  }
+
+
   getLastLocation() {
     return this.lastLocation;
 

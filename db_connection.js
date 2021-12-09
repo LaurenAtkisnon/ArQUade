@@ -10,6 +10,12 @@ connection.connect((err) => {
 });
 
 connection.query('use  heroku_8b1f2a27d4def71');
+/*
+connection.query('select * from Room' , (err, res) => {
+  console.log(res)
+});
+*/
+
 connection.query('select * from Room' , (err, res) => {
   console.log(res)
 });
