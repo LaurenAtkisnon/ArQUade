@@ -37,7 +37,7 @@ class gameEnter extends Phaser.Scene {
     //entranceButton
     this.entranceButton = this.add.image(400,520,"entranceButton").setInteractive();
     this.entranceButton.setScale(.6);
-    this.entranceButton.once('pointerdown', () => this.scene.start('tatorHall'));
+    this.entranceButton.once('pointerdown', () => this.scene.start('wholeTator'));
 
    this.createSpeechBubble(590, 50, 200, 120, 'Hey Professor Duncan! Welcome to ARQUADE!');
    this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
