@@ -15,7 +15,21 @@ connection.query('select * from Room' , (err, res) => {
   console.log(res)
 });
 */
-
-connection.query('select * from Room' , (err, res) => {
+var test;
+connection.query('Select picNorth, linkNorth FROM Room where id= "5"' , (err, res) => {
+  console.log(res)
+});
+connection.query('Select picEast, linkEast FROM Room where id= "5"' , (err, res) => {
+//  console.log(res[0].linkEast);
+  var test = res[0].linkEast;
+  console.log(test);
+});
+connection.query('Select picSouth FROM Room where id= "5"' , (err, res) => {
+  console.log(res[0].picSouth);
+//  JSONObject jsonObj = new JSONObject(res);
+  //var json = JSON.parse(res[0]);
+//  console.log(json.picSouth);
+});
+connection.query('Select * from Room' , (err, res) => {
   console.log(res)
 });

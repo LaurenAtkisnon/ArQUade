@@ -1,3 +1,4 @@
+const roomTable = [];
 class MenuScene extends Phaser.Scene {
   constructor() {
     super("bootGame");
@@ -19,6 +20,7 @@ class MenuScene extends Phaser.Scene {
 
 // method that creates objects for the scene
   create() {
+    this.loadRoomData();
 
 //play button
 //const play_button = this.add.image(400,300, "play_button");
@@ -66,8 +68,122 @@ this.startButton.once('pointerdown', () => this.scene.start('wholeTator'), this)
 */
 
   }
-}
 
+
+loadRoomData() {
+  var res = [
+   {
+    id: 5,
+    description: 'First picture you see entering Tator Hall',
+    picNorth: 'cafeFront0',
+    picEast: 'cafeFront1',
+    picSouth: 'cafeFront2',
+    picWest: 'cafeFront3',
+    linkNorth: null,
+    linkEast: 25,
+    linkSouth: null,
+    linkWest: 15
+  },
+   {
+    id: 15,
+    description: 'Picture to the West of cafe Front',
+    picNorth: 'cafeHallway0',
+    picEast: 'cafeHallway1',
+    picSouth: 'cafeHallway2',
+    picWest: 'cafeHallway3',
+    linkNorth: null,
+    linkEast: 5,
+    linkSouth: null,
+    linkWest: null
+  },
+   {
+    id: 25,
+    description: 'Picture to the East of cafe Front. First Hallway',
+    picNorth: 'hallway0',
+    picEast: 'hallway1',
+    picSouth: 'hallway2',
+    picWest: 'hallway3',
+    linkNorth: null,
+    linkEast: 45,
+    linkSouth: 35,
+    linkWest: 5
+  },
+   {
+    id: 35,
+    description: 'Bathroom Pictures next to Hallway picture',
+    picNorth: 'Bathroom0',
+    picEast: 'Bathroom1',
+    picSouth: 'Bathroom2',
+    picWest: 'Bathroom3',
+    linkNorth: 25,
+    linkEast: null,
+    linkSouth: null,
+    linkWest: null
+  },
+   {
+    id: 45,
+    description: 'Bookstore Hallway Pictures',
+    picNorth: 'bkstHallway0',
+    picEast: 'bkstHallway1',
+    picSouth: 'bkstHallway2',
+    picWest: 'bkstHallway3',
+    linkNorth: null,
+    linkEast: 55,
+    linkSouth: null,
+    linkWest: 25
+  },
+   {
+    id: 55,
+    description: 'Pub Hallway ( Bank Atms) ',
+    picNorth: 'pubHallway0',
+    picEast: 'pubHallway1',
+    picSouth: 'pubHallway2',
+    picWest: 'pubHallway3',
+    linkNorth: null,
+    linkEast: 65,
+    linkSouth: null,
+    linkWest: 45
+  },
+   {
+    id: 65,
+    description: 'Tator Hallway with all the classes',
+    picNorth: 'tatorHallway0',
+    picEast: 'tatorHallway1',
+    picSouth: 'tatorHallway2',
+    picWest: 'tatorHallway3',
+    linkNorth: null,
+    linkEast: 75,
+    linkSouth: null,
+    linkWest: 55
+  },
+   {
+    id: 75,
+    description: 'Tator Hallway 130 pictures',
+    picNorth: '130Hallway0',
+    picEast: '130Hallway1',
+    picSouth: '130Hallway2',
+    picWest: '130Hallway3',
+    linkNorth: null,
+    linkEast: null,
+    linkSouth: null,
+    linkWest: null
+  }
+]
+
+for( var i in res) {
+  var id = res[i].id;
+  roomTable[id] = res[i];
+    this.load.image(res[i].picNorth, "pictures/"+res[i].picNorth+".png");
+    this.load.image(res[i].picEast, "pictures/"+res[i].picEast+".png");
+    this.load.image(res[i].picSouth, "pictures/"+res[i].picSouth+".png");
+    this.load.image(res[i].picWest, "pictures/"+res[i].picWest+".png");
+}
+this.load.start();
+console.log(roomTable);
+
+//console.log(res[0].picEast);
+}
+}
 //back button
 //const back_button = this.add.image(60,580, "back_button");
 //back_button.scale = .6;

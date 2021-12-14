@@ -3,7 +3,7 @@ class wholeTator extends Phaser.Scene {
     super("wholeTator");
   }
   preload() {
-    this.load.image("cafeFront", "pictures/cafeFront.png");
+    this.load.image("cafeFront0", "pictures/cafeFront0.png");
     this.load.image("cafeFront1", "pictures/cafeFront1.png");
     this.load.image("cafeFront2", "pictures/cafeFront2.png");
     this.load.image("cafeFront3", "pictures/cafeFront3.png");
@@ -21,10 +21,11 @@ class wholeTator extends Phaser.Scene {
 
   }
   create() {
+    this.roomID = 5;
     this.personDirection = 0;
     this.backgroundGroup = this.add.group();
 
-    this.background = this.add.image(400,300,"cafeFront").setDepth(1);
+    this.background = this.add.image(400,300,"cafeFront0").setDepth(1);
     this.background.scale = .275;
     this.backgroundGroup.add(this.background);
     this.setting();
@@ -67,37 +68,19 @@ class wholeTator extends Phaser.Scene {
     this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive().setDepth(10);
     this.backNavigation.setScale(.3);
     this.backNavigation.on('pointerdown', () => {
-    //  this.scene.get(sceneback).setLastLocation(this.scene.key);
-  /*  this.scene.start(sceneback),this*/
-  //subtract 2 from the person Location to go backwards and face the opposite direction
-  this.personDirection = (this.personDirection -2) %4
-// this case happens if their position is 1 looking east and wants to go backwards
-  if (this.personDirection == -1){
-    this.personDirection = 3;
-    }
-    // this happens when the user wants to go backward from the 0 position looking north.
-  if (this.personDirection <0) {
-    this.personDirection = -(this.personDirection);
-  }
-  console.log(this.personDirection);
-});
+      this.personDirection = (this.personDirection + 2) % 4;
+      console.log(this.personDirection);
+      this.updateScene();
+
+    });
 
     this.forwardNavigation = this.add.image(400,450, "forwardNavigation").setInteractive().setDepth(10);
     this.forwardNavigation.setScale(.3);
     this.forwardNavigation.on('pointerdown', () => {
-
+      this.moveForwardScene();
     //  this.scene.get(sceneforward).setLastLocation(this.scene.key);
   /*  this.scene.start(sceneforward),this*/
-  switch(this.personDirection) {
-    case 0 : console.log("case 0 this is where we would call the north link in the database");
-    break;
-    case 1 : console.log("case 1 this is where we would call the east link in the database");
-    break;
-    case 2 : console.log("case 2 this is where we would call south link picture in the database");
-    break;
-    case 3 : console.log("case 3 this is where we would call west link picture in the database");
-    break;
-  }
+
 });
 
     this.leftNavigation = this.add.image(350,500, "leftNavigation").setInteractive().setDepth(10);
@@ -130,17 +113,48 @@ class wholeTator extends Phaser.Scene {
     });
   }
 
+  moveForwardScene() {
+    var currentRoom = roomTable[this.getRoomID()];
+    var linkName = ["linkNorth", "linkEast", "linkSouth", "linkWest"];
+    var link = linkName[this.personDirection];
+    var nextRoom = currentRoom[link];
+    console.log(nextRoom);
+    if(nextRoom != null) {
+      this.setRoomID(nextRoom);
+      this.updateScene();
+    }
+
+
+  }
 // will remove the background setting
   updateScene() {
     this.backgroundGroup.clear(true);
+    var directionName = ["picNorth", "picEast", "picSouth", "picWest"];
+    var direction = directionName[this.personDirection];
+    var pictureName = roomTable[this.getRoomID()][direction];
+    console.log(pictureName);
+  //  var pictureFile = "pictures/"+pictureName+".png"
+  //  console.log(pictureFile);
+    this.background = this.add.image(400,300,pictureName).setDepth(1);
+    this.background.scale = .275;
+    this.backgroundGroup.add(this.background);
+
+/*
     switch(this.personDirection) {
       case 0 :
+
+      // runs a query to get the picture of the next room
+    //  this.background = this.add.image(400,300,this.getEastRoomPic("picNorth",this.getRoomID())).setDepth(1);
+
       this.background = this.add.image(400,300,"cafeFront").setDepth(1);
       this.background.scale = .275;
       this.backgroundGroup.add(this.background);
       console.log("case 0 this is where we would call the different picture in the database");
       break;
       case 1 :
+
+  //    this.background = this.add.image(400,300,this.getEastRoomPic("picEast",this.getRoomID())).setDepth(1);
+
 
       this.background = this.add.image(400,300,"cafeFront1").setDepth(1);
       this.background.scale = .275;
@@ -150,6 +164,10 @@ class wholeTator extends Phaser.Scene {
       console.log("case 1 this is where we would call the different picture in the database");
       break;
       case 2 :
+
+    //  this.background = this.add.image(400,300,this.getEastRoomPic("picSouth",this.getRoomID())).setDepth(1);
+
+
       this.background = this.add.image(400,300,"cafeFront2").setDepth(1);
       this.background.scale = .275;
       this.backgroundGroup.add(this.background);
@@ -158,6 +176,10 @@ class wholeTator extends Phaser.Scene {
       console.log("case 2 this is where we would call the different picture in the database");
       break;
       case 3 :
+
+  //    this.background = this.add.image(400,300,this.getEastRoomPic("picWest",this.getRoomID())).setDepth(1);
+
+
       this.background = this.add.image(400,300,"cafeFront3").setDepth(1);
       this.background.scale = .275;
       this.backgroundGroup.add(this.background);
@@ -166,7 +188,7 @@ class wholeTator extends Phaser.Scene {
       console.log("case 3 this is where we would call the different picture in the database");
       break;
     }
-
+*/
   }
 
   setDatabaseConnection() {
@@ -188,26 +210,25 @@ class wholeTator extends Phaser.Scene {
     });
   }
 
-  getEastRoom(id) {
-
+// querys for the name of the next picture
+  getRoomPic(roomDirection, roomID) {
+    connection.query('Select '+roomDirection+ ' FROM Room where id= "'+roomID+'"' , (err, res) => {
+      console.log(res)
+    });
   }
-  getNorthRoom() {
-
+  // querys the name of the next scene to load
+  getRoomLink(linkDirection,roomID) {
+    connection.query('Select '+linkDirection+ ' FROM Room where id= "'+id+'"' , (err, res) => {
+      console.log(res)
+    });
   }
-  getSouthRoom() {
-
+// sets the room ID
+  setRoomID(id) {
+    this.roomID = id;
   }
-  getWestRoom() {
-
-  }
-
-
-  getLastLocation() {
-    return this.lastLocation;
-
-  }
-  setLastLocation(lastScene) {
-    this.lastLocation = lastScene;
+  // gets the room ID
+  getRoomID() {
+    return this.roomID;
   }
 
   getpersonDirection() {
@@ -215,6 +236,6 @@ class wholeTator extends Phaser.Scene {
   }
   setpersonDirection(personDirection) {
     this.personDirection = personDirection;
-
   }
+
 }
