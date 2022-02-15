@@ -123,14 +123,16 @@ class wholeTator extends Phaser.Scene {
   }
 
   moveForwardScene() {
-    // gets the current room id
+    // gets the current room id information
     var currentRoom = roomTable[this.getRoomID()];
     // arrary of the new room link names
     var linkName = ["linkNorth", "linkEast", "linkSouth", "linkWest"];
-
+    // gets the name of the link for the next room
     var link = linkName[this.personDirection];
+  //finds the next link room number and saves it
     var nextRoom = currentRoom[link];
     console.log(nextRoom);
+    // if the next room is not null go to the next room
     if(nextRoom != null) {
       this.setRoomID(nextRoom);
       this.updateScene();
@@ -143,8 +145,13 @@ class wholeTator extends Phaser.Scene {
 getRoomData() {
   console.log("entering room data");
   fetch('http://localhost:3000/destination?Room_ID=3')
-//  .then(response => response.json())
-  .then(data => console.log("data"));
+  .then(res => res.json());
+//  .then(data => console.log("data"));
+
+// once we get the room data in json seperate the information into different varaibles
+// Find the next room link information for the moveForwardScene method
+// find the next picture name for the updatescene method
+
     console.log("leaving room data");
 }
 
@@ -153,12 +160,14 @@ getRoomData() {
   updateScene() {
     this.backgroundGroup.clear(true);
 
+  //
+  this.getRoomData();
     // North: 0 , East: 1 , South: 2, West: 3
     // arrary of direction names
     var directionName = ["picNorth", "picEast", "picSouth", "picWest"];
-   //Finding out what direction we need to go
+   //Finding out what direction we need to go, saves the direction name
     var direction = directionName[this.personDirection];
-    // gets the destination picture name
+    // gets the name of the picture of the next room
     var pictureName = roomTable[this.getRoomID()][direction];
     console.log(pictureName);
   //  var pictureFile = "pictures/"+pictureName+".png"

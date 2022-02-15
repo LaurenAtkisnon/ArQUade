@@ -25,6 +25,7 @@ router.post('/test', asyncMiddleware(async (req, res, next) => {
 }));
 */
 
+// method that will query the database using the Room_ID
 router.get('/destination', asyncMiddleware(async (req, res, next) => {
   const {Room_ID} = req.query;
   console.log(req.query);
