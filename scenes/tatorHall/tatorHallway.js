@@ -10,6 +10,7 @@ class tatorHallway extends Phaser.Scene {
 
     this.load.image("boomer", "pictures/image2.png");
 
+// hi
 
   }
 
