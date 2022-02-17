@@ -3,21 +3,32 @@ class wholeTator extends Phaser.Scene {
     super("wholeTator");
   }
   preload() {
+    //cafe
     this.load.image("cafeFront0", "pictures/cafeFront0.png");
     this.load.image("cafeFront1", "pictures/cafeFront1.png");
     this.load.image("cafeFront2", "pictures/cafeFront2.png");
     this.load.image("cafeFront3", "pictures/cafeFront3.png");
     this.load.image("cafeLeft", "pictures/cafeLeft.png");
     this.load.image("cafeRight", "pictures/cafeRight.png");
+
+    //boomer & character
     this.load.image("boomer", "pictures/image2.png");
     this.load.image("person4", "pictures/person4.png");
 
-
+    //navigation buttons & joystidl
     this.load.image("backNavigation", "pictures/backNavigation.png");
     this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
     this.load.image("leftNavigation", "pictures/leftNavigation.png");
     this.load.image("rightNavigation", "pictures/rightNavigation.png");
     this.load.image("joystick", "pictures/joystick.png");
+
+    //tator hall hallway
+
+    //th130
+
+    //th107
+
+    //printer
 
   }
   create() {
