@@ -21,8 +21,16 @@ class wholeTator extends Phaser.Scene {
 
   }
   create() {
+    // setting the first room ID
+    //
     this.roomID = 5;
+
+
+    // sets the current room
+   this.getRoomData();
+    // the direction that the player is facing
     this.personDirection = 0;
+    // button group
     this.backgroundGroup = this.add.group();
 
     this.background = this.add.image(400,300,"cafeFront0").setDepth(1);
@@ -64,10 +72,11 @@ class wholeTator extends Phaser.Scene {
   }
   navigationButtonsTest(sceneleft,sceneforward,sceneright,sceneback) {
 
-
+    // setting up a new background
     this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive().setDepth(10);
     this.backNavigation.setScale(.3);
     this.backNavigation.on('pointerdown', () => {
+      // changing the persons direction
       this.personDirection = (this.personDirection + 2) % 4;
       console.log(this.personDirection);
       this.updateScene();
@@ -114,11 +123,16 @@ class wholeTator extends Phaser.Scene {
   }
 
   moveForwardScene() {
+    // gets the current room id information
     var currentRoom = roomTable[this.getRoomID()];
+    // arrary of the new room link names
     var linkName = ["linkNorth", "linkEast", "linkSouth", "linkWest"];
+    // gets the name of the link for the next room
     var link = linkName[this.personDirection];
+  //finds the next link room number and saves it
     var nextRoom = currentRoom[link];
     console.log(nextRoom);
+    // if the next room is not null go to the next room
     if(nextRoom != null) {
       this.setRoomID(nextRoom);
       this.updateScene();
@@ -126,11 +140,34 @@ class wholeTator extends Phaser.Scene {
 
 
   }
+// new function
+// gets the current Room data
+getRoomData() {
+  console.log("entering room data");
+  fetch('http://localhost:3000/destination?Room_ID=3')
+  .then(res => res.json());
+//  .then(data => console.log("data"));
+
+// once we get the room data in json seperate the information into different varaibles
+// Find the next room link information for the moveForwardScene method
+// find the next picture name for the updatescene method
+
+    console.log("leaving room data");
+}
+
+
 // will remove the background setting
   updateScene() {
     this.backgroundGroup.clear(true);
+
+  //
+  this.getRoomData();
+    // North: 0 , East: 1 , South: 2, West: 3
+    // arrary of direction names
     var directionName = ["picNorth", "picEast", "picSouth", "picWest"];
+   //Finding out what direction we need to go, saves the direction name
     var direction = directionName[this.personDirection];
+    // gets the name of the picture of the next room
     var pictureName = roomTable[this.getRoomID()][direction];
     console.log(pictureName);
   //  var pictureFile = "pictures/"+pictureName+".png"
@@ -138,6 +175,8 @@ class wholeTator extends Phaser.Scene {
     this.background = this.add.image(400,300,pictureName).setDepth(1);
     this.background.scale = .275;
     this.backgroundGroup.add(this.background);
+
+
 
 /*
     switch(this.personDirection) {
