@@ -39,6 +39,6 @@ app.use((err, req, res, next) => {
 });
 // have the server start listening on the provided port
 //harrison did not change his listening port
-app.listen(process.env.PORT || 3030, () => {
-  console.log(`Server started on port ${process.env.PORT || 3030}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server started on port ${process.env.PORT || 3000}`);
 });
