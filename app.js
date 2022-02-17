@@ -6,9 +6,14 @@ const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./routes/main');
 const mongoose = require('mongoose');
+const cors = require('cors');
 // setup mongo connection
 const uri = process.env.MONGO_CONNECTION_URL;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true  });
+
+app.use(cors( {
+  origin: 'http://localhost',
+}))
 
 mongoose.connection.on('error', (error) => {
   console.log(error);

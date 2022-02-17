@@ -23,11 +23,11 @@ class wholeTator extends Phaser.Scene {
   create() {
     // setting the first room ID
     //
+    this.roomTable = 1;
     this.roomID = 5;
 
 
-    // sets the current room
-   this.getRoomData();
+
     // the direction that the player is facing
     this.personDirection = 0;
     // button group
@@ -142,10 +142,91 @@ class wholeTator extends Phaser.Scene {
   }
 // new function
 // gets the current Room data
-getRoomData() {
+//
+getRoomData(pictureNameWanted) {
+
+  var roomDataPictureTest;
+  var roomData;
+  var pictureName = pictureNameWanted;
+
+// cases checking what direction the user is
+  switch (this.personDirection) {
+           case 0:
+    //       fetch('http://localhost:3000/destination?Room_ID='+this.getRoomID())
+           fetch('http://localhost:3000/destination?Room_ID=1')
+           .then(res => res.json())
+           .then(data => roomData = data)
+           // getting the new room name for update method
+           .then(data => roomDataPictureTest = data[0].picNorth)
+      //     .then(data => console.log("This is the get RoomData method picture " + roomDataPictureTest));
+           this.setRoomPicDB(roomDataPictureTest);
+                    console.log("Case 0 in getRoomData method" + this.getRoomPicDB());
+
+                    this.background = this.add.image(400,300,this.getRoomPicDB()).setDepth(1);
+                    this.background.scale = .275;
+                    this.backgroundGroup.add(this.background);
+                       console.log("code hit after background");
+                    break;
+           case 1:  fetch('http://localhost:3000/destination?Room_ID=1')
+           .then(res => res.json())
+           .then(data => roomData = data)
+           // getting the new room name for update method
+           .then(data => roomDataPictureTest = data[0].picEast)
+           .then(data => console.log("This is the get RoomData method picture " + roomDataPictureTest));
+            this.setRoomPicDB(roomDataPictureTest);
+
+            console.log("Case 1 in getRoomData method " + this.getRoomPicDB());
+
+            this.background = this.add.image(400,300,this.getRoomPicDB()).setDepth(1);
+            this.background.scale = .275;
+            this.backgroundGroup.add(this.background);
+               console.log("code hit after background");
+                    break;
+           case 2: fetch('http://localhost:3000/destination?Room_ID=1')
+           .then(res => res.json())
+           .then(data => roomData = data)
+           // getting the new room name for update method
+           .then(data => roomDataPictureTest = data[0].picSouth)
+           .then(data => console.log("This is the get RoomData method picture " + roomDataPictureTest));
+            this.setRoomPicDB(roomDataPictureTest);
+
+             console.log("Case 2 in getRoomData method " + this.getRoomPicDB() );
+
+             this.background = this.add.image(400,300,this.getRoomPicDB()).setDepth(1);
+             this.background.scale = .275;
+             this.backgroundGroup.add(this.background);
+                console.log("code hit after background");
+                    break;
+
+           case 3:   fetch('http://localhost:3000/destination?Room_ID=1')
+           .then(res => res.json())
+           .then(data => roomData = data)
+           // getting the new room name for update method
+           .then(data => roomDataPictureTest = data[0].picWest)
+           .then(data => console.log("This is the get RoomData method picture" + roomDataPictureTest));
+            this.setRoomPicDB(roomDataPictureTest);
+           console.log("Case 3 in getRoomData methodd" + this.getRoomPicDB());
+
+           this.background = this.add.image(400,300,this.getRoomPicDB()).setDepth(1);
+           this.background.scale = .275;
+           this.backgroundGroup.add(this.background);
+           console.log("code hit after background");
+                   break;
+                 }
+
+/*
   console.log("entering room data");
-  fetch('http://localhost:3000/destination?Room_ID=3')
-  .then(res => res.json());
+  fetch('http://localhost:3000/destination?Room_ID='+this.getRoomID())
+  .then(res => res.json())
+  .then(data => roomData = data)
+  // getting the new room name for update method
+  .then(data => roomDataTest = data[0].pictureName)
+  .then(data => console.log("This is the get RoomData method picture" + roomDataTest));
+*/
+  // room data will pass the picture name
+
+
+
 //  .then(data => console.log("data"));
 
 // once we get the room data in json seperate the information into different varaibles
@@ -160,22 +241,29 @@ getRoomData() {
   updateScene() {
     this.backgroundGroup.clear(true);
 
-  //
-  this.getRoomData();
+  //gets the room data
+//  this.getRoomData(this.getRoomID());
     // North: 0 , East: 1 , South: 2, West: 3
     // arrary of direction names
     var directionName = ["picNorth", "picEast", "picSouth", "picWest"];
    //Finding out what direction we need to go, saves the direction name
     var direction = directionName[this.personDirection];
+
+    //gets the room data
+    this.getRoomData(direction);
+  //
     // gets the name of the picture of the next room
+    //
     var pictureName = roomTable[this.getRoomID()][direction];
-    console.log(pictureName);
+
+    console.log("update methods picture name" + pictureName);
+
   //  var pictureFile = "pictures/"+pictureName+".png"
   //  console.log(pictureFile);
     this.background = this.add.image(400,300,pictureName).setDepth(1);
-    this.background.scale = .275;
-    this.backgroundGroup.add(this.background);
-
+//  this.background = this.add.image(400,300,this.getRoomPicDB()).setDepth(1);
+  this.background.scale = .275;
+  this.backgroundGroup.add(this.background);
 
 
 /*
@@ -268,6 +356,13 @@ getRoomData() {
   // gets the room ID
   getRoomID() {
     return this.roomID;
+  }
+
+  setRoomPicDB(roomPicture) {
+    this.roomPicture = roomPicture;
+  }
+  getRoomPicDB() {
+    return this.roomPicture;
   }
 
   getpersonDirection() {
