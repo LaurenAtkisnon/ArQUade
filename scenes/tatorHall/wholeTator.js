@@ -22,13 +22,32 @@ class wholeTator extends Phaser.Scene {
     this.load.image("rightNavigation", "pictures/rightNavigation.png");
     this.load.image("joystick", "pictures/joystick.png");
 
-    //tator hall hallway
+    //1st tator hall hallway -- directly after th130
+    this.load.image("tatorHallwayDeeper0", "pictures/tatorHallwayDeeper0.png")
+    this.load.image("tatorHallwayDeeper1", "pictures/tatorHallwayDeeper1.png")
+    this.load.image("tatorHallwayDeeper2", "pictures/tatorHallwayDeeper2.png")
+    this.load.image("tatorHallwayDeeper3", "pictures/tatorHallwayDeeper3.png")
 
-    //th130
+    //2nd tator hall hallway -- goes after the first hallway
+    this.load.image("thEndofHallway0", "pictures/thEndofHallway0.png")
+    this.load.image("thEndofHallway1", "pictures/thEndofHallway1.png")
+    // this.load.image("thEndofHallway1(1)", "pictures/thEndofHallway1(1).png")
+    this.load.image("thEndofHallway2", "pictures/thEndofHallway2.png")
 
-    //th107
+    //th130 -- inside classroom photo
+    this.load.image("th130", "pictures/th130.png")
+
+    //th107 -- inside classroom photo
+    this.load.image("th107", "pictures/th107.png")
+
+    //th105 -- inside classroom photo
+    this.load.image("th105", "pictures/th105.png")
 
     //printer
+    this.load.image("thprinter0", "pictures/thpritner0.png")
+    this.load.image("thprinter1", "pictures/thpritner1.png")
+    this.load.image("thprinter2", "pictures/thpritner2.png")
+    this.load.image("thprinter3", "pictures/thpritner3.png")
 
   }
   create() {
