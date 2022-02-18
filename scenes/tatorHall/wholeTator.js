@@ -83,14 +83,14 @@ class wholeTator extends Phaser.Scene {
               // changing the persons direction
               this.personDirection = (this.personDirection + 2) % 4;
               console.log(this.personDirection);
-              this.updateScene();
+              this.updateSceneDB();
 
             });
 
             this.forwardNavigation = this.add.image(400,450, "forwardNavigation").setInteractive().setDepth(10);
             this.forwardNavigation.setScale(.3);
             this.forwardNavigation.on('pointerdown', () => {
-              this.moveForwardScene();
+              this.moveForwardSceneDB();
               //  this.scene.get(sceneforward).setLastLocation(this.scene.key);
               /*  this.scene.start(sceneforward),this*/
 
@@ -104,7 +104,7 @@ class wholeTator extends Phaser.Scene {
 
               this.personDirection = (this.personDirection + 3) % 4;
               console.log(this.personDirection);
-              this.updateScene();
+              this.updateSceneDB();
               /*  this.scene.start(sceneleft),this*/
             });
             this.rightNavigation = this.add.image(450,500, "rightNavigation").setInteractive().setDepth(10);
@@ -112,7 +112,7 @@ class wholeTator extends Phaser.Scene {
             this.rightNavigation.on('pointerdown', () => {
               this.personDirection = (this.personDirection + 1) % 4;
               console.log(this.personDirection);
-              this.updateScene();
+              this.updateSceneDB();
             });
 
           }
@@ -126,10 +126,47 @@ class wholeTator extends Phaser.Scene {
             });
           }
 
+
+
+                    // will remove the background setting
+                    updateScene() {
+                      this.backgroundGroup.clear(true);
+
+                      //gets the room data
+                      //  this.getRoomData(this.getRoomID());
+                      // North: 0 , East: 1 , South: 2, West: 3
+                      // arrary of direction names
+                      var directionName = ["picNorth", "picEast", "picSouth", "picWest"];
+                      //Finding out what direction we need to go, saves the direction name
+                      var direction = directionName[this.personDirection];
+
+                      //gets the room data
+              //        this.setRoomPicture(direction);
+                      //
+                      // gets the name of the picture of the next room
+                      //
+                      var pictureName = roomTable[this.getRoomID()][direction];
+
+
+                      this.background = this.add.image(400,300,pictureName).setDepth(1);
+                      this.background.scale = .275;
+                      this.backgroundGroup.add(this.background);
+                      console.log("code hit after background");
+
+                      console.log("update methods picture name" + pictureName);
+
+                      //  var pictureFile = "pictures/"+pictureName+".png"
+                      //  console.log(pictureFile);
+                      console.log("Code Before Setting Background");
+
+                    }
+
+
           moveForwardScene() {
             // gets the current room id information
             var currentRoom = roomTable[this.getRoomID()];
             // arrary of the new room link names
+
             var linkName = ["linkNorth", "linkEast", "linkSouth", "linkWest"];
             // gets the name of the link for the next room
             var link = linkName[this.personDirection];
@@ -138,123 +175,114 @@ class wholeTator extends Phaser.Scene {
             console.log(nextRoom);
             // if the next room is not null go to the next room
             if(nextRoom != null) {
-              this.setRoomID(nextRoom);
+              this.setRoomIDDB(nextRoom);
               this.updateScene();
             }
 
 
           }
-          moveForwardSceneDB() {
-            // gets the current room id information
-            var currentRoom = roomTable[this.getRoomID()];
-            // arrary of the new room link names
-            var linkName = ["linkNorth", "linkEast", "linkSouth", "linkWest"];
-            // gets the name of the link for the next room
-            var link = linkName[this.personDirection];
-            //finds the next link room number and saves it
-            var nextRoom = currentRoom[link];
-            console.log(nextRoom);
-            // if the next room is not null go to the next room
-            if(nextRoom != null) {
-              this.setRoomID(nextRoom);
-              //removes the room data
-              this.currentRoomData = null;
-              this.updateScene();
+        async  moveForwardSceneDB() {
+
+            const linkName = ["Link_North_ID", "Link_East_ID", "Link_South_ID", "Link_West_ID"];
+                      // name of the new link needed
+            const link = linkName[this.personDirection];
+
+            // getting the new room link
+            console.log("Before it calls setRoomLink");
+            const roomID = this.setRoomLink(link);
+            console.log("Finished the moveforward scene DB");
+
+          }
+
+          async setRoomLink(link) {
+            //gets the new room link
+            const roomLink = await this.getRoomLink(link);
+
+            console.log("This is the new room Link " + roomLink);
+            if(roomLink != null || roomLink != 0) {
+              console.log("Going to set new room link to " + roomLink);
+              this.setRoomIDDB(roomLink);
+              this.updateSceneDB();
             }
+
+
+          }
+
+// gets the new room link
+          async getRoomLink(link) {
+            const data = await this.fetchAllRoomData();
+            console.log("This is the new link Direction " + link);
+            console.log(link);
+            console.log(data);
+            console.log("This is the variable for picture " + data["Link_East_ID"]);
+            return data[link];
+
           }
 
 
-          // will remove the background setting
-          updateScene() {
+          async  updateSceneDB() {
+            //    this.backgroundGroup.clear(true);
+            const directionName = ["picNorth", "picEast", "picSouth", "picWest"];
+            const direction = directionName[this.personDirection];
+            //gets the room data
+            await  this.setRoomPicture(direction);
+            console.log("End of the UpdateScene DB ");
+          }
+
+          // new function
+          // gets the current Room data
+          //
+          async setRoomPicture(direction) {
+            const pictureName = await this.getRoomPicture(direction);
             this.backgroundGroup.clear(true);
-
-            //gets the room data
-            //  this.getRoomData(this.getRoomID());
-            // North: 0 , East: 1 , South: 2, West: 3
-            // arrary of direction names
-            var directionName = ["picNorth", "picEast", "picSouth", "picWest"];
-            //Finding out what direction we need to go, saves the direction name
-            var direction = directionName[this.personDirection];
-
-            //gets the room data
-            this.setRoomPicture(direction);
-            //
-            // gets the name of the picture of the next room
-            //
-            var pictureName = roomTable[this.getRoomID()][direction];
-
-
+            console.log("The Picture Name before putting it to the background " + pictureName);
             this.background = this.add.image(400,300,pictureName).setDepth(1);
             this.background.scale = .275;
             this.backgroundGroup.add(this.background);
-            console.log("code hit after background");
+            console.log("code hit Adding Background");
 
-            console.log("update methods picture name" + pictureName);
-
-            //  var pictureFile = "pictures/"+pictureName+".png"
-            //  console.log(pictureFile);
-            console.log("Code Before Setting Background");
-
-        }
-
-
-    async  updateSceneDB() {
-          this.backgroundGroup.clear(true);
-          var directionName = ["picNorth", "picEast", "picSouth", "picWest"];
-          var direction = directionName[this.personDirection];
-          //gets the room data
-          this.setRoomPicture(direction);
-
-          this.background = this.add.image(400,300,this.pictureName).setDepth(1);
-          this.background.scale = .275;
-          this.backgroundGroup.add(this.background);
-          console.log("code hit after background");
-
-        }
-
-        // new function
-        // gets the current Room data
-        //
-  async   setRoomPicture(pictureNameWanted) {
-          if(this.currentRoomData == null) {
-            //fetch the data for this roomID
-            this.fetchAllRoomData();
-        //      this.pictureName = "cafeFront1" ;
-          this.pictureName = await this.currentRoomData[this.direction];
 
           }
-          else {
-            console.log("this is getting the next picture " + this.currentRoomData[this.direction]);
-            this.pictureName = this.currentRoomData[this.direction];
+          async getRoomPicture(direction) {
+            const data = await this.fetchAllRoomData();
+            console.log("This is the Direction " + direction);
+            console.log(data);
+            console.log("This is the variable for picture " + data["picEast"]);
+            return data[direction];
           }
 
-        }
-        // grab the current room data
-    async fetchAllRoomData() {
-          this.urlRequest = ("http://localhost:3000/destination?Room_ID="+this.getRoomIDDB());
-          console.log(this.urlRequest);
-          fetch(this.urlRequest)
-          .then(res => res.json())
-          // getting the new room name for update method
-//          .then(data => roomDataPictureTest = data[0])
-          .then(res => { this.currentRoomData = res[0] ; console.log("fetch all room data "+ this.currentRoomData["picWest"])});
 
-          // going to have to wait for the response
-
-//          while(this.currentRoomData == null) {
-
-  //        }
-  //        console.log("After the fetch and while loop  "+this.currentRoomData);
+          // grab the current room data
+          async fetchAllRoomData() {
+            const urlRequest = ("http://localhost:3000/destination?Room_ID="+this.getRoomIDDB());
+            try {
+              console.log("Fetch Room Data from "+ urlRequest);
+              const res = await fetch(urlRequest);
+              console.log("We Received a Response from the API");
+              return res.json();
+            }
+            catch(err) {
+              console.log(err);
+            }
 
 
-/*
-          var roomDataPictureTest =  "";
-          var roomData;
-          var pictureName = pictureNameWanted;
-          console.log(this.getRoomIDDB());
-          var urlRequest = "";
-          // cases checking what direction the user is
-          switch (this.personDirection) {
+
+            // going to have to wait for the response
+
+            //          while(this.currentRoomData == null) {
+
+            //        }
+            //        console.log("After the fetch and while loop  "+this.currentRoomData);
+
+
+            /*
+            var roomDataPictureTest =  "";
+            var roomData;
+            var pictureName = pictureNameWanted;
+            console.log(this.getRoomIDDB());
+            var urlRequest = "";
+            // cases checking what direction the user is
+            switch (this.personDirection) {
             case 0:
             this.urlRequest = ("http://localhost:3000/destination?Room_ID="+this.getRoomIDDB());
             console.log(this.urlRequest);
@@ -279,9 +307,9 @@ class wholeTator extends Phaser.Scene {
             fetch(this.urlRequest)
             .then(res => res.json())
             // getting the new room name for update method
-          //  .then(data => roomDataPictureTest = JSON.stringify(data[0].picEast))
+            //  .then(data => roomDataPictureTest = JSON.stringify(data[0].picEast))
             .then(data => console.log(JSON.stringify(data[0].picEast)))
-          //  console.log("This is the get RoomData method picture " + roomDataPictureTest)
+            //  console.log("This is the get RoomData method picture " + roomDataPictureTest)
             this.setRoomPicDB(roomDataPictureTest);
 
             console.log("Case 1 in getRoomData method " + this.getRoomPicDB());
@@ -352,71 +380,60 @@ class wholeTator extends Phaser.Scene {
 
 
 
-        setDatabaseConnection() {
+          setDatabaseConnection() {
 
-          const mysql = require('mysql');
-          const connection = mysql.createConnection({
-            host: 'us-cdbr-east-04.cleardb.com',
-            user: 'b3c19bde0098f7',
-            password: '811d1ee5',
-          });
-          connection.connect((err) => {
-            if (err) throw err;
-            console.log('Connected!');
-          });
+            const mysql = require('mysql');
+            const connection = mysql.createConnection({
+              host: 'us-cdbr-east-04.cleardb.com',
+              user: 'b3c19bde0098f7',
+              password: '811d1ee5',
+            });
+            connection.connect((err) => {
+              if (err) throw err;
+              console.log('Connected!');
+            });
 
-          connection.query('use  heroku_8b1f2a27d4def71');
-          connection.query('select * from Room' , (err, res) => {
-            console.log(res)
-          });
-        }
+            connection.query('use  heroku_8b1f2a27d4def71');
+            connection.query('select * from Room' , (err, res) => {
+              console.log(res)
+            });
+          }
 
-        // querys for the name of the next picture
-        getRoomPic(roomDirection, roomID) {
-          connection.query('Select '+roomDirection+ ' FROM Room where id= "'+roomID+'"' , (err, res) => {
-            console.log(res)
-          });
-        }
-        // querys the name of the next scene to load
-        getRoomLink(linkDirection,roomID) {
-          connection.query('Select '+linkDirection+ ' FROM Room where id= "'+id+'"' , (err, res) => {
-            console.log(res)
-          });
-        }
-        // sets the room ID
-        setRoomID(id) {
-          this.roomID = id;
-        }
-        // gets the room ID
-        getRoomID() {
-          return this.roomID;
-        }
 
-        // sets the room ID
-        setRoomIDDB(id) {
-          this.roomIDDB = id;
-        }
-        // gets the room ID
-        getRoomIDDB() {
-          return this.roomIDDB;
-        }
+          // sets the room ID
+          setRoomID(id) {
+            this.roomID = id;
+          }
+          // gets the room ID
+          getRoomID() {
+            return this.roomID;
+          }
 
-        setRoomPicDB(roomPicture) {
-          this.roomPicture = roomPicture;
-        }
-        getRoomPicDB() {
-          return this.roomPicture;
-        }
+          // sets the room ID
+          setRoomIDDB(id) {
+            this.roomIDDB = id;
+          }
+          // gets the room ID
+          getRoomIDDB() {
+            return this.roomIDDB;
+          }
 
-        getCurrentRoomData() {
-          return this.currentRoomData;
-        }
+          setRoomPicDB(roomPicture) {
+            this.roomPicture = roomPicture;
+          }
+          getRoomPicDB() {
+            return this.roomPicture;
+          }
 
-        getpersonDirection() {
-          return this.personDirection;
-        }
-        setpersonDirection(personDirection) {
-          this.personDirection = personDirection;
-        }
+          getCurrentRoomData() {
+            return this.currentRoomData;
+          }
 
-      }
+          getpersonDirection() {
+            return this.personDirection;
+          }
+          setpersonDirection(personDirection) {
+            this.personDirection = personDirection;
+          }
+
+        }

@@ -30,7 +30,7 @@ router.get('/destination', asyncMiddleware(async (req, res, next) => {
   const {Room_ID} = req.query;
   console.log(req.query);
   console.log(Room_ID);
-  const dest = await DestModel.find({"Room_ID": Room_ID});
+  const dest = await DestModel.findOne({"Room_ID": Room_ID});
   console.log(JSON.stringify(dest));
   res.status(200).json(dest);
 }));
