@@ -3,21 +3,51 @@ class wholeTator extends Phaser.Scene {
     super("wholeTator");
   }
   preload() {
+    //cafe
     this.load.image("cafeFront0", "pictures/cafeFront0.png");
     this.load.image("cafeFront1", "pictures/cafeFront1.png");
     this.load.image("cafeFront2", "pictures/cafeFront2.png");
     this.load.image("cafeFront3", "pictures/cafeFront3.png");
     this.load.image("cafeLeft", "pictures/cafeLeft.png");
     this.load.image("cafeRight", "pictures/cafeRight.png");
+
+    //boomer & character
     this.load.image("boomer", "pictures/image2.png");
     this.load.image("person4", "pictures/person4.png");
 
-
+    //navigation buttons & joystidl
     this.load.image("backNavigation", "pictures/backNavigation.png");
     this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
     this.load.image("leftNavigation", "pictures/leftNavigation.png");
     this.load.image("rightNavigation", "pictures/rightNavigation.png");
     this.load.image("joystick", "pictures/joystick.png");
+
+    //1st tator hall hallway -- directly after th130
+    this.load.image("tatorHallwayDeeper0", "pictures/tatorHallwayDeeper0.png")
+    this.load.image("tatorHallwayDeeper1", "pictures/tatorHallwayDeeper1.png")
+    this.load.image("tatorHallwayDeeper2", "pictures/tatorHallwayDeeper2.png")
+    this.load.image("tatorHallwayDeeper3", "pictures/tatorHallwayDeeper3.png")
+
+    //2nd tator hall hallway -- goes after the first hallway
+    this.load.image("thEndofHallway0", "pictures/thEndofHallway0.png")
+    this.load.image("thEndofHallway1", "pictures/thEndofHallway1.png")
+    // this.load.image("thEndofHallway1(1)", "pictures/thEndofHallway1(1).png")
+    this.load.image("thEndofHallway2", "pictures/thEndofHallway2.png")
+
+    //th130 -- inside classroom photo
+    this.load.image("th130", "pictures/th130.png")
+
+    //th107 -- inside classroom photo
+    this.load.image("th107", "pictures/th107.png")
+
+    //th105 -- inside classroom photo
+    this.load.image("th105", "pictures/th105.png")
+
+    //printer
+    this.load.image("thprinter0", "pictures/thpritner0.png")
+    this.load.image("thprinter1", "pictures/thpritner1.png")
+    this.load.image("thprinter2", "pictures/thpritner2.png")
+    this.load.image("thprinter3", "pictures/thpritner3.png")
 
   }
   create() {
