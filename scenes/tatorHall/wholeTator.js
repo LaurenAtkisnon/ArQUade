@@ -54,7 +54,7 @@ class wholeTator extends Phaser.Scene {
     // setting the first room ID
     //
     this.roomTable = 1;
-    this.roomID = 5;
+
     this.roomIDDB = 1;
     this.roomPicture = "Not changed yet";
 
@@ -221,6 +221,23 @@ class wholeTator extends Phaser.Scene {
           }
 
 
+          // grabs the task room data
+          async fetchTaskData() {
+
+            // this is the query request
+            const urlRequest = ("http://localhost:3000/task?Task_ID="+this.getTaskID());
+            try {
+        //      console.log("Fetch Room Data from "+ urlRequest);
+              const res = await fetch(urlRequest);
+      //     console.log("We Received a Response from the API");
+              this.taskData = res.json();
+              return this.taskData;
+            }
+            catch(err) {
+              console.log(err);
+            }
+          }
+
           // sets the room ID
           setRoomID(id) {
             this.roomID = id;
@@ -239,6 +256,17 @@ class wholeTator extends Phaser.Scene {
             return this.roomIDDB;
           }
 
+          //set the Task ID
+          setTaskID(id) {
+            this.taskID = id;
+          }
+
+          //gets the task id
+          getTaskID() {
+            return this.taskID;
+            //gets the task id
+          }
+
           setRoomPicDB(roomPicture) {
             this.roomPicture = roomPicture;
           }
@@ -248,6 +276,9 @@ class wholeTator extends Phaser.Scene {
 
           getCurrentRoomData() {
             return this.currentRoomData;
+          }
+          getTaskData() {
+            return this.taskData;
           }
 
           getpersonDirection() {
