@@ -1,7 +1,10 @@
+
+// suppose to be a class of methods
 class methods {
 
 }
 
+// setting method
 setting() {
   this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
   this.settings_button.scale = .8;

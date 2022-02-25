@@ -3,6 +3,7 @@ class instructions extends Phaser.Scene {
     super("instructions");
   }
 
+// preloads the pictures
   preload() {
     //this is how images get into the "game"
     this.load.image("background", "pictures/image1.png");
@@ -30,6 +31,7 @@ class instructions extends Phaser.Scene {
       this.scene.start('settings');
     });
 
+// string explaining the game
     var content = [
     "Welcome to ArQUade && Welcome to Quinnipiac! Are you ready to play? ",
     "",
@@ -55,27 +57,19 @@ this.add.text(30, 150, content, {
   color: '#000080'});
 
 
-//THIS WORKS
+//home button goes back to home
 this.homeButton = this.add.image(60,580, "home_button").setInteractive();
 this.homeButton.setScale (.6);
-
 this.homeButton.once('pointerdown', () => this.scene.start('bootGame'))
 
-
+// next button goes to next scene which is character Scene
 this.nextButton = this.add.image(740,580,"next_button").setInteractive();
 this.nextButton.setScale(.6);
 this.nextButton.once('pointerdown', () => this.scene.start('characterScene'));
 
 }
 
-getTest(name) {
-  return test;
-  console.log(test);
-}
-setTest(name) {
-  var test = name;
-  console.log(test);
-}
+
 
   }
 

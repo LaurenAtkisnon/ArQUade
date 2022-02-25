@@ -22,18 +22,12 @@ class MenuScene extends Phaser.Scene {
   create() {
     this.loadRoomData();
 
-//play button
-//const play_button = this.add.image(400,300, "play_button");
+
 
 //background
 const background = this.add.image(400,300,"background");
 background.scale = .8;
 
-//new button - to change
-
-//this.joystick = this.add.image(500,400,'joystick').setInteractive();
-//this.joystick.setScale(.8);
-//this.joystick.once('pointerdown', () => this.scene.start('cafeFront'), this);
 
 //boomer
 const boomer = this.add.image(750,480,"boomer");
@@ -46,7 +40,7 @@ welcome.scale = .6;
 // settings button
 const settings_button = this.add.image(75,20, "settings_button");
 settings_button.scale = .8;
-//this.input.on('pointerdown', () => this.scene.start('settings'));
+
 
 // text of boomer talking to the user=
     this.add.text(575, 500,
@@ -55,6 +49,7 @@ settings_button.scale = .8;
       fill: "black"
     });
 
+// the start button goes to instruction scene
 this.startButton = this.add.image(400,300,'play_button').setInteractive();
 this.startButton.setScale(.8);
 this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
