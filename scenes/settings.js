@@ -6,13 +6,9 @@ class settings extends Phaser.Scene {
   preload() {
     this.load.image("background", "pictures/image1.png");
     this.load.image("next_button", "pictures/next_button.png");
-//    this.load.image("back_button", "pictures/back_button.png");
-  //  this.load.image("home_button", "pictures/home_button.png");
-  //  this.load.image("howtoplay_button", "pictures/howtoplay_button.png");
     this.load.image("settings_button", "pictures/settings_button.png");
     this.load.image("home_button", "pictures/home_button.png");
     this.load.image("settingstitle_button", "pictures/settingstitle_button.png");
-
     this.load.image("togglebutton", "pictures/buttontoggle.png")
 
 
@@ -36,10 +32,7 @@ class settings extends Phaser.Scene {
     const settingstitle_button = this.add.image(400, 100, "settingstitle_button");
     settingstitle_button.scale = .6;
 
-    //next_button
-  //  this.nextButton = this.add.image(740,580,"next_button").setInteractive();
-  //  this.nextButton.setScale(.6);
-  //  this.nextButton.once('pointerdown', () => this.scene.start('characterScene'));
+
 
     var content = [
     "Boomer Hints \n \nMusic",

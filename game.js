@@ -7,7 +7,7 @@ window.onload = function() {
     backgroundColor: 0x000000,
     // all the scenes
     scene: [MenuScene, instructions, characterScene, gameEnter, settings,
-      tatorHall, cafeFront, cafeLeft, cafeRight, bookStore, tatorBathroom, tatorHall130,tatorHallway, tatorHallway2,wholeTator,wholeTator1,wholeTator2, wholeTator3]
+      wholeTator]
   //  scene: [MenuScene, instructions, characterScene, gameEnter]
   }
 
