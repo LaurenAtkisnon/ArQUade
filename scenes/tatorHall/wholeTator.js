@@ -299,7 +299,7 @@ class wholeTator extends Phaser.Scene {
             return this.personDirection;
           }
           // sets the person direction
-          
+
           setpersonDirection(personDirection) {
             this.personDirection = personDirection;
           }
