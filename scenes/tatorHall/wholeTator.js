@@ -49,6 +49,27 @@ class wholeTator extends Phaser.Scene {
     this.load.image("thprinter2", "pictures/thprinter2.png")
     this.load.image("thprinter3", "pictures/thprinter3.png")
 
+    //hallway
+      this.load.image("hallway0", "pictures/hallway0.png")
+      this.load.image("hallway1", "pictures/hallway1.png")
+      this.load.image("hallway2", "pictures/hallway2.png")
+      this.load.image("hallway3", "pictures/hallway3.png")
+
+      // bathroom
+      this.load.image("Bathroom0", "pictures/Bathroom0.png")
+      this.load.image("Bathroom1", "pictures/Bathroom1.png")
+      this.load.image("Bathroom2", "pictures/Bathroom2.png")
+      this.load.image("Bathroom3", "pictures/Bathroom3.png")
+
+
+      //bookstore hallway
+
+      //pubhallway
+
+      //tator hallway
+
+      // 130hallway
+
   }
   create() {
 
@@ -153,6 +174,7 @@ class wholeTator extends Phaser.Scene {
             //gets the new room link
             const roomLink = await this.getRoomLink(link);
 
+            console.log("this is the roomLink " + roomLink );
 //            if room link is not null and 0 then we set a new roomID
             if(roomLink != null && roomLink != 0) {
               // sets the new room id
@@ -299,7 +321,7 @@ class wholeTator extends Phaser.Scene {
             return this.personDirection;
           }
           // sets the person direction
-          
+
           setpersonDirection(personDirection) {
             this.personDirection = personDirection;
           }
