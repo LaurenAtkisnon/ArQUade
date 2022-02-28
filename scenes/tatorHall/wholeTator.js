@@ -11,6 +11,12 @@ class wholeTator extends Phaser.Scene {
     this.load.image("cafeLeft", "pictures/cafeLeft.png");
     this.load.image("cafeRight", "pictures/cafeRight.png");
 
+    // cafe hallway
+    this.load.image("cafeHallway0", "pictures/cafeHallway0.png");
+    this.load.image("cafeHallway1", "pictures/cafeHallway1.png");
+    this.load.image("cafeHallway2", "pictures/cafeHallway2.png");
+    this.load.image("cafeHallway3", "pictures/cafeHallway3.png");
+
     //boomer & character
     this.load.image("boomer", "pictures/image2.png");
     this.load.image("person4", "pictures/person4.png");
@@ -35,13 +41,22 @@ class wholeTator extends Phaser.Scene {
     this.load.image("thEndofHallway3", "pictures/thEndofHallway3.png")
 
     //th130 -- inside classroom photo
-    this.load.image("th130", "pictures/th130.png")
+    this.load.image("th130(0)", "pictures/th130(0).png")
+    this.load.image("th130(1)", "pictures/th130(1).png")
+    this.load.image("th130(2)", "pictures/th130(2).png")
+    this.load.image("th130(3)", "pictures/th130(3).png")
 
     //th107 -- inside classroom photo
-    this.load.image("th107", "pictures/th107.png")
+    this.load.image("th107(0)", "pictures/th107(0).png")
+    this.load.image("th107(1)", "pictures/th107(1).png")
+    this.load.image("th107(2)", "pictures/th107(2).png")
+    this.load.image("th107(3)", "pictures/th107(3).png")
 
     //th105 -- inside classroom photo
-    this.load.image("th105", "pictures/th105.png")
+    this.load.image("th105(0)", "pictures/th105(0).png")
+    this.load.image("th105(1)", "pictures/th105(1).png")
+    this.load.image("th105(2)", "pictures/th105(2).png")
+    this.load.image("th105(3)", "pictures/th105(3).png")
 
     //printer
     this.load.image("thprinter0", "pictures/thprinter0.png")
@@ -64,11 +79,34 @@ class wholeTator extends Phaser.Scene {
 
       //bookstore hallway
 
+      this.load.image("bkstHallway0", "pictures/bkstHallway0.png")
+      this.load.image("bkstHallway1", "pictures/bkstHallway1.png")
+      this.load.image("bkstHallway2", "pictures/bkstHallway2.png")
+      this.load.image("bkstHallway3", "pictures/bkstHallway3.png")
       //pubhallway
 
+      this.load.image("pubHallway0", "pictures/pubHallway0.png")
+      this.load.image("pubHallway1", "pictures/pubHallway1.png")
+      this.load.image("pubHallway2", "pictures/pubHallway2.png")
+      this.load.image("pubHallway3", "pictures/pubHallway3.png")
       //tator hallway
+      this.load.image("tatorHallway0", "pictures/tatorHallway0.png")
+      this.load.image("tatorHallway1", "pictures/tatorHallway1.png")
+      this.load.image("tatorHallway2", "pictures/tatorHallway2.png")
+      this.load.image("tatorHallway3", "pictures/tatorHallway3.png")
 
       // 130hallway
+      this.load.image("130Hallway0", "pictures/130Hallway0.png")
+      this.load.image("130Hallway1", "pictures/130Hallway1.png")
+      this.load.image("130Hallway2", "pictures/130Hallway2.png")
+      this.load.image("130Hallway3", "pictures/130Hallway3.png")
+
+      //infront printer pictures
+      this.load.image("infrontprinter0", "pictures/infrontprinter0.png")
+      this.load.image("infrontprinter1", "pictures/infrontprinter1.png")
+      this.load.image("infrontprinter2", "pictures/infrontprinter2.png")
+      this.load.image("infrontprinter3", "pictures/infrontprinter3.png")
+
 
   }
   create() {
