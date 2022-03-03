@@ -1,5 +1,0 @@
-# files for heroku build to ignore
-# https://devcenter.heroku.com/articles/slug-compiler#slug-size
-
-/src
-package-lock.json
