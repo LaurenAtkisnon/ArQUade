@@ -8,7 +8,7 @@ class scene3 extends Phaser.Scene {
   }
 
   create() {
-    const background = this.add.image(400,300,"background");
+    const background = this.add.image(462,334,"background");
     background.scale = 1.0;
 
     const person4 = this.add.image(100,460,"person4");

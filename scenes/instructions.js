@@ -16,11 +16,11 @@ class instructions extends Phaser.Scene {
   }
 
   create() {
-    this.background = this.add.image(400,300,"background");
+    this.background = this.add.image(462,334,"background");
     this.background.scale = 1.0;
 
     //"how to play"
-    const howtoplay_button = this.add.image(400,90,"howtoplay_button");
+    const howtoplay_button = this.add.image(460,90,"howtoplay_button");
     howtoplay_button.scale = .6;
 
     //settings button
@@ -41,8 +41,6 @@ class instructions extends Phaser.Scene {
     "You can use your arrow keys or you can click the buttons located on the screen",
     "to complete your tasks.",
     "",
-    "Boomer the Bobcat will be with you every step of the way and can give you hints",
-    "(Boomer Hints can be toggled off in Settings)",
     "Give it your best bet! Have a blast!",
     "",
     "#GoBobcats",
@@ -50,22 +48,23 @@ class instructions extends Phaser.Scene {
     "We hope you enjoy -- Lauren A & Harrison D",
 ];
 //write the text
-this.add.text(30, 150, content, {
+this.add.text(40, 175, content, {
   fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-  fontSize: '20px',
+  fontSize: '24px',
   align: 'center',
   color: '#000080'});
 
 
 //home button goes back to home
-this.homeButton = this.add.image(60,580, "home_button").setInteractive();
+this.homeButton = this.add.image(60,650, "home_button").setInteractive();
 this.homeButton.setScale (.6);
 this.homeButton.once('pointerdown', () => this.scene.start('bootGame'))
 
 // next button goes to next scene which is character Scene
-this.nextButton = this.add.image(740,580,"next_button").setInteractive();
+this.nextButton = this.add.image(860,650,"next_button").setInteractive();
 this.nextButton.setScale(.6);
-this.nextButton.once('pointerdown', () => this.scene.start('characterScene'));
+//this.nextButton.once('pointerdown', () => this.scene.start('characterScene'));
+this.nextButton.once('pointerdown', () => this.scene.start('gameEnter'));
 
 }
 

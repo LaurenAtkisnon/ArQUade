@@ -18,11 +18,11 @@ class characterScene extends Phaser.Scene {
   }
 
   create() {
-    this.background = this.add.image(400,300,"background");
+    this.background = this.add.image(462,334,"background");
     this.background.scale = 1.0;
 
     //back button
-    this.backButton = this.add.image(60,580, "back_button").setInteractive();
+    this.backButton = this.add.image(60,650, "back_button").setInteractive();
     this.backButton.setScale(.6);
     this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
 
@@ -30,7 +30,7 @@ class characterScene extends Phaser.Scene {
 //    this.input.on('pointerdown', () => this.scene.start('settings'));
 
     //next button
-    this.nextButton = this.add.image(740,580,"next_button").setInteractive();
+    this.nextButton = this.add.image(860,650,"next_button").setInteractive();
     this.nextButton.setScale(.6);
     this.nextButton.once('pointerdown', () => this.scene.start('gameEnter'));
 

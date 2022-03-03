@@ -140,7 +140,7 @@ class wholeTator extends Phaser.Scene {
           navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
 
             // setting up a new background
-            this.backNavigation = this.add.image(400,550, "backNavigation").setInteractive().setDepth(10); //400, 550
+            this.backNavigation = this.add.image(450,550, "backNavigation").setInteractive().setDepth(10); //400, 550
             this.backNavigation.setScale(.3);
             this.backNavigation.on('pointerdown', () => {
               // changing the persons direction
@@ -151,7 +151,7 @@ class wholeTator extends Phaser.Scene {
 
             });
 
-            this.forwardNavigation = this.add.image(400,440, "forwardNavigation").setInteractive().setDepth(10); //400, 450
+            this.forwardNavigation = this.add.image(450,440, "forwardNavigation").setInteractive().setDepth(10); //400, 450
             this.forwardNavigation.setScale(.3);
             this.forwardNavigation.on('pointerdown', () => {
               // calling the move forward scene that uses the database
@@ -161,7 +161,7 @@ class wholeTator extends Phaser.Scene {
 
             });
 
-            this.leftNavigation = this.add.image(325,495, "leftNavigation").setInteractive().setDepth(10); //350. 500
+            this.leftNavigation = this.add.image(375,495, "leftNavigation").setInteractive().setDepth(10); //350. 500
             this.leftNavigation.setScale(.3);
             this.leftNavigation.on('pointerdown', () => {
 
@@ -172,7 +172,7 @@ class wholeTator extends Phaser.Scene {
               this.updateSceneDB();
               /*  this.scene.start(sceneleft),this*/
             });
-            this.rightNavigation = this.add.image(475,495, "rightNavigation").setInteractive().setDepth(10); //450, 500
+            this.rightNavigation = this.add.image(525,495, "rightNavigation").setInteractive().setDepth(10); //450, 500
             this.rightNavigation.setScale(.3);
             this.rightNavigation.on('pointerdown', () => {
                   // setting up the new players direction

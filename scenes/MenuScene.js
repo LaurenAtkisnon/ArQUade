@@ -5,7 +5,7 @@ class MenuScene extends Phaser.Scene {
   }
 // pre load images for scenes
   preload() {
-    this.load.image("background", "pictures/image1.png");
+    this.load.image("homeBackground", "pictures/image11.png");
     this.load.image("boomer", "pictures/image2.png");
     this.load.image("play_button", "pictures/play_button.png");
     this.load.audio("title_music", "audio/shuinvy-childhood.mp3");
@@ -21,33 +21,33 @@ class MenuScene extends Phaser.Scene {
 // method that creates objects for the scene
   create() {
 
-//background
-const background = this.add.image(400,300,"background");
-background.scale = 1.0;
+//background (x,y)
+const background = this.add.image(462,334,"homeBackground");
+// background.scale = 1.0;
 
 
 //boomer
-const boomer = this.add.image(750,480,"boomer");
-boomer.scale = 1.4;
+//const boomer = this.add.image(750,480,"boomer");
+// boomer.scale = 1.4;
 
 // game name
-const welcome = this.add.image(400,100,"welcome");
-welcome.scale = .6;
+// const welcome = this.add.image(400,100,"welcome");
+// welcome.scale = .6;
 
 // settings button
-const settings_button = this.add.image(75,20, "settings_button");
-settings_button.scale = .8;
+//const settings_button = this.add.image(75,20, "settings_button");
+// settings_button.scale = .8;
 
 
 // text of boomer talking to the user=
-    this.add.text(575, 500,
-      "Hi! I'm Boomer,\n I will be here\n to assist you.", {
-      font: "15px Quicksand",
-      fill: "black"
-    });
+//    this.add.text(575, 500,
+//      "Hi! I'm Boomer,\n I will be here\n to assist you.", {
+//      font: "15px Quicksand",
+//      fill: "black"
+//    });
 
 // the start button goes to instruction scene
-this.startButton = this.add.image(400,300,'play_button').setInteractive();
+this.startButton = this.add.image(460,550,'play_button').setInteractive();
 this.startButton.setScale(.8);
 this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
 
