@@ -4,12 +4,12 @@ class scene3 extends Phaser.Scene {
   }
 
   preload() {
-    
+
   }
 
   create() {
     const background = this.add.image(400,300,"background");
-    background.scale = .8;
+    background.scale = 1.0;
 
     const person4 = this.add.image(100,460,"person4");
     person4.scale = .2;

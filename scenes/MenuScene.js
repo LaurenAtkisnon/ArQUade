@@ -20,10 +20,10 @@ class MenuScene extends Phaser.Scene {
 
 // method that creates objects for the scene
   create() {
-    
+
 //background
 const background = this.add.image(400,300,"background");
-background.scale = .8;
+background.scale = 1.0;
 
 
 //boomer

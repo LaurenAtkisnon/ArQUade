@@ -17,7 +17,7 @@ class instructions extends Phaser.Scene {
 
   create() {
     this.background = this.add.image(400,300,"background");
-    this.background.scale = .8;
+    this.background.scale = 1.0;
 
     //"how to play"
     const howtoplay_button = this.add.image(400,90,"howtoplay_button");

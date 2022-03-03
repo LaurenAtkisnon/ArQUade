@@ -36,6 +36,14 @@ router.get('/destination', asyncMiddleware(async (req, res, next) => {
   res.status(200).json(dest);
 }));
 
+// method that will query the database using the Room_ID
+router.get('/allroomdata', asyncMiddleware(async (req, res, next) => {
+
+  const dest = await DestModel.find();
+  console.log(JSON.stringify(dest));
+  res.status(200).json(dest);
+}));
+
 // method that will query the database using the Task_ID
 router.get('/task', asyncMiddleware(async (req, res, next) => {
   const {Task_ID} = req.query;

@@ -17,7 +17,7 @@ class settings extends Phaser.Scene {
 
   create() {
     this.background = this.add.image(400,300,"background");
-    this.background.scale = .8;
+    this.background.scale = 1.0;
 
     const togglebutton1 = this.add.image(500,240, "togglebutton");
     togglebutton1.scale= .8;

@@ -10,7 +10,7 @@ class gameEnter extends Phaser.Scene {
 
   create() {
     const background = this.add.image(400,300,"background");
-    background.scale = .8;
+    background.scale = 1.0;
 
     //const newroad = this.add.image(400,520, "entranceButton");
     //newroad.scale = .7;

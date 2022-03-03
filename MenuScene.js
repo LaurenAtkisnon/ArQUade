@@ -44,7 +44,7 @@ const options_button = this.add.image(175,32, "options_button");
 
 // text of boomer talking to the user=
     this.add.text(520, 400,
-      "Hi! I'm Boomer,\n I will be here\n to assist you.", {
+      "Hi! I'm Boomer,\n I will be here\n to assist u.", {
       font: "25px Arial",
       fill: "black"
     });
