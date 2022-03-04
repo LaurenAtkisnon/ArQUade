@@ -58,6 +58,15 @@ class wholeTator extends Phaser.Scene {
     this.load.image("th105(2)", "pictures/th105(2).png")
     this.load.image("th105(3)", "pictures/th105(3).png")
 
+    //th127
+
+    //th127 -- inside classroom photo
+    this.load.image("th127(0)", "pictures/th127(0).png")
+    this.load.image("th127(1)", "pictures/th127(1).png")
+    this.load.image("th127(2)", "pictures/th127(2).png")
+    this.load.image("th127(3)", "pictures/th127(3).png")
+
+
     //printer
     this.load.image("thprinter0", "pictures/thprinter0.png")
     this.load.image("thprinter1", "pictures/thprinter1.png")
