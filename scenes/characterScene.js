@@ -22,8 +22,8 @@ class characterScene extends Phaser.Scene {
     this.background.scale = 1.0;
 
     //back button
-    this.backButton = this.add.image(60,650, "back_button").setInteractive();
-    this.backButton.setScale(.6);
+    this.backButton = this.add.image(82,643, "back_button").setInteractive();
+    this.backButton.setScale(.8);
     this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
 
     this.setting();

@@ -25,8 +25,8 @@ class settings extends Phaser.Scene {
     togglebutton2.scale = .8;
 
     //settings button
-    const settings_button = this.add.image(75,20, "settings_button");
-    settings_button.scale = .8;
+    const settings_button = this.add.image(100,30, "settings_button");
+  //  settings_button.scale = .8;
 
     //"settings" title
     const settingstitle_button = this.add.image(400, 100, "settingstitle_button");
@@ -51,8 +51,8 @@ this.add.text(200, 220, content, {
 
 //back button
 //back button
-this.backButton = this.add.image(60,650, "back_button").setInteractive();
-this.backButton.setScale(.6);
+this.backButton = this.add.image(82,643, "back_button").setInteractive();
+this.backButton.setScale(.8);
 this.backButton.once('pointerdown', () => this.scene.start(this.getPrev()),this);
 
 

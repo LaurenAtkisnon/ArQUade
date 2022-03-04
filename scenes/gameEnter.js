@@ -22,16 +22,16 @@ class gameEnter extends Phaser.Scene {
     boomer.scale = 2;
 
     //settings button
-     this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
-    this.settings_button.scale = .8;
+     this.settings_button = this.add.image(100,30, "settings_button").setInteractive();
+  //  this.settings_button.scale = .8;
     this.settings_button.once('pointerdown', () => {
       this.scene.get("settings").setPrev("gameEnter");
       this.scene.start('settings');
     });
 
     //back back_button
-    this.backButton = this.add.image(60,650, "back_button").setInteractive();
-    this.backButton.setScale(.6);
+    this.backButton = this.add.image(82,643, "back_button").setInteractive();
+    this.backButton.setScale(.8);
     this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
                                                             // change back to characterScene
 
