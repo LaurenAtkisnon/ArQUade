@@ -63,7 +63,7 @@ class characterScene extends Phaser.Scene {
      this.add.text(200, 100, "Pick A Character & Tell Me Your Name", {
        font: "25px Arial",
        fill: "black"
-     });
+     }).setDepth(10);
 
   }
 

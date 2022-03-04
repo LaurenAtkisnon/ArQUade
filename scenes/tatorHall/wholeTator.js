@@ -113,6 +113,9 @@ class wholeTator extends Phaser.Scene {
 
     // setting the first room id
     this.roomIDDB = 1;
+
+// sets the task ID to 1
+    this.taskID = 1;
     // settinh roomPicture variable
     this.roomPicture = "Not changed yet";
 
@@ -130,10 +133,25 @@ class wholeTator extends Phaser.Scene {
     this.background = this.add.image(400,300,"cafeFront0").setDepth(1);
     this.background.scale = .275;
     this.backgroundGroup.add(this.background);
+
+
+    this.setTaskRoomID();
+    // sets the task description
+    this.setTaskDescription();
+
     //calling the setting button method
     this.setting();
+
+    // calling the task display method
+    this.displayTask();
+
+  //  this.createSpeechBubble(590, 50, 200, 120, this.getTaskDescription());
+    // this.createSpeechBubble(590, 50, 200, 120,'HI');
+
+
+
     // calling the navigation button method
-    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+  this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
 
   }
 
@@ -145,6 +163,7 @@ class wholeTator extends Phaser.Scene {
             this.backNavigation.on('pointerdown', () => {
               // changing the persons direction
               this.personDirection = (this.personDirection + 2) % 4;
+
 
 //              calling the updateScene method that uses the Database
               this.updateSceneDB();
@@ -200,7 +219,7 @@ class wholeTator extends Phaser.Scene {
             const link = linkName[this.personDirection];
 
             //gets the new roomID
-            const roomID = this.setRoomLink(link);
+            const roomID =  this.setRoomLink(link);
 
 
 //            console.log("Finished the moveforward scene DB");
@@ -218,6 +237,8 @@ class wholeTator extends Phaser.Scene {
               this.setRoomIDDB(roomLink);
               // sets currentRoomData to null
               this.currentRoomData = null;
+
+                this.taskText.destroy();
               // calls update scene method
               this.updateSceneDB();
             }
@@ -245,6 +266,8 @@ class wholeTator extends Phaser.Scene {
             //gets the room data
             await  this.setRoomPicture(direction);
 
+            this.displayTask();
+
           }
 
           // new function
@@ -259,7 +282,20 @@ class wholeTator extends Phaser.Scene {
             this.background = this.add.image(400,300,pictureName).setDepth(1);
             this.background.scale = .275;
             this.backgroundGroup.add(this.background);
+            this.createSpeechBubble(300, 250, 200, 120, this.getTaskDescription());
 
+            console.log("this is the roomID " + this.getRoomIDDB());
+
+            // checks if the room they enter is the task room
+            if(this.getRoomIDDB() ==  await this.getTaskRoomID()) {
+              // needs to update to the new task
+              // changes to the next task
+              this.taskID = this.taskID + 1;
+              console.log("Player has reached the task room and assigned a new task ");
+            }
+            else {
+              console.log("Player has not reached the task room" + await this.getTaskRoomID());
+            }
 
 
           }
@@ -296,6 +332,35 @@ class wholeTator extends Phaser.Scene {
 
           }
 
+          // sets the task description
+          async setTaskDescription() {
+            // gets the task description
+            const taskDescription = await this.getTaskDescription();
+
+            // console.log("This is the task Description " + taskDescription);
+          }
+          // gets the task Description
+          async getTaskDescription() {
+            //calls the fetchTask method to get all the task data
+            const data = await this.fetchTaskData();
+// returns the task description
+            return data["Task_Description"];
+          }
+
+          // sets the task destination
+          async setTaskRoomID() {
+            // gets the task description
+            const taskRoomID = await this.getTaskRoomID();
+          //  console.log("This is the task Room ID  " + taskRoomID);
+          }
+
+          // gets the task room id
+          async getTaskRoomID() {
+            //calls the fetchTask method to get all the task data
+            const data = await this.fetchTaskData();
+// returns the task destination
+            return data["Destination"];
+          }
 
           // grabs the task room data
           async fetchTaskData() {
@@ -313,6 +378,15 @@ class wholeTator extends Phaser.Scene {
             catch(err) {
               console.log(err);
             }
+          }
+
+          async displayTask() {
+
+      console.log("This is task Description " +  await this.getTaskDescription() );
+    this.taskText =  this.add.text(600, 25, await this.getTaskDescription(), {
+      font: "25px Arial",
+     fill: "blue"
+   }).setDepth(10);
           }
 
 
@@ -333,8 +407,18 @@ class wholeTator extends Phaser.Scene {
           //gets the task id
           getTaskID() {
             return this.taskID;
-            //gets the task id
+
           }
+
+          // sets  the task description
+////          setTaskDescription(description) {
+//            this.taskDescription = description;
+///          }
+
+          // returns the task Description
+///          getTaskDescription() {
+  //          return this.taskDescription;
+//          }
 
 // sets the room picutre
           setRoomPicDB(roomPicture) {
@@ -362,5 +446,54 @@ class wholeTator extends Phaser.Scene {
           setpersonDirection(personDirection) {
             this.personDirection = personDirection;
           }
+          // function that creates a bubble speeech box
+             createSpeechBubble (x, y, width, height, quote) {
+              var bubbleWidth = width;
+              var bubbleHeight = height;
+              var bubblePadding = 10;
+              var arrowHeight = bubbleHeight / 4;
+
+              var bubble = this.add.graphics({ x: x, y: y });
+
+              //  Bubble shadow
+              bubble.fillStyle(0x222222, 0.5);
+              bubble.fillRoundedRect(6, 6, bubbleWidth, bubbleHeight, 16);
+
+              //  Bubble color
+              bubble.fillStyle(0xffffff, 1);
+
+              //  Bubble outline line style
+              bubble.lineStyle(4, 0x565656, 1);
+
+              //  Bubble shape and outline
+              bubble.strokeRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+              bubble.fillRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+
+              //  Calculate arrow coordinates
+              var point1X = Math.floor(bubbleWidth / 7);
+              var point1Y = bubbleHeight;
+              var point2X = Math.floor((bubbleWidth / 7) * 2);
+              var point2Y = bubbleHeight;
+              var point3X = Math.floor(bubbleWidth / 7);
+              var point3Y = Math.floor(bubbleHeight + arrowHeight);
+
+              //  Bubble arrow shadow
+              bubble.lineStyle(4, 0x222222, 0.5);
+              bubble.lineBetween(point2X - 1, point2Y + 6, point3X + 2, point3Y);
+
+              //  Bubble arrow fill
+              bubble.fillTriangle(point1X, point1Y, point2X, point2Y, point3X, point3Y);
+              bubble.lineStyle(2, 0x565656, 1);
+              bubble.lineBetween(point2X, point2Y, point3X, point3Y);
+              bubble.lineBetween(point1X, point1Y, point3X, point3Y);
+
+              var content = this.add.text(0, 0, quote, { fontFamily: 'Arial', fontSize: 20, color: '#000000', align: 'center', wordWrap: { width: bubbleWidth - (bubblePadding * 2) } });
+
+              var b = content.getBounds();
+
+              content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
+              console.log("Bubble is Created");
+          }
+
 
         }
