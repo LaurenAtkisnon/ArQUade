@@ -9,7 +9,7 @@ class gameEnter extends Phaser.Scene {
   }
 
   create() {
-    const background = this.add.image(400,300,"background");
+    const background = this.add.image(462,334,"background");
     background.scale = 1.0;
 
     //const newroad = this.add.image(400,520, "entranceButton");
@@ -18,30 +18,31 @@ class gameEnter extends Phaser.Scene {
     const person4 = this.add.image(100,460,"person4");
     person4.scale = .1;
 
-    const boomer = this.add.image(700,400,"boomer");
+    const boomer = this.add.image(825,475,"boomer");
     boomer.scale = 2;
 
     //settings button
-     this.settings_button = this.add.image(75,20, "settings_button").setInteractive();
-    this.settings_button.scale = .8;
+     this.settings_button = this.add.image(100,30, "settings_button").setInteractive();
+  //  this.settings_button.scale = .8;
     this.settings_button.once('pointerdown', () => {
       this.scene.get("settings").setPrev("gameEnter");
       this.scene.start('settings');
     });
 
     //back back_button
-    this.backButton = this.add.image(60,580, "back_button").setInteractive();
-    this.backButton.setScale(.6);
-    this.backButton.once('pointerdown', () => this.scene.start('characterScene'),this);
+    this.backButton = this.add.image(82,643, "back_button").setInteractive();
+    this.backButton.setScale(.8);
+    this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
+                                                            // change back to characterScene
 
     //entranceButton
-    this.entranceButton = this.add.image(400,520,"entranceButton").setInteractive();
+    this.entranceButton = this.add.image(430,320,"entranceButton").setInteractive();
     this.entranceButton.setScale(.6);
     this.entranceButton.once('pointerdown', () => this.scene.start('wholeTator'));
 
-   this.createSpeechBubble(590, 50, 200, 120, 'Hey Professor Duncan! Welcome to ARQUADE!');
-   this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
-   this.createSpeechBubble(375, 200, 220, 220, "QUICK REMINDER: \n This a task-based game. You will be given a set of tasks you will need to complete in order to complete your first day as student! Good Luck!");
+//   this.createSpeechBubble(670, 50, 200, 120, 'Hey and Welcome to ArQUade!');
+  // this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
+   this.createSpeechBubble(670, 50, 200, 220, "QUICK REMINDER: \n This a task-based game. You will be given a set of tasks you will need to complete in order to complete your first day as student! Good Luck!");
 
 
 //   this.input.on('pointerdown', () => this.scene.start('campusScene'));
