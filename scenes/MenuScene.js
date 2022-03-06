@@ -47,7 +47,7 @@ const background = this.add.image(462,334,"homeBackground");
 //    });
 
 // the start button goes to instruction scene
-this.startButton = this.add.image(460,550,'play_button').setInteractive();
+this.startButton = this.add.image(450,500,'play_button').setInteractive();
 this.startButton.setScale(.8);
 this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
 

@@ -352,14 +352,14 @@ class wholeTator extends Phaser.Scene {
 
   async displayTask() {
     console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText =  this.add.text(300, 15, await this.getTaskDescription(), { //600, 25
+    this.taskText =  this.add.text(450, 15, await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
     color: '#ffffff',
-//    align: 'center',
-    backgroundColor: '#2075d6'
+    align: 'left',
+    backgroundColor: '#418fde'
     }).setDepth(10);
   }
   // sets the room ID

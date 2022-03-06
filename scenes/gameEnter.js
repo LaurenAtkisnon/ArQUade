@@ -6,6 +6,7 @@ class gameEnter extends Phaser.Scene {
   preload() {
     this.load.image("entranceButton", "pictures/entranceButton.png");
     this.load.image("back_button", "pictures/back_button");
+    this.load.image("entranceButtonSOCE", "pictures/entranceButtonSOCE.png");
   }
 
   create() {
@@ -35,10 +36,15 @@ class gameEnter extends Phaser.Scene {
     this.backButton.once('pointerdown', () => this.scene.start('instructions'),this);
                                                             // change back to characterScene
 
-    //entranceButton
-    this.entranceButton = this.add.image(430,320,"entranceButton").setInteractive();
+    //entranceButton -- student center
+    this.entranceButton = this.add.image(430,220,"entranceButton").setInteractive();
     this.entranceButton.setScale(.6);
     this.entranceButton.once('pointerdown', () => this.scene.start('wholeTator'));
+
+    //entranceButton -- SOCE
+    this.entranceButtonSOCE = this.add.image(430,420,"entranceButtonSOCE").setInteractive();
+    this.entranceButtonSOCE.setScale(.6);
+  //  this.entranceButtonSOCE.once('pointerdown', () => this.scene.start('wholeTator'));
 
 //   this.createSpeechBubble(670, 50, 200, 120, 'Hey and Welcome to ArQUade!');
   // this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");

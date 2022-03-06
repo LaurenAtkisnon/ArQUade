@@ -20,7 +20,7 @@ class instructions extends Phaser.Scene {
     this.background.scale = 1.0;
 
     //"how to play"
-    const howtoplay_button = this.add.image(460,90,"howtoplay_button");
+    const howtoplay_button = this.add.image(460,115,"howtoplay_button");
     howtoplay_button.scale = .6;
 
     //settings button
@@ -47,13 +47,14 @@ class instructions extends Phaser.Scene {
     "",
     "We hope you enjoy -- Lauren A & Harrison D",
 ];
-//write the text
+//write the text --   fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 this.add.text(40, 175, content, {
-  fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+  fontFamily: 'Times, "Mongolian Baliti", serif',
   fontSize: '24px',
   align: 'center',
-  color: '#000080'});
+  color: '#000080',
 
+});
 
 //home button goes back to home
 this.homeButton = this.add.image(82,643, "home_button").setInteractive();
