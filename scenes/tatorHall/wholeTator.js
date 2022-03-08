@@ -154,6 +154,9 @@ class wholeTator extends Phaser.Scene {
     // calling the task display method
     this.displayTask();
 
+    // calling the room Description
+    this.displayRoomDescription();
+
     //this.createSpeechBubble(590, 50, 200, 120, this.getTaskDescription());
     // this.createSpeechBubble(590, 50, 200, 120,'HI');
     // calling the navigation button method
@@ -255,6 +258,7 @@ class wholeTator extends Phaser.Scene {
     //gets the room data
     await  this.setRoomPicture(direction);
     this.displayTask();
+    this.displayRoomDescription();
   }
   // new function
   // gets the current Room data
@@ -290,6 +294,12 @@ class wholeTator extends Phaser.Scene {
     // returns the new scene picture using the data and direction which is name for example picNorth
     return data[direction];
   }
+  // gets the roomDescription which will explain what room there in
+async getRoomDescription() {
+  const data = await this.fetchAllRoomData();
+  //returns the room Description
+  return data["Room_Description"];
+}
 
   // grab the current room data
   async fetchAllRoomData() {
@@ -361,7 +371,7 @@ class wholeTator extends Phaser.Scene {
 
   async displayTask() {
     console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText =  this.add.text(450, 15, await this.getTaskDescription(), { //600, 25
+    this.taskText =  this.add.text(450, 85, await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
@@ -371,6 +381,21 @@ class wholeTator extends Phaser.Scene {
     backgroundColor: '#418fde'
     }).setDepth(10);
   }
+  async displayRoomDescription() {
+    console.log("This is room Description " +  await this.getRoomDescription() );
+    this.roomText =  this.add.text(250, 15, await this.getRoomDescription(), { //600, 25
+    //  font: "bold 25px Arial",
+    //  fill: "white"
+    fontSize: '25px',
+    fontFamily: 'Courier',
+    color: '#ffffff',
+    align: 'left',
+    backgroundColor: '#418fde'
+    }).setDepth(10);
+}
+
+
+
   // sets the room ID
   setRoomIDDB(id) {
     this.roomIDDB = id;
