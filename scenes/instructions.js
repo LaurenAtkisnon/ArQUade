@@ -24,8 +24,8 @@ class instructions extends Phaser.Scene {
     howtoplay_button.scale = .6;
 
     //buttons on page
-    this.instructionButtons = this.add.image(100, 350, "instructionButtons");
-    this.instructionButtons.scale = .6;
+    this.instructionButtons = this.add.image(125, 315, "instructionButtons");
+    this.instructionButtons.scale = .4;
 
     //settings button | scale was at .8
     this.settings_button = this.add.image(100,30, "settings_button").setInteractive();
@@ -47,19 +47,18 @@ class instructions extends Phaser.Scene {
       "Use your arrow keys or Use the arrow buttons on screen",
       "to complete your tasks.",
       "",
-      "Give it your best bet! Have a blast!",
-      "",
       "#GoBobcats",
       "",
-      "We hope you enjoy -- Lauren A & Harrison D",
+      "Best of Luck from Lauren A & Harrison D",
     ];
     //write the text --   fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-    this.add.text(250, 175, content, {
+    this.add.text(200, 175, content, {
       fontFamily: 'Comic Sans MS',
-      fontSize: '23px',
+      fontSize: '25px',
+      fontStyle: 'bold',
       fontVariant: 'small-caps',
       align: 'left',
-      color: '#000080',
+      color: '#FFFFFF',
 
 
     });
