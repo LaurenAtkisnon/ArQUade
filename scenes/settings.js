@@ -10,9 +10,6 @@ class settings extends Phaser.Scene {
     this.load.image("home_button", "pictures/home_button.png");
     this.load.image("settingstitle_button", "pictures/settingstitle_button.png");
     this.load.image("togglebutton", "pictures/buttontoggle.png")
-
-
-
   }
 
   create() {
