@@ -151,17 +151,21 @@ class wholeTator extends Phaser.Scene {
     //calling the setting button method
     this.setting();
 
-    // calling the task display method
-    this.displayTask();
+    this.createDisplayTask();
+    this.createDisplayRoomDescription();
 
-    // calling the room Description
-    this.displayRoomDescription();
-
-    //this.createSpeechBubble(590, 50, 200, 120, this.getTaskDescription());
-    // this.createSpeechBubble(590, 50, 200, 120,'HI');
     // calling the navigation button method
     this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
   }
+//
+//  update() {
+
+//    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+
+//  }
+
+
+
   navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
 
     // setting up a new background
@@ -237,7 +241,7 @@ class wholeTator extends Phaser.Scene {
       this.setRoomIDDB(roomLink);
       // sets currentRoomData to null
       this.currentRoomData = null;
-      this.taskText.destroy();
+
       // calls update scene method
       this.updateSceneDB();
     }
@@ -257,8 +261,10 @@ class wholeTator extends Phaser.Scene {
     const direction = directionName[this.personDirection];
     //gets the room data
     await  this.setRoomPicture(direction);
-    this.displayTask();
-    this.displayRoomDescription();
+    // updates the task if needed
+//    this.updateDisplayTask();
+    // updates the room description if needed
+    this.updateDisplayRoomDescription();
   }
   // new function
   // gets the current Room data
@@ -271,8 +277,6 @@ class wholeTator extends Phaser.Scene {
     this.background = this.add.image(400,300,pictureName).setDepth(1);
     this.background.scale = .275;
     this.backgroundGroup.add(this.background);
-    this.createSpeechBubble(300, 250, 200, 120, this.getTaskDescription());
-
     console.log("this is the roomID " + this.getRoomIDDB());
 
     // checks if the room they enter is the task room
@@ -280,6 +284,8 @@ class wholeTator extends Phaser.Scene {
       // needs to update to the new task
       // changes to the next task
       this.taskID = this.taskID + 1;
+      // updates the task if needed
+      this.updateDisplayTask();
       console.log("Player has reached the task room and assigned a new task ");
     }
     else {
@@ -369,7 +375,8 @@ async getRoomDescription() {
     }
   }
 
-  async displayTask() {
+// creates the task display
+  async createDisplayTask() {
     console.log("This is task Description " +  await this.getTaskDescription() );
     this.taskText =  this.add.text(450, 85, await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
@@ -381,7 +388,13 @@ async getRoomDescription() {
     backgroundColor: '#418fde'
     }).setDepth(10);
   }
-  async displayRoomDescription() {
+  // updates the Task
+  async updateDisplayTask() {
+    console.log("This is task Description " +  await this.getTaskDescription() );
+    this.taskText.setText(await this.getTaskDescription());
+  }
+  // creates the room Descrisption
+  async createDisplayRoomDescription() {
     console.log("This is room Description " +  await this.getRoomDescription() );
     this.roomText =  this.add.text(250, 15, await this.getRoomDescription(), { //600, 25
     //  font: "bold 25px Arial",
@@ -393,6 +406,13 @@ async getRoomDescription() {
     backgroundColor: '#418fde'
     }).setDepth(10);
 }
+
+// updates the roomDescription
+async updateDisplayRoomDescription() {
+  console.log("This is room Description " +  await this.getRoomDescription() );
+  this.roomText.setText(await this.getRoomDescription());
+}
+
 
 
 
