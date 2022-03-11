@@ -154,6 +154,9 @@ class wholeTator extends Phaser.Scene {
     this.createDisplayTask();
     this.createDisplayRoomDescription();
 
+      //  need this if u wwant to load outside preload
+    //    this.load.start();
+
     // calling the navigation button method
     this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
   }
@@ -239,8 +242,11 @@ class wholeTator extends Phaser.Scene {
     if(roomLink != null && roomLink != 0) {
       // sets the new room id
       this.setRoomIDDB(roomLink);
+
       // sets currentRoomData to null
       this.currentRoomData = null;
+
+    await this.loadRoomPictures();
 
       // calls update scene method
       this.updateSceneDB();
@@ -305,6 +311,25 @@ async getRoomDescription() {
   const data = await this.fetchAllRoomData();
   //returns the room Description
   return data["Room_Description"];
+}
+
+// gets all the room pictures
+async loadRoomPictures() {
+  const data = await this.fetchAllRoomData();
+  const picNorthName = data["picNorth"];
+  const picEastName = data["picEast"];
+  const picSouthName = data["picSouth"];
+  const picWestName =  data["picWest"];
+
+  //console.log("This is the east picture name " + picEastName);
+//  const testString = ("pictures/"+picEastName+".png");
+  //console.log(testString);
+//  this.load.image("bkstHallway1", "pictures/bkstHallway1.png")
+  this.load.image(picNorthName, "pictures/"+picNorthName+".png");
+  this.load.image(picEastName, "pictures/"+picEastName+".png");
+  this.load.image(picSouthName, "pictures/"+picSouthName+".png");
+  this.load.image(picWestName, "pictures/"+picWestName+".png");
+  this.load.start();
 }
 
   // grab the current room data
