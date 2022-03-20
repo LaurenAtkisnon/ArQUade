@@ -8,14 +8,14 @@ class wholeTator extends Phaser.Scene {
     this.load.image("cafeFront1", "pictures/cafeFront1.png");
     this.load.image("cafeFront2", "pictures/cafeFront2.png");
     this.load.image("cafeFront3", "pictures/cafeFront3.png");
-    this.load.image("cafeLeft", "pictures/cafeLeft.png");
-    this.load.image("cafeRight", "pictures/cafeRight.png");
+  //  this.load.image("cafeLeft", "pictures/cafeLeft.png");
+//    this.load.image("cafeRight", "pictures/cafeRight.png");
 
-    // cafe hallway
-    this.load.image("cafeHallway0", "pictures/cafeHallway0.png");
-    this.load.image("cafeHallway1", "pictures/cafeHallway1.png");
-    this.load.image("cafeHallway2", "pictures/cafeHallway2.png");
-    this.load.image("cafeHallway3", "pictures/cafeHallway3.png");
+// cafe hallway
+//    this.load.image("cafeHallway0", "pictures/cafeHallway0.png");
+//    this.load.image("cafeHallway1", "pictures/cafeHallway1.png");
+//    this.load.image("cafeHallway2", "pictures/cafeHallway2.png");
+//    this.load.image("cafeHallway3", "pictures/cafeHallway3.png");
 
     //boomer & character
     this.load.image("boomer", "pictures/image2.png");
@@ -27,7 +27,7 @@ class wholeTator extends Phaser.Scene {
     this.load.image("leftNavigation", "pictures/leftNavigation.png");
     this.load.image("rightNavigation", "pictures/rightNavigation.png");
     this.load.image("joystick", "pictures/joystick.png");
-
+ /*
     //1st tator hall hallway -- directly after th130
     this.load.image("tatorHallwayDeeper0", "pictures/tatorHallwayDeeper0.png")
     this.load.image("tatorHallwayDeeper1", "pictures/tatorHallwayDeeper1.png")
@@ -91,7 +91,7 @@ class wholeTator extends Phaser.Scene {
     this.load.image("bkstHallway0", "pictures/bkstHallway0.png")
     this.load.image("bkstHallway1", "pictures/bkstHallway1.png")
     this.load.image("bkstHallway2", "pictures/bkstHallway2.png")
-    this.load.image("bkstHallway3", "pictures/bkstHallway3.png")
+   this.load.image("bkstHallway3", "pictures/bkstHallway3.png")
     //pubhallway
 
     this.load.image("pubHallway0", "pictures/pubHallway0.png")
@@ -115,7 +115,7 @@ class wholeTator extends Phaser.Scene {
     this.load.image("infrontprinter1", "pictures/infrontprinter1.png")
     this.load.image("infrontprinter2", "pictures/infrontprinter2.png")
     this.load.image("infrontprinter3", "pictures/infrontprinter3.png")
-
+    */
 
   }
   create() {
@@ -156,6 +156,9 @@ class wholeTator extends Phaser.Scene {
 
       //  need this if u wwant to load outside preload
     //    this.load.start();
+
+    this.loadRoomPictures(2);
+
 
     // calling the navigation button method
     this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
@@ -237,7 +240,7 @@ class wholeTator extends Phaser.Scene {
   async setRoomLink(link) {
     //gets the new room link
     const roomLink = await this.getRoomLink(link);
-    console.log("this is the roomLink " + roomLink );
+    //console.log("this is the roomLink " + roomLink );
     //if room link is not null and 0 then we set a new roomID
     if(roomLink != null && roomLink != 0) {
       // sets the new room id
@@ -246,7 +249,8 @@ class wholeTator extends Phaser.Scene {
       // sets currentRoomData to null
       this.currentRoomData = null;
 
-    await this.loadRoomPictures();
+      // loads images
+    //   this.loadRoomPictures();
 
       // calls update scene method
       this.updateSceneDB();
@@ -265,6 +269,9 @@ class wholeTator extends Phaser.Scene {
     const directionName = ["picNorth", "picEast", "picSouth", "picWest"];
     // gets which direction name to get using the persons direction
     const direction = directionName[this.personDirection];
+
+
+
     //gets the room data
     await  this.setRoomPicture(direction);
     // updates the task if needed
@@ -283,7 +290,7 @@ class wholeTator extends Phaser.Scene {
     this.background = this.add.image(400,300,pictureName).setDepth(1);
     this.background.scale = .275;
     this.backgroundGroup.add(this.background);
-    console.log("this is the roomID " + this.getRoomIDDB());
+  //  console.log("this is the roomID " + this.getRoomIDDB());
 
     // checks if the room they enter is the task room
     if(this.getRoomIDDB() ==  await this.getTaskRoomID()) {
@@ -295,7 +302,7 @@ class wholeTator extends Phaser.Scene {
       console.log("Player has reached the task room and assigned a new task ");
     }
     else {
-      console.log("Player has not reached the task room" + await this.getTaskRoomID());
+    //  console.log("Player has not reached the task room" + await this.getTaskRoomID());
     }
   }
 
@@ -314,22 +321,45 @@ async getRoomDescription() {
 }
 
 // gets all the room pictures
-async loadRoomPictures() {
-  const data = await this.fetchAllRoomData();
+async loadRoomPictures(id) {
+
+  const imageID = id;
+
+  const data = await this.fetchAllRoomDataImages(imageID);
+
   const picNorthName = data["picNorth"];
   const picEastName = data["picEast"];
   const picSouthName = data["picSouth"];
   const picWestName =  data["picWest"];
 
-  //console.log("This is the east picture name " + picEastName);
-//  const testString = ("pictures/"+picEastName+".png");
-  //console.log(testString);
-//  this.load.image("bkstHallway1", "pictures/bkstHallway1.png")
+
+  console.log("This is the room id " + this.imageID);
+    console.log("This is the north picture name " + picNorthName);
+  console.log("This is the east picture name " + picEastName);
+  console.log("This is the west picture name " + picWestName);
+  console.log("This is the east picture name " + picSouthName);
+
+if(picNorthName != "") {
   this.load.image(picNorthName, "pictures/"+picNorthName+".png");
+}
+if(picEastName != "") {
   this.load.image(picEastName, "pictures/"+picEastName+".png");
+}
+if(picSouthName != "") {
   this.load.image(picSouthName, "pictures/"+picSouthName+".png");
+}
+if(picWestName != "") {
   this.load.image(picWestName, "pictures/"+picWestName+".png");
+}
   this.load.start();
+
+  this.imageID = imageID + 1 ;
+
+// if imageID is less then 17 then get next set of images
+  if(this.imageID < 18) {
+    this.loadRoomPictures(this.getImageID());
+  }
+
 }
 
   // grab the current room data
@@ -347,6 +377,20 @@ async loadRoomPictures() {
       this.currentRoomData = res.json();
       // returns the currentRoomData
       return this.currentRoomData;
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
+
+  async fetchAllRoomDataImages(id) {
+
+    // api url
+    const urlRequestImages = ("http://localhost:3000/destination?Room_ID="+id);
+    try {
+      //      fetch request using the api url
+      const res = await fetch(urlRequestImages);
+      return res.json();
     }
     catch(err) {
       console.log(err);
@@ -438,9 +482,6 @@ async updateDisplayRoomDescription() {
   this.roomText.setText(await this.getRoomDescription());
 }
 
-
-
-
   // sets the room ID
   setRoomIDDB(id) {
     this.roomIDDB = id;
@@ -448,6 +489,15 @@ async updateDisplayRoomDescription() {
   // gets the room ID
   getRoomIDDB() {
     return this.roomIDDB;
+  }
+
+  // sets the room ID
+  setImageID(id) {
+    this.imageID = id;
+  }
+  // gets the room ID
+  getImageID() {
+    return this.imageID;
   }
 
   //set the Task ID
