@@ -447,13 +447,14 @@ if(picWestName != "") {
 // creates the task display
   async createDisplayTask() {
     console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText =  this.add.text(450, 45, await this.getTaskDescription(), { //600, 25
+    this.taskText =  this.add.text(400, 45, "Task: " +  await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
     color: '#ffb736',
-    align: 'left',
+//    align: 'Right',
+    borderStyle: 'dotted dashed solid double',
     backgroundColor: '#418fde'
     }).setDepth(10);
   }
@@ -465,13 +466,13 @@ if(picWestName != "") {
   // creates the room Descrisption
   async createDisplayRoomDescription() {
     console.log("This is room Description " +  await this.getRoomDescription() );
-    this.roomText =  this.add.text(450, 15, await this.getRoomDescription(), { //600, 25
+    this.roomText =  this.add.text(430, 15, "Location: " +   await this.getRoomDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
     color: '#ffb736',
-    align: 'left',
+//    align: 'Right',
     backgroundColor: '#418fde'
     }).setDepth(10);
 }
@@ -479,7 +480,7 @@ if(picWestName != "") {
 // updates the roomDescription
 async updateDisplayRoomDescription() {
   console.log("This is room Description " +  await this.getRoomDescription() );
-  this.roomText.setText(await this.getRoomDescription());
+  this.roomText.setText("Location: " + await this.getRoomDescription());
 }
 
   // sets the room ID
