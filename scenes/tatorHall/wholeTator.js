@@ -403,12 +403,12 @@ async loadRoomPictures() {
 // creates the task display
   async createDisplayTask() {
     console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText =  this.add.text(450, 85, await this.getTaskDescription(), { //600, 25
+    this.taskText =  this.add.text(450, 45, await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
-    color: '#ffffff',
+    color: '#ffb736',
     align: 'left',
     backgroundColor: '#418fde'
     }).setDepth(10);
@@ -421,12 +421,12 @@ async loadRoomPictures() {
   // creates the room Descrisption
   async createDisplayRoomDescription() {
     console.log("This is room Description " +  await this.getRoomDescription() );
-    this.roomText =  this.add.text(250, 15, await this.getRoomDescription(), { //600, 25
+    this.roomText =  this.add.text(450, 15, await this.getRoomDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
-    color: '#ffffff',
+    color: '#ffb736',
     align: 'left',
     backgroundColor: '#418fde'
     }).setDepth(10);
