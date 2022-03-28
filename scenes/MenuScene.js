@@ -14,7 +14,26 @@ class MenuScene extends Phaser.Scene {
     this.load.image("welcome", "pictures/welcome.png");
     this.load.image("settings_button", "pictures/settings_button.png");
     this.load.image("joystick", "pictures/joystick.png");
+  //  this.load.image("backNavigation", "pictures/backNavigation.png");
+  //  this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
+  //  this.load.image("leftNavigation", "pictures/leftNavigation.png");
+  //  this.load.image("rightNavigation", "pictures/rightNavigation.png");
+//    this.load.image("joystick", "pictures/joystick.png");
+//    this.load.image("cafeFront0", "pictures/cafeFront0.png");
+  //  this.load.image("cafeFront1", "pictures/cafeFront1.png");
+//    this.load.image("cafeFront2", "pictures/cafeFront2.png");
+//    this.load.image("cafeFront3", "pictures/cafeFront3.png");
 
+this.load.image("cafeFront0", "pictures/cafeFront0.png");
+this.load.image("cafeFront1", "pictures/cafeFront1.png");
+this.load.image("cafeFront2", "pictures/cafeFront2.png");
+this.load.image("cafeFront3", "pictures/cafeFront3.png");
+
+this.load.image("backNavigation", "pictures/backNavigation.png");
+this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
+this.load.image("leftNavigation", "pictures/leftNavigation.png");
+this.load.image("rightNavigation", "pictures/rightNavigation.png");
+this.load.image("joystick", "pictures/joystick.png");
   //  this.load.spritesheet('')
   }
 
@@ -23,6 +42,7 @@ class MenuScene extends Phaser.Scene {
 
 //background (x,y)
 const background = this.add.image(462,334,"homeBackground");
+
 // background.scale = 1.0;
 
 

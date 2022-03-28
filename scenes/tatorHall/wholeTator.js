@@ -4,10 +4,10 @@ class wholeTator extends Phaser.Scene {
   }
   async preload() {
     //cafe
-    this.load.image("cafeFront0", "pictures/cafeFront0.png");
-    this.load.image("cafeFront1", "pictures/cafeFront1.png");
-    this.load.image("cafeFront2", "pictures/cafeFront2.png");
-    this.load.image("cafeFront3", "pictures/cafeFront3.png");
+  //  this.load.image("cafeFront0", "pictures/cafeFront0.png");
+  //  this.load.image("cafeFront1", "pictures/cafeFront1.png");
+  //  this.load.image("cafeFront2", "pictures/cafeFront2.png");
+  //  this.load.image("cafeFront3", "pictures/cafeFront3.png");
   //  this.load.image("cafeLeft", "pictures/cafeLeft.png");
 //    this.load.image("cafeRight", "pictures/cafeRight.png");
 
@@ -18,15 +18,15 @@ class wholeTator extends Phaser.Scene {
 //    this.load.image("cafeHallway3", "pictures/cafeHallway3.png");
 
     //boomer & character
-    this.load.image("boomer", "pictures/image2.png");
-    this.load.image("person4", "pictures/person4.png");
+//    this.load.image("boomer", "pictures/image2.png");
+//    this.load.image("person4", "pictures/person4.png");
 
     //navigation buttons & joystidl
-    this.load.image("backNavigation", "pictures/backNavigation.png");
-    this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
-    this.load.image("leftNavigation", "pictures/leftNavigation.png");
-    this.load.image("rightNavigation", "pictures/rightNavigation.png");
-    this.load.image("joystick", "pictures/joystick.png");
+//    this.load.image("backNavigation", "pictures/backNavigation.png");
+//    this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
+//    this.load.image("leftNavigation", "pictures/leftNavigation.png");
+//    this.load.image("rightNavigation", "pictures/rightNavigation.png");
+//    this.load.image("joystick", "pictures/joystick.png");
  /*
     //1st tator hall hallway -- directly after th130
     this.load.image("tatorHallwayDeeper0", "pictures/tatorHallwayDeeper0.png")
@@ -446,8 +446,8 @@ if(picWestName != "") {
 
 // creates the task display
   async createDisplayTask() {
-    console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText =  this.add.text(400, 45, "Task: " +  await this.getTaskDescription(), { //600, 25
+    console.log("This is task Description" +  await this.getTaskDescription() );
+    this.taskText =  this.add.text(400, 45, "Task:" +  await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
@@ -460,13 +460,13 @@ if(picWestName != "") {
   }
   // updates the Task
   async updateDisplayTask() {
-    console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText.setText(await this.getTaskDescription());
+    console.log("This is task Description" +  await this.getTaskDescription() );
+    this.taskText.setText("Task: " +await this.getTaskDescription());
   }
   // creates the room Descrisption
   async createDisplayRoomDescription() {
-    console.log("This is room Description " +  await this.getRoomDescription() );
-    this.roomText =  this.add.text(430, 15, "Location: " +   await this.getRoomDescription(), { //600, 25
+    console.log("This is room Description" +  await this.getRoomDescription() );
+    this.roomText =  this.add.text(400, 15, "Location:" +   await this.getRoomDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
@@ -479,7 +479,7 @@ if(picWestName != "") {
 
 // updates the roomDescription
 async updateDisplayRoomDescription() {
-  console.log("This is room Description " +  await this.getRoomDescription() );
+  console.log("This is room Description" +  await this.getRoomDescription() );
   this.roomText.setText("Location: " + await this.getRoomDescription());
 }
 

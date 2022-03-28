@@ -13,6 +13,11 @@ class instructions extends Phaser.Scene {
     this.load.image("settings_button", "pictures/settings_button.png");
     this.load.image("home_button", "pictures/home_button.png");
     this.load.image("instructionButtons", "pictures/instructionButtons.png");
+//    this.load.image("cafeFront0", "pictures/cafeFront0.png");
+//    this.load.image("cafeFront1", "pictures/cafeFront1.png");
+//    this.load.image("cafeFront2", "pictures/cafeFront2.png");
+//    this.load.image("cafeFront3", "pictures/cafeFront3.png");
+
   }
 
   create() {
@@ -43,9 +48,8 @@ class instructions extends Phaser.Scene {
     //  "Your goal is to make it through the first day of classes in the School of Engineering",
     //  "and Computing. Complete the tasks, figure your way through campus,",
     //  "outlined on the right-hand side navigation bar.",
-      "Tasks will be given to you in the top right-hand corner",
-      "Use your arrow keys or Use the arrow buttons on screen",
-      "to complete your tasks.",
+      "Tasks will be given to you in the top right-hand corner.",
+      "Use the arrow buttons on screen to complete your tasks!",
       "",
       "#GoBobcats",
       "",

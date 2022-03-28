@@ -48,7 +48,7 @@ class gameEnter extends Phaser.Scene {
 
 //   this.createSpeechBubble(670, 50, 200, 120, 'Hey and Welcome to ArQUade!');
   // this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
-   this.createSpeechBubble(670, 50, 200, 220, "QUICK REMINDER: \n This a task-based game. You will be given a set of tasks you will need to complete in order to complete your first day as student! Good Luck!");
+   this.createSpeechBubble(670, 50, 200, 220, "QUICK REMINDER: \n Good Luck!");
 
 
 //   this.input.on('pointerdown', () => this.scene.start('campusScene'));
