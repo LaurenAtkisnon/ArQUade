@@ -38,6 +38,15 @@ this.load.image("backNavigation", "pictures/backNavigation.png");
 this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
 this.load.image("leftNavigation", "pictures/leftNavigation.png");
 this.load.image("rightNavigation", "pictures/rightNavigation.png");
+
+this.load.image("downNavigationSOCE", "pictures/downNavigationSOCE.png");
+this.load.image("forwardNavigationSOCE", "pictures/forwardNavigationSOCE.png");
+this.load.image("leftNavigationSOCE", "pictures/leftNavigationSOCE.png");
+this.load.image("rightNavigationSOCE", "pictures/rightNavigationSOCE.png");
+
+
+
+
 this.load.image("joystick", "pictures/joystick.png");
   //  this.load.spritesheet('')
   }
