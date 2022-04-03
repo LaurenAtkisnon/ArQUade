@@ -29,6 +29,11 @@ this.load.image("cafeFront1", "pictures/cafeFront1.png");
 this.load.image("cafeFront2", "pictures/cafeFront2.png");
 this.load.image("cafeFront3", "pictures/cafeFront3.png");
 
+this.load.image("soceEntrance0", "pictures/soceEntrance0.png");
+this.load.image("soceEntrance1", "pictures/soceEntrance1.png");
+this.load.image("soceEntrance2", "pictures/soceEntrance2.png");
+this.load.image("soceEntrance3", "pictures/soceEntrance3.png");
+
 this.load.image("backNavigation", "pictures/backNavigation.png");
 this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
 this.load.image("leftNavigation", "pictures/leftNavigation.png");

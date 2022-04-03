@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const asyncMiddleware = require('../middleware/asyncMiddleware');
 const DestModel = require('../models/destModel');
+const DestSOCEModel = require('../models/destSOCEModel');
 const TaskModel = require('../models/taskModel');
+const TaskSOCEModel = require('../models/taskSOCEModel');
 
 router.get('/status', (req, res, next) => {
   res.status(200);
@@ -36,6 +38,21 @@ router.get('/destination', asyncMiddleware(async (req, res, next) => {
   res.status(200).json(dest);
 }));
 
+
+// method that will query the database using the Room_ID
+router.get('/destinationSOCE', asyncMiddleware(async (req, res, next) => {
+  const {Room_ID} = req.query;
+  console.log(req.query);
+  console.log("Room_ID = " + Room_ID);
+  const dest = await DestSOCEModel.findOne({"Room_ID": Room_ID});
+  console.log(JSON.stringify(dest));
+  res.status(200).json(dest);
+}));
+
+
+
+
+
 // method that will query the database using the Room_ID
 router.get('/allroomdata', asyncMiddleware(async (req, res, next) => {
 
@@ -50,6 +67,16 @@ router.get('/task', asyncMiddleware(async (req, res, next) => {
   console.log(req.query);
   console.log(Task_ID);
   const dest = await TaskModel.findOne({"Task_ID": Task_ID});
+  console.log(JSON.stringify(dest));
+  res.status(200).json(dest);
+}));
+
+// method that will query the database using the Task_ID
+router.get('/taskSOCE', asyncMiddleware(async (req, res, next) => {
+  const {Task_ID} = req.query;
+  console.log(req.query);
+  console.log(Task_ID);
+  const dest = await TaskSOCEModel.findOne({"Task_ID": Task_ID});
   console.log(JSON.stringify(dest));
   res.status(200).json(dest);
 }));
