@@ -337,10 +337,10 @@ if(picWestName != "") {
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
-    color: '#ffb736',
+    color: '#418FDE',
 //    align: 'Right',
     borderStyle: 'dotted dashed solid double',
-    backgroundColor: '#418fde'
+    backgroundColor: '#0C2340'
     }).setDepth(10);
   }
   // updates the Task
@@ -348,7 +348,7 @@ if(picWestName != "") {
     console.log("This is task Description" +  await this.getTaskDescription() );
     this.taskText.setText("Task: " +await this.getTaskDescription());
   }
-  // creates the room Descrisption
+  // creates the room Descrisption (Location)
   async createDisplayRoomDescription() {
     console.log("This is room Description" +  await this.getRoomDescription() );
     this.roomText =  this.add.text(400, 15, "Location:" +   await this.getRoomDescription(), { //600, 25
@@ -356,9 +356,9 @@ if(picWestName != "") {
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
-    color: '#ffb736',
+    color: '#418FDE',
 //    align: 'Right',
-    backgroundColor: '#418fde'
+    backgroundColor: '#0C2340'
     }).setDepth(10);
 }
 
