@@ -3,119 +3,7 @@ class wholeTator extends Phaser.Scene {
     super("wholeTator");
   }
   async preload() {
-    //cafe
-    this.load.image("cafeFront0", "pictures/cafeFront0.png");
-    this.load.image("cafeFront1", "pictures/cafeFront1.png");
-    this.load.image("cafeFront2", "pictures/cafeFront2.png");
-    this.load.image("cafeFront3", "pictures/cafeFront3.png");
-  //  this.load.image("cafeLeft", "pictures/cafeLeft.png");
-//    this.load.image("cafeRight", "pictures/cafeRight.png");
 
-// cafe hallway
-//    this.load.image("cafeHallway0", "pictures/cafeHallway0.png");
-//    this.load.image("cafeHallway1", "pictures/cafeHallway1.png");
-//    this.load.image("cafeHallway2", "pictures/cafeHallway2.png");
-//    this.load.image("cafeHallway3", "pictures/cafeHallway3.png");
-
-    //boomer & character
-    this.load.image("boomer", "pictures/image2.png");
-    this.load.image("person4", "pictures/person4.png");
-
-    //navigation buttons & joystidl
-    this.load.image("backNavigation", "pictures/backNavigation.png");
-    this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
-    this.load.image("leftNavigation", "pictures/leftNavigation.png");
-    this.load.image("rightNavigation", "pictures/rightNavigation.png");
-    this.load.image("joystick", "pictures/joystick.png");
- /*
-    //1st tator hall hallway -- directly after th130
-    this.load.image("tatorHallwayDeeper0", "pictures/tatorHallwayDeeper0.png")
-    this.load.image("tatorHallwayDeeper1", "pictures/tatorHallwayDeeper1.png")
-    this.load.image("tatorHallwayDeeper2", "pictures/tatorHallwayDeeper2.png")
-    this.load.image("tatorHallwayDeeper3", "pictures/tatorHallwayDeeper3.png")
-
-    //2nd tator hall hallway -- goes after the first hallway
-    this.load.image("thEndofHallway0", "pictures/thEndofHallway0.png")
-    this.load.image("thEndofHallway1", "pictures/thEndofHallway1.png")
-    this.load.image("thEndofHallway2", "pictures/thEndofHallway2.png")
-    this.load.image("thEndofHallway3", "pictures/thEndofHallway3.png")
-
-    //th130 -- inside classroom photo
-    this.load.image("th130(0)", "pictures/th130(0).png")
-    this.load.image("th130(1)", "pictures/th130(1).png")
-    this.load.image("th130(2)", "pictures/th130(2).png")
-    this.load.image("th130(3)", "pictures/th130(3).png")
-
-    //th107 -- inside classroom photo
-    this.load.image("th107(0)", "pictures/th107(0).png")
-    this.load.image("th107(1)", "pictures/th107(1).png")
-    this.load.image("th107(2)", "pictures/th107(2).png")
-    this.load.image("th107(3)", "pictures/th107(3).png")
-
-    //th105 -- inside classroom photo
-    this.load.image("th105(0)", "pictures/th105(0).png")
-    this.load.image("th105(1)", "pictures/th105(1).png")
-    this.load.image("th105(2)", "pictures/th105(2).png")
-    this.load.image("th105(3)", "pictures/th105(3).png")
-
-    //th127
-
-    //th127 -- inside classroom photo
-    this.load.image("th127(0)", "pictures/th127(0).png")
-    this.load.image("th127(1)", "pictures/th127(1).png")
-    this.load.image("th127(2)", "pictures/th127(2).png")
-    this.load.image("th127(3)", "pictures/th127(3).png")
-
-
-    //printer
-    this.load.image("thprinter0", "pictures/thprinter0.png")
-    this.load.image("thprinter1", "pictures/thprinter1.png")
-    this.load.image("thprinter2", "pictures/thprinter2.png")
-    this.load.image("thprinter3", "pictures/thprinter3.png")
-
-    //hallway
-    this.load.image("hallway0", "pictures/hallway0.png")
-    this.load.image("hallway1", "pictures/hallway1.png")
-    this.load.image("hallway2", "pictures/hallway2.png")
-    this.load.image("hallway3", "pictures/hallway3.png")
-
-    // bathroom
-    this.load.image("Bathroom0", "pictures/Bathroom0.png")
-    this.load.image("Bathroom1", "pictures/Bathroom1.png")
-    this.load.image("Bathroom2", "pictures/Bathroom2.png")
-    this.load.image("Bathroom3", "pictures/Bathroom3.png")
-
-
-    //bookstore hallway
-
-    this.load.image("bkstHallway0", "pictures/bkstHallway0.png")
-    this.load.image("bkstHallway1", "pictures/bkstHallway1.png")
-    this.load.image("bkstHallway2", "pictures/bkstHallway2.png")
-   this.load.image("bkstHallway3", "pictures/bkstHallway3.png")
-    //pubhallway
-
-    this.load.image("pubHallway0", "pictures/pubHallway0.png")
-    this.load.image("pubHallway1", "pictures/pubHallway1.png")
-    this.load.image("pubHallway2", "pictures/pubHallway2.png")
-    this.load.image("pubHallway3", "pictures/pubHallway3.png")
-    //tator hallway
-    this.load.image("tatorHallway0", "pictures/tatorHallway0.png")
-    this.load.image("tatorHallway1", "pictures/tatorHallway1.png")
-    this.load.image("tatorHallway2", "pictures/tatorHallway2.png")
-    this.load.image("tatorHallway3", "pictures/tatorHallway3.png")
-
-    // 130hallway
-    this.load.image("130Hallway0", "pictures/130Hallway0.png")
-    this.load.image("130Hallway1", "pictures/130Hallway1.png")
-    this.load.image("130Hallway2", "pictures/130Hallway2.png")
-    this.load.image("130Hallway3", "pictures/130Hallway3.png")
-
-    //infront printer pictures
-    this.load.image("infrontprinter0", "pictures/infrontprinter0.png")
-    this.load.image("infrontprinter1", "pictures/infrontprinter1.png")
-    this.load.image("infrontprinter2", "pictures/infrontprinter2.png")
-    this.load.image("infrontprinter3", "pictures/infrontprinter3.png")
-    */
 
   }
   create() {
@@ -138,7 +26,7 @@ class wholeTator extends Phaser.Scene {
     // button group
     this.backgroundGroup = this.add.group();
 
-    // adding the background
+    // adding the background of the first image
     this.background = this.add.image(400,300,"cafeFront0").setDepth(1);
     this.background.scale = .275;
     this.backgroundGroup.add(this.background);
@@ -446,8 +334,8 @@ if(picWestName != "") {
 
 // creates the task display
   async createDisplayTask() {
-    console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText =  this.add.text(400, 45, "Task: " +  await this.getTaskDescription(), { //600, 25
+    console.log("This is task Description" +  await this.getTaskDescription() );
+    this.taskText =  this.add.text(400, 45, "Task:" +  await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
@@ -460,13 +348,13 @@ if(picWestName != "") {
   }
   // updates the Task
   async updateDisplayTask() {
-    console.log("This is task Description " +  await this.getTaskDescription() );
-    this.taskText.setText(await this.getTaskDescription());
+    console.log("This is task Description" +  await this.getTaskDescription() );
+    this.taskText.setText("Task: " +await this.getTaskDescription());
   }
   // creates the room Descrisption
   async createDisplayRoomDescription() {
-    console.log("This is room Description " +  await this.getRoomDescription() );
-    this.roomText =  this.add.text(430, 15, "Location: " +   await this.getRoomDescription(), { //600, 25
+    console.log("This is room Description" +  await this.getRoomDescription() );
+    this.roomText =  this.add.text(400, 15, "Location:" +   await this.getRoomDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
@@ -479,7 +367,7 @@ if(picWestName != "") {
 
 // updates the roomDescription
 async updateDisplayRoomDescription() {
-  console.log("This is room Description " +  await this.getRoomDescription() );
+  console.log("This is room Description" +  await this.getRoomDescription() );
   this.roomText.setText("Location: " + await this.getRoomDescription());
 }
 
