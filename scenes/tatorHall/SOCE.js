@@ -105,7 +105,7 @@ class SOCE extends Phaser.Scene {
 
   // method that sets the setting button
   setting() {
-    this.settings_button = this.add.image(75,20, "settings_button").setInteractive().setDepth(10);
+    this.settings_button = this.add.image(75,20, "settingsButtonSOCE").setInteractive().setDepth(10);
     this.settings_button.scale = .8;
     this.settings_button.on('pointerdown', () => {
       this.scene.get("settings").setPrev(this.scene.key);
