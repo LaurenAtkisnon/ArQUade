@@ -75,7 +75,7 @@ class SOCE extends Phaser.Scene {
 
     // setting up a new background
     this.backNavigation = this.add.image(450,550, "downNavigationSOCE").setInteractive().setDepth(10); //400, 550
-    this.backNavigation.setScale(.6);
+    this.backNavigation.setScale(.3);
     this.backNavigation.on('pointerdown', () => {
       // changing the persons direction
       this.personDirection = (this.personDirection + 2) % 4;
@@ -86,7 +86,7 @@ class SOCE extends Phaser.Scene {
     });
 
     this.forwardNavigation = this.add.image(450,440, "forwardNavigationSOCE").setInteractive().setDepth(10); //400, 450
-    this.forwardNavigation.setScale(.6);
+    this.forwardNavigation.setScale(.3);
     this.forwardNavigation.on('pointerdown', () => {
       // calling the move forward scene that uses the database
       this.moveForwardSceneDB();
@@ -96,7 +96,7 @@ class SOCE extends Phaser.Scene {
     });
 
     this.leftNavigation = this.add.image(375,495, "leftNavigationSOCE").setInteractive().setDepth(10); //350. 500
-    this.leftNavigation.setScale(.6);
+    this.leftNavigation.setScale(.3);
     this.leftNavigation.on('pointerdown', () => {
 
       // checks if the personDirection is 0. If its 0 set it to 3. If not subtract 1.
@@ -107,7 +107,7 @@ class SOCE extends Phaser.Scene {
       /*  this.scene.start(sceneleft),this*/
     });
     this.rightNavigation = this.add.image(525,495, "rightNavigationSOCE").setInteractive().setDepth(10); //450, 500
-    this.rightNavigation.setScale(.6);
+    this.rightNavigation.setScale(.3);
     this.rightNavigation.on('pointerdown', () => {
       // setting up the new players direction
       this.personDirection = (this.personDirection + 1) % 4;
@@ -119,7 +119,7 @@ class SOCE extends Phaser.Scene {
 
   // method that sets the setting button
   setting() {
-    this.settings_button = this.add.image(75,20, "settings_button").setInteractive().setDepth(10);
+    this.settings_button = this.add.image(75,20, "settingsButtonSOCE").setInteractive().setDepth(10);
     this.settings_button.scale = .8;
     this.settings_button.on('pointerdown', () => {
       this.scene.get("settings").setPrev(this.scene.key);
@@ -358,10 +358,10 @@ if(picWestName != "") {
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
-    color: '#ffb736',
+    color: '#418FDE',
 //    align: 'Right',
     borderStyle: 'dotted dashed solid double',
-    backgroundColor: '#418fde'
+    backgroundColor: '#0C2340'
     }).setDepth(10);
   }
   // updates the Task
@@ -369,7 +369,7 @@ if(picWestName != "") {
     console.log("This is task Description" +  await this.getTaskDescription() );
     this.taskText.setText("Task: " +await this.getTaskDescription());
   }
-  // creates the room Descrisption
+  // creates the room Descrisption (Location)
   async createDisplayRoomDescription() {
     console.log("This is room Description" +  await this.getRoomDescription() );
     this.roomText =  this.add.text(400, 15, "Location:" +   await this.getRoomDescription(), { //600, 25
@@ -377,9 +377,9 @@ if(picWestName != "") {
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
-    color: '#ffb736',
+    color: '#418FDE',
 //    align: 'Right',
-    backgroundColor: '#418fde'
+    backgroundColor: '#0C2340'
     }).setDepth(10);
 }
 
