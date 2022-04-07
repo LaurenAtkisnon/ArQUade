@@ -8,11 +8,27 @@ class wholeTator extends Phaser.Scene {
   }
   create() {
 
-    // setting the first room id
-    this.roomIDDB = 1;
+  // returns null if there is no cookie with tatorTaskID
+  if(this.getCookie("tatorTaskID") ==  null) {
+    //sets the cookie to the first tasks
+    document.cookie = "tatorTaskID = 1";
+  }
+  // returns null if there is no cookie with tatorRoomID
+  if(this.getCookie("tatorRoomID") ==  null) {
+    //sets the cookie to the first tasks
+    document.cookie = "tatorRoomID = 1";
+  }
 
-    // sets the task ID to 1
-    this.taskID = 1;
+
+    // setting the first room id
+  //  this.roomIDDB = 1;
+  // setting the room id to the cookie
+this.roomIDDB = this.getCookie("tatorRoomID");
+//this.loadOneRoomPicture(this.roomIDDB);
+// loads the room of the photos to start at.
+
+    // sets the task ID to the cookie id
+    this.taskID = this.getCookie("tatorTaskID");
     // settinh roomPicture variable
     this.roomPicture = "Not changed yet";
 
@@ -27,9 +43,9 @@ class wholeTator extends Phaser.Scene {
     this.backgroundGroup = this.add.group();
 
     // adding the background of the first image
-    this.background = this.add.image(400,300,"cafeFront0").setDepth(1);
-    this.background.scale = .275;
-    this.backgroundGroup.add(this.background);
+  //  this.background = this.add.image(400,300,"cafeFront0").setDepth(1);
+  //  this.background.scale = .275;
+  //  this.backgroundGroup.add(this.background);
 
 
     this.setTaskRoomID();
@@ -45,7 +61,7 @@ class wholeTator extends Phaser.Scene {
       //  need this if u wwant to load outside preload
     //    this.load.start();
 
-    this.loadRoomPictures(2);
+    this.loadRoomPictures(1);
 
 
     // calling the navigation button method
@@ -134,6 +150,9 @@ class wholeTator extends Phaser.Scene {
       // sets the new room id
       this.setRoomIDDB(roomLink);
 
+      // Updates the Roomid of the COOKIE
+      document.cookie = "tatorRoomID = " + roomLink;
+
       // sets currentRoomData to null
       this.currentRoomData = null;
 
@@ -185,6 +204,8 @@ class wholeTator extends Phaser.Scene {
       // needs to update to the new task
       // changes to the next task
       this.taskID = this.taskID + 1;
+      // updates the taskid of the cookie
+      document.cookie = "tatorTaskID = " + this.taskID ;
       // updates the task if needed
       this.updateDisplayTask();
       console.log("Player has reached the task room and assigned a new task ");
@@ -206,6 +227,41 @@ async getRoomDescription() {
   const data = await this.fetchAllRoomData();
   //returns the room Description
   return data["Room_Description"];
+}
+
+// gets all the room pictures
+async loadOneRoomPicture(id) {
+
+  const imageID = id;
+
+  const data = await this.fetchAllRoomDataImages(imageID);
+
+  const picNorthName = data["picNorth"];
+  const picEastName = data["picEast"];
+  const picSouthName = data["picSouth"];
+  const picWestName =  data["picWest"];
+
+
+  console.log("This is the room id " + this.imageID);
+    console.log("This is the north picture name " + picNorthName);
+  console.log("This is the east picture name " + picEastName);
+  console.log("This is the west picture name " + picWestName);
+  console.log("This is the east picture name " + picSouthName);
+
+if(picNorthName != "") {
+  this.load.image(picNorthName, "pictures/"+picNorthName+".png");
+}
+if(picEastName != "") {
+  this.load.image(picEastName, "pictures/"+picEastName+".png");
+}
+if(picSouthName != "") {
+  this.load.image(picSouthName, "pictures/"+picSouthName+".png");
+}
+if(picWestName != "") {
+  this.load.image(picWestName, "pictures/"+picWestName+".png");
+}
+  this.load.start();
+
 }
 
 // gets all the room pictures
@@ -425,6 +481,14 @@ async updateDisplayRoomDescription() {
   setpersonDirection(personDirection) {
     this.personDirection = personDirection;
   }
+
+  // FUNCTION THAT CHECKS IF A COOKIE IS NULL
+   getCookie(name) {
+    var match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+    return match ? match[1] : null;
+}
+
+
   // function that creates a bubble speeech box
   createSpeechBubble (x, y, width, height, quote) {
     var bubbleWidth = width;
