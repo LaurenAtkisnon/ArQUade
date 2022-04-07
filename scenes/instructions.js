@@ -7,11 +7,11 @@ class instructions extends Phaser.Scene {
   preload() {
     this.load.image("background", "pictures/image1.png");
     this.load.image("next_button", "pictures/next_button.png");
-    this.load.image("back_button", "pictures/back_button.png");
+    //this.load.image("back_button", "pictures/back_button.png");
     this.load.image("home_button", "pictures/home_button.png");
     this.load.image("howtoplay_button", "pictures/howtoplay_button.png");
-    this.load.image("settings_button", "pictures/settings_button.png");
-    this.load.image("home_button", "pictures/home_button.png");
+  //  this.load.image("settings_button", "pictures/settings_button.png");
+//    this.load.image("home_button", "pictures/home_button.png");
     this.load.image("instructionButtons", "pictures/instructionButtons.png");
 
 

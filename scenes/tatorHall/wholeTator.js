@@ -24,6 +24,8 @@ class wholeTator extends Phaser.Scene {
   //  this.roomIDDB = 1;
   // setting the room id to the cookie
 this.roomIDDB = this.getCookie("tatorRoomID");
+
+this.setRoomPicture("picNorth");
 //this.loadOneRoomPicture(this.roomIDDB);
 // loads the room of the photos to start at.
 
@@ -188,6 +190,9 @@ this.roomIDDB = this.getCookie("tatorRoomID");
   }
   // new function
   // gets the current Room data
+
+
+
   async setRoomPicture(direction) {
     // sets the picture name using the getRoomPicture method
     const pictureName = await this.getRoomPicture(direction);

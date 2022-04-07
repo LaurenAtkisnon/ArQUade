@@ -21,6 +21,7 @@ class SOCE extends Phaser.Scene {
 
       // setting the room id to the cookie
     this.roomIDDB = this.getCookie("soceRoomID");
+    this.setRoomPicture("picNorth");
 
     // loads the room of the photos to start at.
     // sets the task ID to the cookie id
@@ -60,7 +61,7 @@ class SOCE extends Phaser.Scene {
 
 
     // calling the navigation button method
-    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+//    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
   }
 //
 //  update() {

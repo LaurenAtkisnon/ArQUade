@@ -5,7 +5,7 @@ class gameEnter extends Phaser.Scene {
 
   preload() {
     this.load.image("entranceButton", "pictures/entranceButton.png");
-    this.load.image("back_button", "pictures/back_button");
+    this.load.image("back_button", "pictures/back_button.png");
     this.load.image("entranceButtonSOCE", "pictures/entranceButtonSOCE.png");
   }
 
@@ -14,8 +14,8 @@ class gameEnter extends Phaser.Scene {
     this.tatorRoomID = this.getCookie("tatorRoomID");
     this.loadOneRoomPicture(this.tatorRoomID);
     // loads the room of soce
-    this.soceRoomID = this.getCookie("soceRoomID");
-    this.loadOneRoomPicture(this.soceRoomID);
+//    this.soceRoomID = this.getCookie("soceRoomID");
+//    this.loadOneRoomPicture(this.soceRoomID);
 
 
     const background = this.add.image(462,334,"background");
