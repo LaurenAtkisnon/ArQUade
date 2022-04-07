@@ -7,11 +7,26 @@ class SOCE extends Phaser.Scene {
   }
   create() {
 
-    // setting the first room id
-    this.roomIDDB = 1;
 
-    // sets the task ID to 1
-    this.taskID = 1;
+      // returns null if there is no cookie with tatorTaskID
+      if(this.getCookie("soceTaskID") ==  null) {
+        //sets the cookie to the first tasks
+        document.cookie = "soceTaskID = 1";
+      }
+      // returns null if there is no cookie with tatorRoomID
+      if(this.getCookie("soceRoomID") ==  null) {
+        //sets the cookie to the first tasks
+        document.cookie = "soceRoomID = 1";
+      }
+
+      // setting the room id to the cookie
+    this.roomIDDB = this.getCookie("soceRoomID");
+    this.setRoomPicture("picNorth");
+
+    // loads the room of the photos to start at.
+    // sets the task ID to the cookie id
+        this.taskID = this.getCookie("soceTaskID");
+
     // settinh roomPicture variable
     this.roomPicture = "Not changed yet";
 
@@ -42,11 +57,11 @@ class SOCE extends Phaser.Scene {
     //  need this if u wwant to load outside preload
     //    this.load.start();
 
-    this.loadRoomPictures(2);
+    this.loadRoomPictures(1);
 
 
     // calling the navigation button method
-    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+//    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
   }
 //
 //  update() {
@@ -131,6 +146,9 @@ class SOCE extends Phaser.Scene {
       // sets the new room id
       this.setRoomIDDB(roomLink);
 
+      // Updates the Roomid of the COOKIE
+      document.cookie = "soceRoomID = " + roomLink;
+
       // sets currentRoomData to null
       this.currentRoomData = null;
 
@@ -182,6 +200,10 @@ class SOCE extends Phaser.Scene {
       // needs to update to the new task
       // changes to the next task
       this.taskID = this.taskID + 1;
+
+      // updates the taskid of the cookie
+      document.cookie = "soceTaskID = " + this.taskID ;
+
       // updates the task if needed
       this.updateDisplayTask();
       console.log("Player has reached the task room and assigned a new task ");
@@ -241,7 +263,7 @@ if(picWestName != "") {
   this.imageID = imageID + 1 ;
 
 // if imageID is less then 17 then get next set of images
-  if(this.imageID < 18) {
+  if(this.imageID < 16) {
     this.loadRoomPictures(this.getImageID());
   }
 
@@ -421,6 +443,12 @@ async updateDisplayRoomDescription() {
 
   setpersonDirection(personDirection) {
     this.personDirection = personDirection;
+  }
+
+    // FUNCTION THAT CHECKS IF A COOKIE IS NULL
+     getCookie(name) {
+      var match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+      return match ? match[1] : null;
   }
 
 }

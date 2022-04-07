@@ -5,11 +5,19 @@ class gameEnter extends Phaser.Scene {
 
   preload() {
     this.load.image("entranceButton", "pictures/entranceButton.png");
-    this.load.image("back_button", "pictures/back_button");
+    this.load.image("back_button", "pictures/back_button.png");
     this.load.image("entranceButtonSOCE", "pictures/entranceButtonSOCE.png");
   }
 
   create() {
+    // loads the tator room
+    this.tatorRoomID = this.getCookie("tatorRoomID");
+    this.loadOneRoomPicture(this.tatorRoomID);
+    // loads the room of soce
+//    this.soceRoomID = this.getCookie("soceRoomID");
+//    this.loadOneRoomPicture(this.soceRoomID);
+
+
     const background = this.add.image(462,334,"background");
     background.scale = 1.0;
 
@@ -52,9 +60,66 @@ class gameEnter extends Phaser.Scene {
 
 
 //   this.input.on('pointerdown', () => this.scene.start('campusScene'));
+
+
+
 }
 
+// gets all the room pictures
+async loadOneRoomPicture(id) {
 
+  const imageID = id;
+
+  const data = await this.fetchAllRoomDataImages(imageID);
+
+  const picNorthName = data["picNorth"];
+  const picEastName = data["picEast"];
+  const picSouthName = data["picSouth"];
+  const picWestName =  data["picWest"];
+
+
+  console.log("This is the room id " + this.imageID);
+    console.log("This is the north picture name " + picNorthName);
+  console.log("This is the east picture name " + picEastName);
+  console.log("This is the west picture name " + picWestName);
+  console.log("This is the east picture name " + picSouthName);
+
+if(picNorthName != "") {
+  this.load.image(picNorthName, "pictures/"+picNorthName+".png");
+}
+if(picEastName != "") {
+  this.load.image(picEastName, "pictures/"+picEastName+".png");
+}
+if(picSouthName != "") {
+  this.load.image(picSouthName, "pictures/"+picSouthName+".png");
+}
+if(picWestName != "") {
+  this.load.image(picWestName, "pictures/"+picWestName+".png");
+}
+  this.load.start();
+  console.log("loading is done");
+
+}
+
+// FUNCTION THAT CHECKS IF A COOKIE IS NULL
+ getCookie(name) {
+  var match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+  return match ? match[1] : null;
+}
+
+async fetchAllRoomDataImages(id) {
+
+  // api url
+  const urlRequestImages = ("http://localhost:3000/destination?Room_ID="+id);
+  try {
+    //      fetch request using the api url
+    const res = await fetch(urlRequestImages);
+    return res.json();
+  }
+  catch(err) {
+    console.log(err);
+  }
+}
 // function that creates a bubble speeech box
    createSpeechBubble (x, y, width, height, quote) {
     var bubbleWidth = width;
@@ -102,6 +167,7 @@ class gameEnter extends Phaser.Scene {
 
     content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
 }
+
 
 
 

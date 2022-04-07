@@ -14,16 +14,8 @@ class MenuScene extends Phaser.Scene {
     this.load.image("welcome", "pictures/welcome.png");
     this.load.image("settings_button", "pictures/settings_button.png");
     this.load.image("joystick", "pictures/joystick.png");
-  //  this.load.image("backNavigation", "pictures/backNavigation.png");
-  //  this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
-  //  this.load.image("leftNavigation", "pictures/leftNavigation.png");
-  //  this.load.image("rightNavigation", "pictures/rightNavigation.png");
-//    this.load.image("joystick", "pictures/joystick.png");
-//    this.load.image("cafeFront0", "pictures/cafeFront0.png");
-  //  this.load.image("cafeFront1", "pictures/cafeFront1.png");
-//    this.load.image("cafeFront2", "pictures/cafeFront2.png");
-//    this.load.image("cafeFront3", "pictures/cafeFront3.png");
 
+/*
 this.load.image("cafeFront0", "pictures/cafeFront0.png");
 this.load.image("cafeFront1", "pictures/cafeFront1.png");
 this.load.image("cafeFront2", "pictures/cafeFront2.png");
@@ -33,7 +25,7 @@ this.load.image("soceEntrance0", "pictures/soceEntrance0.png");
 this.load.image("soceEntrance1", "pictures/soceEntrance1.png");
 this.load.image("soceEntrance2", "pictures/soceEntrance2.png");
 this.load.image("soceEntrance3", "pictures/soceEntrance3.png");
-
+*/
 this.load.image("backNavigation", "pictures/backNavigation.png");
 this.load.image("forwardNavigation", "pictures/forwardNavigation.png");
 this.load.image("leftNavigation", "pictures/leftNavigation.png");
@@ -43,12 +35,13 @@ this.load.image("downNavigationSOCE", "pictures/downNavigationSOCE.png");
 this.load.image("forwardNavigationSOCE", "pictures/forwardNavigationSOCE.png");
 this.load.image("leftNavigationSOCE", "pictures/leftNavigationSOCE.png");
 this.load.image("rightNavigationSOCE", "pictures/rightNavigationSOCE.png");
+this.load.image("settingsButtonSOCE", "pictures/settingsButtonSOCE.png");
 
 
 
 
 this.load.image("joystick", "pictures/joystick.png");
-  //  this.load.spritesheet('')
+
   }
 
 // method that creates objects for the scene
@@ -57,33 +50,16 @@ this.load.image("joystick", "pictures/joystick.png");
 //background (x,y)
 const background = this.add.image(462,334,"homeBackground");
 
-// background.scale = 1.0;
-
-
-//boomer
-//const boomer = this.add.image(750,480,"boomer");
-// boomer.scale = 1.4;
-
-// game name
-// const welcome = this.add.image(400,100,"welcome");
-// welcome.scale = .6;
-
-// settings button
-//const settings_button = this.add.image(75,20, "settings_button");
-// settings_button.scale = .8;
-
-
-// text of boomer talking to the user=
-//    this.add.text(575, 500,
-//      "Hi! I'm Boomer,\n I will be here\n to assist you.", {
-//      font: "15px Quicksand",
-//      fill: "black"
-//    });
 
 // the start button goes to instruction scene
 this.startButton = this.add.image(450,500,'play_button').setInteractive();
 this.startButton.setScale(.8);
 this.startButton.once('pointerdown', () => this.scene.start('instructions'), this);
+
+//  this.tatorRoomID = parseInt(this.getCookie("tatorRoomID"));
+//  console.log("This is the tator room number " + this.tatorRoomID)
+//  this.loadOneRoomPicture(this.tatorRoomID);
+
 
 // adds music to the menu screen
 /*
@@ -95,4 +71,59 @@ this.startButton.once('pointerdown', () => this.scene.start('instructions'), thi
 
   }
 
+  // gets all the room pictures
+  async loadOneRoomPicture(id) {
+
+    const imageID = id;
+
+    const data = await this.fetchAllRoomDataImages(imageID);
+
+    const picNorthName = data["picNorth"];
+    const picEastName = data["picEast"];
+    const picSouthName = data["picSouth"];
+    const picWestName =  data["picWest"];
+
+
+    console.log("This is the room id " + this.imageID);
+      console.log("This is the north picture name " + picNorthName);
+    console.log("This is the east picture name " + picEastName);
+    console.log("This is the west picture name " + picWestName);
+    console.log("This is the east picture name " + picSouthName);
+
+  if(picNorthName != "") {
+    this.load.image(picNorthName, "pictures/"+picNorthName+".png");
+  }
+  if(picEastName != "") {
+    this.load.image(picEastName, "pictures/"+picEastName+".png");
+  }
+  if(picSouthName != "") {
+    this.load.image(picSouthName, "pictures/"+picSouthName+".png");
+  }
+  if(picWestName != "") {
+    this.load.image(picWestName, "pictures/"+picWestName+".png");
+  }
+    this.load.start();
+    console.log("loading is done");
+
+  }
+
+  // FUNCTION THAT CHECKS IF A COOKIE IS NULL
+   getCookie(name) {
+    var match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+    return match ? match[1] : null;
+  }
+
+  async fetchAllRoomDataImages(id) {
+
+    // api url
+    const urlRequestImages = ("http://localhost:3000/destination?Room_ID="+id);
+    try {
+      //      fetch request using the api url
+      const res = await fetch(urlRequestImages);
+      return res.json();
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
 }
