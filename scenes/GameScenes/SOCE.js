@@ -7,7 +7,6 @@ class SOCE extends Phaser.Scene {
   }
   create() {
 
-
       // returns null if there is no cookie with tatorTaskID
       if(this.getCookie("soceTaskID") ==  null) {
         //sets the cookie to the first tasks
@@ -25,7 +24,7 @@ class SOCE extends Phaser.Scene {
 
     // loads the room of the photos to start at.
     // sets the task ID to the cookie id
-        this.taskID = this.getCookie("soceTaskID");
+      this.taskID = parseInt(this.getCookie("soceTaskID"));
 
     // settinh roomPicture variable
     this.roomPicture = "Not changed yet";
@@ -39,9 +38,6 @@ class SOCE extends Phaser.Scene {
     this.backgroundGroup = this.add.group();
 
     // adding the background
-    this.background = this.add.image(400,300,"soceEntrance0").setDepth(1);
-    this.background.scale = .275;
-    this.backgroundGroup.add(this.background);
 
 
     this.setTaskRoomID();
@@ -50,26 +46,16 @@ class SOCE extends Phaser.Scene {
 
     //calling the setting button method
     this.setting();
-
     this.createDisplayTask();
     this.createDisplayRoomDescription();
 
-    //  need this if u wwant to load outside preload
-    //    this.load.start();
+
 
     this.loadRoomPictures(1);
 
-
     // calling the navigation button method
-//    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+   this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
   }
-//
-//  update() {
-
-//    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
-
-//  }
-
 
 
   navigationButtons(sceneleft,sceneforward,sceneright,sceneback) {
@@ -262,8 +248,8 @@ if(picWestName != "") {
 
   this.imageID = imageID + 1 ;
 
-// if imageID is less then 17 then get next set of images
-  if(this.imageID < 16) {
+// if imageID is less then 25 then get next set of images
+  if(this.imageID < 26) {
     this.loadRoomPictures(this.getImageID());
   }
 

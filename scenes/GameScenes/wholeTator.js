@@ -24,13 +24,13 @@ class wholeTator extends Phaser.Scene {
   //  this.roomIDDB = 1;
   // setting the room id to the cookie
 this.roomIDDB = this.getCookie("tatorRoomID");
-
+// calls the setroom to add the background
 this.setRoomPicture("picNorth");
 //this.loadOneRoomPicture(this.roomIDDB);
 // loads the room of the photos to start at.
 
     // sets the task ID to the cookie id
-    this.taskID = this.getCookie("tatorTaskID");
+    this.taskID = parseInt(this.getCookie("tatorTaskID"));
     // settinh roomPicture variable
     this.roomPicture = "Not changed yet";
 
@@ -56,7 +56,6 @@ this.setRoomPicture("picNorth");
 
     //calling the setting button method
     this.setting();
-
     this.createDisplayTask();
     this.createDisplayRoomDescription();
 
@@ -214,6 +213,7 @@ this.setRoomPicture("picNorth");
       // updates the task if needed
       this.updateDisplayTask();
       console.log("Player has reached the task room and assigned a new task ");
+      console.log("New task id" + this.taskID);
     }
     else {
     //  console.log("Player has not reached the task room" + await this.getTaskRoomID());
