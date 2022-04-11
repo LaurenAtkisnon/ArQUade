@@ -7,14 +7,10 @@ class instructions extends Phaser.Scene {
   preload() {
     this.load.image("background", "pictures/image1.png");
     this.load.image("next_button", "pictures/next_button.png");
-    //this.load.image("back_button", "pictures/back_button.png");
     this.load.image("home_button", "pictures/home_button.png");
     this.load.image("howtoplay_button", "pictures/howtoplay_button.png");
-  //  this.load.image("settings_button", "pictures/settings_button.png");
-//    this.load.image("home_button", "pictures/home_button.png");
     this.load.image("instructionButtons", "pictures/instructionButtons.png");
-
-
+    //this.load.image("back_button", "pictures/back_button.png");
   }
 
   create() {
@@ -32,8 +28,8 @@ class instructions extends Phaser.Scene {
     //settings button | scale was at .8
     this.settings_button = this.add.image(100,30, "settings_button").setInteractive();
     this.settings_button.once('pointerdown', () => {
-      this.scene.get("settings").setPrev("instructions");
-      this.scene.start('settings');
+    this.scene.get("settings").setPrev("instructions");
+    this.scene.start('settings');
 
     });
 
@@ -42,11 +38,8 @@ class instructions extends Phaser.Scene {
       "Welcome to ArQUade & Welcome to Quinnipiac!",
       "Are you ready to play?",
       "",
-    //  "Your goal is to make it through the first day of classes in the School of Engineering",
-    //  "and Computing. Complete the tasks, figure your way through campus,",
-    //  "outlined on the right-hand side navigation bar.",
       "Tasks will be given to you in the top right-hand corner.",
-      "Use the arrow buttons on screen to complete your tasks!",
+      "Use the arrow buttons on the screen to complete your tasks!",
       "",
       "#GoBobcats",
       "",
@@ -60,8 +53,6 @@ class instructions extends Phaser.Scene {
       fontVariant: 'small-caps',
       align: 'left',
       color: '#FFFFFF',
-
-
     });
 
     //home button goes back to home
@@ -72,8 +63,6 @@ class instructions extends Phaser.Scene {
     // next button goes to next scene which is character Scene
     this.nextButton = this.add.image(847,643,"next_button").setInteractive();
     this.nextButton.setScale(.8);
-    //this.nextButton.once('pointerdown', () => this.scene.start('characterScene'));
     this.nextButton.once('pointerdown', () => this.scene.start('gameEnter'));
-
   }
 }
