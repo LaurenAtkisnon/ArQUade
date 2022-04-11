@@ -10,12 +10,37 @@ class gameEnter extends Phaser.Scene {
   }
 
   create() {
+
+    // returns null if there is no cookie with tatorTaskID
+    if(this.getCookie("tatorTaskID") ==  null) {
+      //sets the cookie to the first tasks
+      document.cookie = "tatorTaskID = 1";
+    }
+    // returns null if there is no cookie with tatorRoomID
+    if(this.getCookie("tatorRoomID") ==  null) {
+      //sets the cookie to the first tasks
+      document.cookie = "tatorRoomID = 1";
+    }
+
+
+          // returns null if there is no cookie with tatorTaskID
+          if(this.getCookie("soceTaskID") ==  null) {
+            //sets the cookie to the first tasks
+            document.cookie = "soceTaskID = 1";
+          }
+          // returns null if there is no cookie with tatorRoomID
+          if(this.getCookie("soceRoomID") ==  null) {
+            //sets the cookie to the first tasks
+            document.cookie = "soceRoomID = 1";
+          }
+
+
     // loads the tator room
     this.tatorRoomID = this.getCookie("tatorRoomID");
     this.loadOneRoomPicture(this.tatorRoomID);
     // loads the room of soce
-//    this.soceRoomID = this.getCookie("soceRoomID");
-//    this.loadOneRoomPicture(this.soceRoomID);
+   this.soceRoomID = this.getCookie("soceRoomID");
+    this.loadOneRoomPictureSOCE(this.soceRoomID);
 
 
     const background = this.add.image(462,334,"background");
@@ -100,6 +125,41 @@ if(picWestName != "") {
   console.log("loading is done");
 
 }
+// gets all the room pictures
+async loadOneRoomPictureSOCE(id) {
+
+  const imageID = id;
+
+  const data = await this.fetchAllRoomDataImagesSOCE(imageID);
+
+  const picNorthName = data["picNorth"];
+  const picEastName = data["picEast"];
+  const picSouthName = data["picSouth"];
+  const picWestName =  data["picWest"];
+
+
+  console.log("This is the room id " + this.imageID);
+    console.log("This is the north picture name " + picNorthName);
+  console.log("This is the east picture name " + picEastName);
+  console.log("This is the west picture name " + picWestName);
+  console.log("This is the east picture name " + picSouthName);
+
+if(picNorthName != "") {
+  this.load.image(picNorthName, "pictures/"+picNorthName+".png");
+}
+if(picEastName != "") {
+  this.load.image(picEastName, "pictures/"+picEastName+".png");
+}
+if(picSouthName != "") {
+  this.load.image(picSouthName, "pictures/"+picSouthName+".png");
+}
+if(picWestName != "") {
+  this.load.image(picWestName, "pictures/"+picWestName+".png");
+}
+  this.load.start();
+  console.log("loading is done");
+
+}
 
 // FUNCTION THAT CHECKS IF A COOKIE IS NULL
  getCookie(name) {
@@ -120,6 +180,21 @@ async fetchAllRoomDataImages(id) {
     console.log(err);
   }
 }
+
+async fetchAllRoomDataImagesSOCE(id) {
+
+  // api url
+  const urlRequestImages = ("http://localhost:3000/destinationSOCE?Room_ID="+id);
+  try {
+    //      fetch request using the api url
+    const res = await fetch(urlRequestImages);
+    return res.json();
+  }
+  catch(err) {
+    console.log(err);
+  }
+}
+
 // function that creates a bubble speeech box
    createSpeechBubble (x, y, width, height, quote) {
     var bubbleWidth = width;
