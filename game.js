@@ -41,7 +41,7 @@ window.onload = function() {
     backgroundColor: 0x000000,
     // all the scenes
     scene: [MenuScene, instructions, characterScene, gameEnter, settings,
-      wholeTator,SOCE]
+      wholeTator,SOCE,SOCEDownstairs]
   //  scene: [MenuScene, instructions, characterScene, gameEnter]
   }
 

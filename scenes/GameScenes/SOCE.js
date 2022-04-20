@@ -17,6 +17,13 @@ class SOCE extends Phaser.Scene {
         //sets the cookie to the first tasks
         document.cookie = "soceRoomID = 1";
       }
+        if(this.getCookie("soceRoomID") ==  9) {
+      //entranceButton -- SOCE
+      this.soceUpperLevelButton = this.add.image(830,420,"soceUpperLevelButton").setInteractive();
+      this.soceUpperLevelButton.setScale(.6);
+      this.soceUpperLevelButton.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
+    }
+
 
       // setting the room id to the cookie
     this.roomIDDB = this.getCookie("soceRoomID");
@@ -134,7 +141,15 @@ class SOCE extends Phaser.Scene {
 
       // Updates the Roomid of the COOKIE
       document.cookie = "soceRoomID = " + roomLink;
+/*
+      if(roomLink == 9) {
+        //entranceButton -- SOCE
+        this.entranceButtonSOCE = this.add.image(430,420,"entranceButtonSOCE").setInteractive();
+        this.entranceButtonSOCE.setScale(.6);
+        this.entranceButtonSOCE.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
 
+      }
+*/
       // sets currentRoomData to null
       this.currentRoomData = null;
 
@@ -179,11 +194,20 @@ class SOCE extends Phaser.Scene {
     this.background = this.add.image(400,300,pictureName).setDepth(1);
     this.background.scale = .275;
     this.backgroundGroup.add(this.background);
+
+    if(this.getCookie("soceRoomID") ==  9) {
+  //entranceButton -- SOCE
+  this.soceUpperLevelButton = this.add.image(830,420,"soceUpperLevelButton").setInteractive().setDepth(2);
+  this.soceUpperLevelButton.setScale(.6);
+  this.soceUpperLevelButton.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
+}
+
   //  console.log("this is the roomID " + this.getRoomIDDB());
 
     // checks if the room they enter is the task room
     if(this.getRoomIDDB() ==  await this.getTaskRoomID()) {
       // needs to update to the new task
+        if(this.taskID < 10) {
       // changes to the next task
       this.taskID = this.taskID + 1;
 
@@ -197,6 +221,7 @@ class SOCE extends Phaser.Scene {
     else {
     //  console.log("Player has not reached the task room" + await this.getTaskRoomID());
     }
+  }
   }
 
   // gets the roomPicture Data
@@ -249,7 +274,7 @@ if(picWestName != "") {
   this.imageID = imageID + 1 ;
 
 // if imageID is less then 25 then get next set of images
-  if(this.imageID < 26) {
+  if(this.imageID < 10) {
     this.loadRoomPictures(this.getImageID());
   }
 

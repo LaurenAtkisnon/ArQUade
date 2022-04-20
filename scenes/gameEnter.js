@@ -7,6 +7,8 @@ class gameEnter extends Phaser.Scene {
     this.load.image("entranceButton", "pictures/entranceButton.png");
     this.load.image("back_button", "pictures/back_button.png");
     this.load.image("entranceButtonSOCE", "pictures/entranceButtonSOCE.png");
+    this.load.image("soceUpperLevelButton","pictures/soceUpperLevel.png");
+    this.load.image("soceLowerLevelButton","pictures/soceLowerLevel.png");
   }
 
   create() {
@@ -42,6 +44,9 @@ class gameEnter extends Phaser.Scene {
    this.soceRoomID = this.getCookie("soceRoomID");
     this.loadOneRoomPictureSOCE(this.soceRoomID);
 
+    // loads the first room soce downstairs
+    this.loadOneRoomPictureSOCE(10);
+
 
     const background = this.add.image(462,334,"background");
     background.scale = 1.0;
@@ -73,12 +78,17 @@ class gameEnter extends Phaser.Scene {
     this.entranceButton = this.add.image(430,220,"entranceButton").setInteractive();
     this.entranceButton.setScale(.6);
     this.entranceButton.once('pointerdown', () => this.scene.start('wholeTator'));
-
     //entranceButton -- SOCE
     this.entranceButtonSOCE = this.add.image(430,420,"entranceButtonSOCE").setInteractive();
     this.entranceButtonSOCE.setScale(.6);
     this.entranceButtonSOCE.once('pointerdown', () => this.scene.start('SOCE'));
 
+/*
+//entranceButton -- SOCE
+this.entranceButtonSOCE = this.add.image(430,420,"entranceButtonSOCE").setInteractive();
+this.entranceButtonSOCE.setScale(.6);
+this.entranceButtonSOCE.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
+*/
 //   this.createSpeechBubble(670, 50, 200, 120, 'Hey and Welcome to ArQUade!');
   // this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
    this.createSpeechBubble(670, 50, 200, 220, "QUICK REMINDER: \n Good Luck!");
