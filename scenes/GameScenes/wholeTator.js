@@ -125,13 +125,13 @@ this.setRoomPicture("picNorth");
 
   // method that sets the setting button
   setting() {
-    this.settings_button = this.add.image(75,20, "settings_button").setInteractive().setDepth(10);
+    this.settings_button = this.add.image(75,20, "settingsButtonSOCE").setInteractive().setDepth(10);
     this.settings_button.scale = .8;
-    this.settings_button.on('pointerdown', () => {
-      this.scene.get("settings").setPrev(this.scene.key);
-      this.scene.start('settings');
-    });
-  }
+  this.settings_button.once('pointerdown', () => this.scene.start('gameEnter'));
+
+
+
+    }
 
   async  moveForwardSceneDB() {
     const linkName = ["Link_North_ID", "Link_East_ID", "Link_South_ID", "Link_West_ID"];

@@ -17,12 +17,7 @@ class SOCE extends Phaser.Scene {
       //sets the cookie to the first tasks
       document.cookie = "soceRoomID = 1";
     }
-    if(this.getCookie("soceRoomID") ==  9) {
-      //entranceButton -- SOCE
-      this.soceUpperLevelButton = this.add.image(830,420,"soceUpperLevelButton").setInteractive();
-      this.soceUpperLevelButton.setScale(.6);
-      this.soceUpperLevelButton.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
-    }
+
 
 
     // setting the room id to the cookie
@@ -113,11 +108,11 @@ class SOCE extends Phaser.Scene {
   setting() {
     this.settings_button = this.add.image(75,20, "settingsButtonSOCE").setInteractive().setDepth(10);
     this.settings_button.scale = .8;
-    this.settings_button.on('pointerdown', () => {
-      this.scene.get("settings").setPrev(this.scene.key);
-      this.scene.start('settings');
-    });
-  }
+  this.settings_button.once('pointerdown', () => this.scene.start('gameEnter'));
+
+
+
+    }
 
   async  moveForwardSceneDB() {
     const linkName = ["Link_North_ID", "Link_East_ID", "Link_South_ID", "Link_West_ID"];
@@ -193,13 +188,14 @@ async setRoomPicture(direction) {
   this.background.scale = .275;
   this.backgroundGroup.add(this.background);
 
+/*
   if(this.getCookie("soceRoomID") ==  9) {
     //entranceButton -- SOCE
     this.soceUpperLevelButton = this.add.image(830,420,"soceUpperLevelButton").setInteractive().setDepth(2);
     this.soceUpperLevelButton.setScale(.6);
     this.soceUpperLevelButton.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
   }
-
+*/
   //  console.log("this is the roomID " + this.getRoomIDDB());
 
   // checks if the room they enter is the task room
