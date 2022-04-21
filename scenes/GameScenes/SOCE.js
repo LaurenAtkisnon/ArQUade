@@ -7,17 +7,17 @@ class SOCE extends Phaser.Scene {
   }
   create() {
 
-      // returns null if there is no cookie with tatorTaskID
-      if(this.getCookie("soceTaskID") ==  null) {
-        //sets the cookie to the first tasks
-        document.cookie = "soceTaskID = 1";
-      }
-      // returns null if there is no cookie with tatorRoomID
-      if(this.getCookie("soceRoomID") ==  null) {
-        //sets the cookie to the first tasks
-        document.cookie = "soceRoomID = 1";
-      }
-        if(this.getCookie("soceRoomID") ==  9) {
+    // returns null if there is no cookie with tatorTaskID
+    if(this.getCookie("soceTaskID") ==  null) {
+      //sets the cookie to the first tasks
+      document.cookie = "soceTaskID = 1";
+    }
+    // returns null if there is no cookie with tatorRoomID
+    if(this.getCookie("soceRoomID") ==  null) {
+      //sets the cookie to the first tasks
+      document.cookie = "soceRoomID = 1";
+    }
+    if(this.getCookie("soceRoomID") ==  9) {
       //entranceButton -- SOCE
       this.soceUpperLevelButton = this.add.image(830,420,"soceUpperLevelButton").setInteractive();
       this.soceUpperLevelButton.setScale(.6);
@@ -25,13 +25,13 @@ class SOCE extends Phaser.Scene {
     }
 
 
-      // setting the room id to the cookie
+    // setting the room id to the cookie
     this.roomIDDB = this.getCookie("soceRoomID");
     this.setRoomPicture("picNorth");
 
     // loads the room of the photos to start at.
     // sets the task ID to the cookie id
-      this.taskID = parseInt(this.getCookie("soceTaskID"));
+    this.taskID = parseInt(this.getCookie("soceTaskID"));
 
     // settinh roomPicture variable
     this.roomPicture = "Not changed yet";
@@ -56,12 +56,10 @@ class SOCE extends Phaser.Scene {
     this.createDisplayTask();
     this.createDisplayRoomDescription();
 
-
-
     this.loadRoomPictures(1);
 
     // calling the navigation button method
-   this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
+    this.navigationButtons("wholeTator3","wholeTator","wholeTator1","wholeTator2");
   }
 
 
@@ -127,7 +125,7 @@ class SOCE extends Phaser.Scene {
     const link = linkName[this.personDirection];
     //gets the new roomID
     const roomID =  this.setRoomLink(link);
-  //console.log("Finished the moveforward scene DB");
+    //console.log("Finished the moveforward scene DB");
   }
 
   async setRoomLink(link) {
@@ -141,73 +139,73 @@ class SOCE extends Phaser.Scene {
 
       // Updates the Roomid of the COOKIE
       document.cookie = "soceRoomID = " + roomLink;
-/*
+      /*
       if(roomLink == 9) {
-        //entranceButton -- SOCE
-        this.entranceButtonSOCE = this.add.image(430,420,"entranceButtonSOCE").setInteractive();
-        this.entranceButtonSOCE.setScale(.6);
-        this.entranceButtonSOCE.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
+      //entranceButton -- SOCE
+      this.entranceButtonSOCE = this.add.image(430,420,"entranceButtonSOCE").setInteractive();
+      this.entranceButtonSOCE.setScale(.6);
+      this.entranceButtonSOCE.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
 
-      }
-*/
-      // sets currentRoomData to null
-      this.currentRoomData = null;
+    }
+    */
+    // sets currentRoomData to null
+    this.currentRoomData = null;
 
-      // loads images
+    // loads images
     //   this.loadRoomPictures();
 
-      // calls update scene method
-      this.updateSceneDB();
-    }
+    // calls update scene method
+    this.updateSceneDB();
   }
-
-  // gets the new room link
-  async getRoomLink(link) {
-    // fetchs all the room data from fetchAllRoomData
-    const data = await this.fetchAllRoomData();
-    // returns the new room id link
-    return data[link];
-  }
-  async  updateSceneDB() {
-    // array of picture direction names
-    const directionName = ["picNorth", "picEast", "picSouth", "picWest"];
-    // gets which direction name to get using the persons direction
-    const direction = directionName[this.personDirection];
-
-
-
-    //gets the room data
-    await  this.setRoomPicture(direction);
-    // updates the task if needed
-//    this.updateDisplayTask();
-    // updates the room description if needed
-    this.updateDisplayRoomDescription();
-  }
-  // new function
-  // gets the current Room data
-  async setRoomPicture(direction) {
-    // sets the picture name using the getRoomPicture method
-    const pictureName = await this.getRoomPicture(direction);
-    // clears the background
-    this.backgroundGroup.clear(true);
-    // setting up the new background using the information we got from the getRoomPicture method
-    this.background = this.add.image(400,300,pictureName).setDepth(1);
-    this.background.scale = .275;
-    this.backgroundGroup.add(this.background);
-
-    if(this.getCookie("soceRoomID") ==  9) {
-  //entranceButton -- SOCE
-  this.soceUpperLevelButton = this.add.image(830,420,"soceUpperLevelButton").setInteractive().setDepth(2);
-  this.soceUpperLevelButton.setScale(.6);
-  this.soceUpperLevelButton.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
 }
+
+// gets the new room link
+async getRoomLink(link) {
+  // fetchs all the room data from fetchAllRoomData
+  const data = await this.fetchAllRoomData();
+  // returns the new room id link
+  return data[link];
+}
+async  updateSceneDB() {
+  // array of picture direction names
+  const directionName = ["picNorth", "picEast", "picSouth", "picWest"];
+  // gets which direction name to get using the persons direction
+  const direction = directionName[this.personDirection];
+
+
+
+  //gets the room data
+  await  this.setRoomPicture(direction);
+  // updates the task if needed
+  //    this.updateDisplayTask();
+  // updates the room description if needed
+  this.updateDisplayRoomDescription();
+}
+// new function
+// gets the current Room data
+async setRoomPicture(direction) {
+  // sets the picture name using the getRoomPicture method
+  const pictureName = await this.getRoomPicture(direction);
+  // clears the background
+  this.backgroundGroup.clear(true);
+  // setting up the new background using the information we got from the getRoomPicture method
+  this.background = this.add.image(400,300,pictureName).setDepth(1);
+  this.background.scale = .275;
+  this.backgroundGroup.add(this.background);
+
+  if(this.getCookie("soceRoomID") ==  9) {
+    //entranceButton -- SOCE
+    this.soceUpperLevelButton = this.add.image(830,420,"soceUpperLevelButton").setInteractive().setDepth(2);
+    this.soceUpperLevelButton.setScale(.6);
+    this.soceUpperLevelButton.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
+  }
 
   //  console.log("this is the roomID " + this.getRoomIDDB());
 
-    // checks if the room they enter is the task room
-    if(this.getRoomIDDB() ==  await this.getTaskRoomID()) {
-      // needs to update to the new task
-        if(this.taskID < 10) {
+  // checks if the room they enter is the task room
+  if(this.getRoomIDDB() ==  await this.getTaskRoomID()) {
+    // needs to update to the new task
+    if(this.taskID < 10) {
       // changes to the next task
       this.taskID = this.taskID + 1;
 
@@ -219,19 +217,19 @@ class SOCE extends Phaser.Scene {
       console.log("Player has reached the task room and assigned a new task ");
     }
     else {
-    //  console.log("Player has not reached the task room" + await this.getTaskRoomID());
+      //  console.log("Player has not reached the task room" + await this.getTaskRoomID());
     }
   }
-  }
+}
 
-  // gets the roomPicture Data
-  async getRoomPicture(direction) {
-    //calls the fetchAllRoomData method to get all the room data
-    const data = await this.fetchAllRoomData();
-    // returns the new scene picture using the data and direction which is name for example picNorth
-    return data[direction];
-  }
-  // gets the roomDescription which will explain what room there in
+// gets the roomPicture Data
+async getRoomPicture(direction) {
+  //calls the fetchAllRoomData method to get all the room data
+  const data = await this.fetchAllRoomData();
+  // returns the new scene picture using the data and direction which is name for example picNorth
+  return data[direction];
+}
+// gets the roomDescription which will explain what room there in
 async getRoomDescription() {
   const data = await this.fetchAllRoomData();
   //returns the room Description
@@ -252,147 +250,145 @@ async loadRoomPictures(id) {
 
 
   console.log("This is the room id " + this.imageID);
-    console.log("This is the north picture name " + picNorthName);
+  console.log("This is the north picture name " + picNorthName);
   console.log("This is the east picture name " + picEastName);
   console.log("This is the west picture name " + picWestName);
   console.log("This is the east picture name " + picSouthName);
 
-if(picNorthName != "") {
-  this.load.image(picNorthName, "pictures/"+picNorthName+".png");
-}
-if(picEastName != "") {
-  this.load.image(picEastName, "pictures/"+picEastName+".png");
-}
-if(picSouthName != "") {
-  this.load.image(picSouthName, "pictures/"+picSouthName+".png");
-}
-if(picWestName != "") {
-  this.load.image(picWestName, "pictures/"+picWestName+".png");
-}
+  if(picNorthName != "") {
+    this.load.image(picNorthName, "pictures/"+picNorthName+".png");
+  }
+  if(picEastName != "") {
+    this.load.image(picEastName, "pictures/"+picEastName+".png");
+  }
+  if(picSouthName != "") {
+    this.load.image(picSouthName, "pictures/"+picSouthName+".png");
+  }
+  if(picWestName != "") {
+    this.load.image(picWestName, "pictures/"+picWestName+".png");
+  }
   this.load.start();
 
   this.imageID = imageID + 1 ;
 
-// if imageID is less then 25 then get next set of images
+  // if imageID is less then 25 then get next set of images
   if(this.imageID < 10) {
     this.loadRoomPictures(this.getImageID());
   }
 
 }
 
-  // grab the current room data
-  async fetchAllRoomData() {
-    // if the currentroom data is not null then dont fetch data from database
-    if (this.currentRoomData != null ) {
-      return this.currentRoomData;
-    }
-    // api url
-    const urlRequest = ("http://localhost:3000/destinationSOCE?Room_ID="+this.getRoomIDDB());
-    try {
-      //      fetch request using the api url
-      const res = await fetch(urlRequest);
-      // currentRoomData is now the fetch api response database
-      this.currentRoomData = res.json();
-      // returns the currentRoomData
-      return this.currentRoomData;
-    }
-    catch(err) {
-      console.log(err);
-    }
+// grab the current room data
+async fetchAllRoomData() {
+  // if the currentroom data is not null then dont fetch data from database
+  if (this.currentRoomData != null ) {
+    return this.currentRoomData;
   }
-
-  async fetchAllRoomDataImages(id) {
-
-    // api url
-    const urlRequestImages = ("http://localhost:3000/destinationSOCE?Room_ID="+id);
-    try {
-      //      fetch request using the api url
-      const res = await fetch(urlRequestImages);
-      return res.json();
-    }
-    catch(err) {
-      console.log(err);
-    }
+  // api url
+  const urlRequest = ("http://localhost:3000/destinationSOCE?Room_ID="+this.getRoomIDDB());
+  try {
+    //      fetch request using the api url
+    const res = await fetch(urlRequest);
+    // currentRoomData is now the fetch api response database
+    this.currentRoomData = res.json();
+    // returns the currentRoomData
+    return this.currentRoomData;
   }
-
-  // sets the task description
-  async setTaskDescription() {
-    // gets the task description
-    const taskDescription = await this.getTaskDescription();
-    // console.log("This is the task Description " + taskDescription);
+  catch(err) {
+    console.log(err);
   }
+}
 
-  // gets the task Description
-  async getTaskDescription() {
-    //calls the fetchTask method to get all the task data
-    const data = await this.fetchTaskData();
-    // returns the task description
-    return data["Task_Description"];
-  }
+async fetchAllRoomDataImages(id) {
 
-  // sets the task destination
-  async setTaskRoomID() {
-    // gets the task description
-    const taskRoomID = await this.getTaskRoomID();
-    //  console.log("This is the task Room ID  " + taskRoomID);
+  // api url
+  const urlRequestImages = ("http://localhost:3000/destinationSOCE?Room_ID="+id);
+  try {
+    //      fetch request using the api url
+    const res = await fetch(urlRequestImages);
+    return res.json();
   }
+  catch(err) {
+    console.log(err);
+  }
+}
 
-  // gets the task room id
-  async getTaskRoomID() {
-    //calls the fetchTask method to get all the task data
-    const data = await this.fetchTaskData();
-    // returns the task destination
-    return data["Destination"];
-  }
+// sets the task description
+async setTaskDescription() {
+  // gets the task description
+  const taskDescription = await this.getTaskDescription();
+  // console.log("This is the task Description " + taskDescription);
+}
 
-  // grabs the task room data
-  async fetchTaskData() {
-    // this is the query request
-    const urlRequest = ("http://localhost:3000/taskSOCE?Task_ID="+this.getTaskID());
-    try {
-      //fetch request using the api url
-      const res = await fetch(urlRequest);
-      // taskData is now the fetch api response database
-      this.taskData = res.json();
-      //returns the taskdata
-      return this.taskData;
-    }
-    catch(err) {
-      console.log(err);
-    }
+// gets the task Description
+async getTaskDescription() {
+  //calls the fetchTask method to get all the task data
+  const data = await this.fetchTaskData();
+  // returns the task description
+  return data["Task_Description"];
+}
+
+// sets the task destination
+async setTaskRoomID() {
+  // gets the task description
+  const taskRoomID = await this.getTaskRoomID();
+  //  console.log("This is the task Room ID  " + taskRoomID);
+}
+
+// gets the task room id
+async getTaskRoomID() {
+  //calls the fetchTask method to get all the task data
+  const data = await this.fetchTaskData();
+  // returns the task destination
+  return data["Destination"];
+}
+
+// grabs the task room data
+async fetchTaskData() {
+  // this is the query request
+  const urlRequest = ("http://localhost:3000/taskSOCE?Task_ID="+this.getTaskID());
+  try {
+    //fetch request using the api url
+    const res = await fetch(urlRequest);
+    // taskData is now the fetch api response database
+    this.taskData = res.json();
+    //returns the taskdata
+    return this.taskData;
   }
+  catch(err) {
+    console.log(err);
+  }
+}
 
 // creates the task display
-  async createDisplayTask() {
-    console.log("This is task Description" +  await this.getTaskDescription() );
-    this.taskText =  this.add.text(400, 45, "Task:" +  await this.getTaskDescription(), { //600, 25
+async createDisplayTask() {
+  console.log("This is task Description" +  await this.getTaskDescription() );
+  this.taskText =  this.add.text(5, 80, "Task:" +  await this.getTaskDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
     color: '#418FDE',
-//    align: 'Right',
     borderStyle: 'dotted dashed solid double',
     backgroundColor: '#0C2340'
-    }).setDepth(10);
-  }
-  // updates the Task
-  async updateDisplayTask() {
-    console.log("This is task Description" +  await this.getTaskDescription() );
-    this.taskText.setText("Task: " +await this.getTaskDescription());
-  }
-  // creates the room Descrisption (Location)
-  async createDisplayRoomDescription() {
-    console.log("This is room Description" +  await this.getRoomDescription() );
-    this.roomText =  this.add.text(400, 15, "Location:" +   await this.getRoomDescription(), { //600, 25
+  }).setDepth(10);
+}
+// updates the Task
+async updateDisplayTask() {
+  console.log("This is task Description" +  await this.getTaskDescription() );
+  this.taskText.setText("Task: " +await this.getTaskDescription());
+}
+// creates the room Descrisption (Location)
+async createDisplayRoomDescription() {
+  console.log("This is room Description" +  await this.getRoomDescription() );
+  this.roomText =  this.add.text(5, 50, "Location:" +   await this.getRoomDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
     fontFamily: 'Courier',
     color: '#418FDE',
-//    align: 'Right',
     backgroundColor: '#0C2340'
-    }).setDepth(10);
+  }).setDepth(10);
 }
 
 // updates the roomDescription
@@ -401,65 +397,65 @@ async updateDisplayRoomDescription() {
   this.roomText.setText("Location: " + await this.getRoomDescription());
 }
 
-  // sets the room ID
-  setRoomIDDB(id) {
-    this.roomIDDB = id;
-  }
-  // gets the room ID
-  getRoomIDDB() {
-    return this.roomIDDB;
-  }
+// sets the room ID
+setRoomIDDB(id) {
+  this.roomIDDB = id;
+}
+// gets the room ID
+getRoomIDDB() {
+  return this.roomIDDB;
+}
 
-  // sets the room ID
-  setImageID(id) {
-    this.imageID = id;
-  }
-  // gets the room ID
-  getImageID() {
-    return this.imageID;
-  }
+// sets the room ID
+setImageID(id) {
+  this.imageID = id;
+}
+// gets the room ID
+getImageID() {
+  return this.imageID;
+}
 
-  //set the Task ID
-  setTaskID(id) {
-    this.taskID = id;
-  }
+//set the Task ID
+setTaskID(id) {
+  this.taskID = id;
+}
 
-  //gets the task id
-  getTaskID() {
-    return this.taskID;
+//gets the task id
+getTaskID() {
+  return this.taskID;
 
-  }
-  // sets the room picutre
-  setRoomPicDB(roomPicture) {
-    this.roomPicture = roomPicture;
-  }
-  // gets the room picture
-  getRoomPicDB() {
-    return this.roomPicture;
-  }
+}
+// sets the room picutre
+setRoomPicDB(roomPicture) {
+  this.roomPicture = roomPicture;
+}
+// gets the room picture
+getRoomPicDB() {
+  return this.roomPicture;
+}
 
-  // gets the current room data
-  getCurrentRoomData() {
-    return this.currentRoomData;
-  }
-  // gets the task data
-  getTaskData() {
-    return this.taskData;
-  }
-  // gets the person direction
-  getpersonDirection() {
-    return this.personDirection;
-  }
-  // sets the person direction
+// gets the current room data
+getCurrentRoomData() {
+  return this.currentRoomData;
+}
+// gets the task data
+getTaskData() {
+  return this.taskData;
+}
+// gets the person direction
+getpersonDirection() {
+  return this.personDirection;
+}
+// sets the person direction
 
-  setpersonDirection(personDirection) {
-    this.personDirection = personDirection;
-  }
+setpersonDirection(personDirection) {
+  this.personDirection = personDirection;
+}
 
-    // FUNCTION THAT CHECKS IF A COOKIE IS NULL
-     getCookie(name) {
-      var match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
-      return match ? match[1] : null;
-  }
+// FUNCTION THAT CHECKS IF A COOKIE IS NULL
+getCookie(name) {
+  var match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+  return match ? match[1] : null;
+}
 
 }
