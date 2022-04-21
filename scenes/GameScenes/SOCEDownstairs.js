@@ -52,7 +52,7 @@
       this.setTaskDescription();
 
       //calling the setting button method
-      //  this.setting();
+        this.setting();
       this.createDisplayTask();
       this.createDisplayRoomDescription();
 
@@ -471,6 +471,15 @@
       var match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
       return match ? match[1] : null;
     }
+    // method that sets the setting button
+    setting() {
+      this.settings_button = this.add.image(75,20, "settingsButtonSOCE").setInteractive().setDepth(10);
+      this.settings_button.scale = .8;
+    this.settings_button.once('pointerdown', () => this.scene.start('gameEnter'));
+
+
+
+      }
 
 
   }
