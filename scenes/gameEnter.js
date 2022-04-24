@@ -90,21 +90,9 @@ class gameEnter extends Phaser.Scene {
     this.soceEntranceLowerLevel.setScale(.6);
     this.soceEntranceLowerLevel.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
 
-    /*
-    //entranceButton -- SOCE
-    this.entranceButtonSOCE = this.add.image(430,420,"entranceButtonSOCE").setInteractive();
-    this.entranceButtonSOCE.setScale(.6);
-    this.entranceButtonSOCE.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
-    */
-    //   this.createSpeechBubble(670, 50, 200, 120, 'Hey and Welcome to ArQUade!');
-    // this.createSpeechBubble(150, 250, 150, 120, "Thanks Boomer! I'm excited");
     this.createSpeechBubble(670, 50, 200, 220, "QUICK REMINDER: \n Good Luck!");
-
-
+    
     //   this.input.on('pointerdown', () => this.scene.start('campusScene'));
-
-
-
   }
 
   // gets all the room pictures
