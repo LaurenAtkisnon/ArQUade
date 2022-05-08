@@ -91,7 +91,7 @@ class gameEnter extends Phaser.Scene {
     this.soceEntranceLowerLevel.once('pointerdown', () => this.scene.start('SOCEDownstairs'));
 
     this.createSpeechBubble(670, 50, 200, 220, "QUICK REMINDER: \n Good Luck!");
-    
+
     //   this.input.on('pointerdown', () => this.scene.start('campusScene'));
   }
 
