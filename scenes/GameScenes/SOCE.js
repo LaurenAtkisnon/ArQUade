@@ -18,11 +18,22 @@ class SOCE extends Phaser.Scene {
       document.cookie = "soceRoomID = 1";
     }
 
+    // changes the direction to west for the entrance
+    if( this.getCookie("soceRoomID") == "1") {
+      // setting the room id to the cookie
+      this.roomIDDB = this.getCookie("soceRoomID");
+      this.setRoomPicture("picWest");
+        // the direction that the player is facing
+      this.personDirection = 3;
+    }
+    else {
+      // setting the room id to the cookie
+      this.roomIDDB = this.getCookie("soceRoomID");
+      this.setRoomPicture("picNorth");
+      // the direction that the player is facing
+      this.personDirection = 0;
+    }
 
-
-    // setting the room id to the cookie
-    this.roomIDDB = this.getCookie("soceRoomID");
-    this.setRoomPicture("picNorth");
 
     // loads the room of the photos to start at.
     // sets the task ID to the cookie id
@@ -34,8 +45,7 @@ class SOCE extends Phaser.Scene {
     // setting currentRoomData to null
     this.currentRoomData = null;
 
-    // the direction that the player is facing
-    this.personDirection = 0;
+
     // button group
     this.backgroundGroup = this.add.group();
 
