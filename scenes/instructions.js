@@ -21,17 +21,10 @@ class instructions extends Phaser.Scene {
     const howtoplay_button = this.add.image(460,115,"howtoplay_button");
     howtoplay_button.scale = .6;
 
-    //buttons on page
+    //arrow buttons on page
     this.instructionButtons = this.add.image(125, 315, "instructionButtons");
     this.instructionButtons.scale = .4;
 
-    //settings button | scale was at .8
-    this.settings_button = this.add.image(100,30, "settings_button").setInteractive();
-    this.settings_button.once('pointerdown', () => {
-    this.scene.get("settings").setPrev("instructions");
-    this.scene.start('settings');
-
-    });
 
     // instructions
     var content = [
@@ -56,7 +49,7 @@ class instructions extends Phaser.Scene {
     });
 
     //home button goes back to home
-    this.homeButton = this.add.image(82,643, "home_button").setInteractive();
+    this.homeButton = this.add.image(80,25, "home_button").setInteractive();
     this.homeButton.setScale (.8);
     this.homeButton.once('pointerdown', () => this.scene.start('bootGame'))
 
