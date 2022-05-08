@@ -61,13 +61,10 @@ class gameEnter extends Phaser.Scene {
 
     const soceEntranceLowerLevel = this.add.image("");
 
-    //settings button
-    this.settings_button = this.add.image(100,30, "settings_button").setInteractive();
-    //  this.settings_button.scale = .8;
-    this.settings_button.once('pointerdown', () => {
-      this.scene.get("settings").setPrev("gameEnter");
-      this.scene.start('settings');
-    });
+    //home button
+    this.homeButton = this.add.image(80,25, "home_button").setInteractive();
+    this.homeButton.setScale (.8);
+    this.homeButton.once('pointerdown', () => this.scene.start('bootGame'))
 
     //back back_button
     this.backButton = this.add.image(82,643, "back_button").setInteractive();
@@ -222,7 +219,7 @@ class gameEnter extends Phaser.Scene {
     //  Bubble shape and outline
     bubble.strokeRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
     bubble.fillRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
-
+    
     //  Calculate arrow coordinates
     var point1X = Math.floor(bubbleWidth / 7);
     var point1Y = bubbleHeight;
