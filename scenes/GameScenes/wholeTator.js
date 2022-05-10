@@ -361,6 +361,24 @@ if(picWestName != "") {
     return data["Task_Description"];
   }
 
+  // sets the task Name
+  async setTaskName() {
+    // gets the task description
+    const taskName = await this.getTaskDescription();
+    // console.log("This is the task Description " + taskDescription);
+  }
+
+  // gets the task Name
+  async getTaskName() {
+    //calls the fetchTask method to get all the task data
+    const data = await this.fetchTaskData();
+    // returns the task description
+    return data["Task_Name"];
+  }
+
+
+
+
   // sets the task destination
   async setTaskRoomID() {
     // gets the task description
@@ -406,16 +424,29 @@ if(picWestName != "") {
     borderStyle: 'dotted dashed solid double',
     backgroundColor: '#418fde'
     }).setDepth(10);
+
+    this.taskTextName =  this.add.text(400, 15, "Task Location:" +  await this.getTaskName(), { //600, 25
+    //  font: "bold 25px Arial",
+    //  fill: "white"
+    fontSize: '25px',
+    fontFamily: 'Courier',
+    color: '#ffb736',
+//    align: 'Right',
+    borderStyle: 'dotted dashed solid double',
+    backgroundColor: '#418fde'
+    }).setDepth(10);
+
   }
   // updates the Task
   async updateDisplayTask() {
     console.log("This is task Description" +  await this.getTaskDescription() );
     this.taskText.setText("Task: " +await this.getTaskDescription());
+    this.taskTextName.setText("Task Location: " +await this.getTaskName());
   }
   // creates the room Descrisption
   async createDisplayRoomDescription() {
     console.log("This is room Description" +  await this.getRoomDescription() );
-    this.roomText =  this.add.text(400, 15, "Location:" +   await this.getRoomDescription(), { //600, 25
+    this.roomText =  this.add.text(0, 635, "Location:" +   await this.getRoomDescription(), { //600, 25
     //  font: "bold 25px Arial",
     //  fill: "white"
     fontSize: '25px',
